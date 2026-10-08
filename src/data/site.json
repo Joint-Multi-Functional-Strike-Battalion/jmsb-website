@@ -1,0 +1,13 @@
+{
+	"name": "1st Joint Multi-Functional Strike Battalion",
+	"short": "1st JMSB",
+	"tagline": "The slot you take. The skills you carry.",
+	"pac": "https://pac.jmsb.info",
+	"discord": "",
+	"workshop": "",
+	"servers": [
+		{ "name": "Operations", "host": "172.93.101.237", "port": 2302 },
+		{ "name": "Training", "host": "172.93.101.237", "port": 2402 },
+		{ "name": "Events", "host": "172.93.101.237", "port": 2502 }
+	]
+}

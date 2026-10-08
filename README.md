@@ -1,48 +1,40 @@
 # jmsb.info
 
-The public site of the 1st Joint Multi-Functional Strike Battalion, built with
-[Astro](https://astro.build) and [Starlight](https://starlight.astro.build).
-Styled after the battalion's "Roles and Skills" briefing deck: Oswald headings,
-Public Sans text, slate ground and brass accent (`src/styles/jmsb.css`).
+The 1st Joint Multi-Functional Strike Battalion's public site. A plain
+[Astro](https://astro.build) site: five pages, no framework, no docs theme.
 
-## Pages
+| Page | File | What |
+|---|---|---|
+| Home | `src/pages/index.astro` | one screen: the logo, the name, one line, Join and About, the next operation counting down, the three servers |
+| Unit | `src/pages/unit.astro` | who we are, what we ask, an operation night, how we are organised, the roster, the mods, questions |
+| SOP | `src/pages/sop.astro` | the standard operating procedures |
+| Events | `src/pages/events.astro` | the calendar: next up, coming up, played |
+| Wiki | - | a link to TAC//PAC's wiki |
 
-Markdown/MDX in `src/content/docs/` - one file per page:
+## Where the words come from
 
-| File | Page |
-|---|---|
-| `index.mdx` | Home (splash) |
-| `about.mdx` | About the battalion |
-| `roles.mdx` | Roles and skills |
-| `join.mdx` | Join |
-| `servers.mdx` | Servers |
-| `mod.mdx` | The mod |
+- **TAC//PAC's public feed** (`https://pac.jmsb.info/?page=feed&what=...`) -
+  the order of battle, the roster and the events are read in the visitor's
+  browser (`src/scripts/pac.js`), so the site is always current. The SOP is a
+  public page in PAC's wiki, read when the site is built; `src/data/sop-fallback.html`
+  stands in when PAC cannot be reached at build time.
+- **`src/data/site.json`** - the unit's name, tagline, the PAC address, the
+  Discord invite, the Workshop link and the servers. Empty Discord or Workshop
+  links are shown as placeholders.
+- **The pages themselves** - the About text, the operation-night cards, the
+  mods and the FAQ are written in `unit.astro`.
 
-The sidebar is set in `astro.config.mjs`. Text in [square brackets] is a
-placeholder still to be written.
+Screenshots: `public/ops/<key>.jpg` for the operation-night cards (assault,
+mech, air, drones, fires, recon). The home hero draws a contour map until a
+screenshot replaces it.
 
-## Build
+## Build and deploy
 
-Needs Node 22 or newer.
-
-```sh
+```
 npm install
-npm run dev      # local preview at http://localhost:4321
-npm run build    # static site in dist/
+npm run dev        # http://localhost:4321
+npm run build      # dist/
 ```
 
-## Deploy
-
-The site is static. It is served by nginx on the battalion's Lightsail server
-from `/var/www/jmsb.info` (config `/etc/nginx/conf.d/jmsb-info.conf`). To
-publish, build, then copy `dist/` there:
-
-```sh
-npm run build
-tar czf jmsb-dist.tgz -C dist .
-scp -i <key> jmsb-dist.tgz ec2-user@35.93.34.227:/tmp/
-ssh -i <key> ec2-user@35.93.34.227 \
-  'sudo rm -rf /var/www/jmsb.info/* && sudo tar xzf /tmp/jmsb-dist.tgz -C /var/www/jmsb.info && sudo chmod -R a+rX /var/www/jmsb.info'
-```
-
-The TAC//PAC manager at https://pac.jmsb.info is a separate site (DIVINER_Web).
+The site is static. Copy `dist/` to `/var/www/jmsb.info` on the Lightsail box
+(nginx, `jmsb-info.conf`).

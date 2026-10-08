@@ -1,0 +1,57 @@
+---
+// Events: the calendar from TAC//PAC. The next operation with a countdown,
+// then what is coming, then what was played. Times are the visitor's own.
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+<Base title="Events" description={`The ${site.short}'s calendar: the next operation, what is coming up, and what was played.`}>
+	<div class="wrap pagehead">
+		<p class="eyebrow">The calendar</p>
+		<h1>Events</h1>
+		<p class="lede" id="ev-note">Operations, training nights and events, straight from TAC//PAC. Times are shown in your own time zone.</p>
+	</div>
+	<section class="section">
+		<div class="wrap" id="ev">
+			<p class="dim">Loading the calendar. If it does not appear, it is on <a href={`${site.pac}/?page=events`} target="_blank" rel="noopener">TAC//PAC</a>.</p>
+		</div>
+	</section>
+
+	<script>
+		import { feed, when, zone, countdown, esc, PAC } from '../scripts/pac.js';
+		const box = document.getElementById('ev');
+		const note = document.getElementById('ev-note');
+		const z = zone();
+		if (z) note.textContent = `Operations, training nights and events, straight from TAC//PAC. Times are shown in your own time zone (${z}).`;
+
+		const row = (e, past) => `<li class="ev${past ? ' past' : ''}${e.cancelled ? ' cancelled' : ''}">
+			<span class="d">${esc(when(e.start))}</span>
+			<div><div class="t">${esc(e.title)}${e.cancelled ? ' <span class="pill hot">cancelled</span>' : ''}</div>${e.summary ? `<p class="s">${esc(e.summary)}</p>` : ''}</div>
+			<span class="srv">${esc(e.server || '')}${e.minutes ? ` · ${e.minutes % 60 === 0 ? e.minutes / 60 + ' h' : e.minutes + ' min'}` : ''}</span>
+		</li>`;
+
+		feed('events').then((ev) => {
+			let out = '';
+			if (ev.next) {
+				const n = ev.next;
+				out += `<div class="evnext" id="evnext">
+					<div><p class="eyebrow">Next up</p><h2>${esc(n.title)}</h2>
+						<p class="when">${esc(when(n.start, true))}${n.server ? ` · ${esc(n.server)} server` : ''}${n.minutes ? ` · ${n.minutes % 60 === 0 ? n.minutes / 60 + ' h' : n.minutes + ' min'}` : ''}</p>
+						${n.summary ? `<p class="sum">${esc(n.summary)}</p>` : ''}</div>
+					<div class="count" aria-label="Time until it starts"><span><b data-d>0</b><i>days</i></span><span><b data-h>00</b><i>hrs</i></span><span><b data-m>00</b><i>min</i></span><span><b data-s>00</b><i>sec</i></span></div>
+				</div>`;
+			}
+			out += '<h2 style="margin-bottom:14px">Coming up</h2>';
+			out += ev.upcoming.length
+				? `<ul class="evlist">${ev.upcoming.map((e) => row(e, false)).join('')}</ul>`
+				: '<p class="dim" style="margin-bottom:32px">Nothing on the calendar yet. Operation nights are announced on Discord.</p>';
+			if (ev.recent.length) {
+				out += `<h2 style="margin-bottom:14px">Played</h2><ul class="evlist">${ev.recent.map((e) => row(e, true)).join('')}</ul>`;
+			}
+			box.innerHTML = out;
+			const nx = document.getElementById('evnext');
+			if (nx) countdown(nx, ev.next.start, () => { nx.querySelector('.count').innerHTML = '<b>Under way</b>'; });
+		}).catch(() => {
+			box.innerHTML = `<p class="dim">The calendar could not be read right now. It is on <a href="${esc(PAC)}/?page=events" target="_blank" rel="noopener">TAC//PAC</a>.</p>`;
+		});
+	</script>
+</Base>

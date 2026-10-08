@@ -1,0 +1,41 @@
+---
+// The SOP. The text lives in TAC//PAC's wiki as the public page "sop", so the
+// unit edits it there; this page is built from the feed each time the site is
+// built, and keeps a copy in src/data/ for a build that cannot reach PAC.
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import fallback from '../data/sop-fallback.html?raw';
+
+let html = fallback;
+let updated = '';
+let live = false;
+try {
+	const r = await fetch(`${site.pac}/?page=feed&what=page&slug=sop`);
+	if (r.ok) {
+		const j = await r.json();
+		if (typeof j.html === 'string' && j.html.trim() !== '') {
+			html = j.html;
+			updated = String(j.updatedAt || '').slice(0, 10);
+			live = true;
+		}
+	}
+} catch {
+	// the fallback stands
+}
+---
+<Base title="SOP" description={`The ${site.short}'s standard operating procedures: what we ask, how we play, how we talk, and the rules.`}>
+	<div class="wrap pagehead">
+		<p class="eyebrow">Standing orders</p>
+		<h1>Standard operating procedures</h1>
+		<p class="lede">What we ask of every member, how we play, how we talk on the net, and the rules that keep it fun. Read it before your first operation.</p>
+	</div>
+	<section class="section">
+		<div class="wrap">
+			<article class="prose" set:html={html}></article>
+			<div class="prose-foot">
+				{updated !== '' && <span>Updated {updated}</span>}
+				<span>Kept in <a href={`${site.pac}/?page=wiki&p=sop`} target="_blank" rel="noopener">TAC//PAC's wiki</a>{live ? '' : ' (this copy was built from the site\'s own file)'}</span>
+			</div>
+		</div>
+	</section>
+</Base>

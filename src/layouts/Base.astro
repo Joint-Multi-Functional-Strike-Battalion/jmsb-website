@@ -1,0 +1,79 @@
+---
+// The frame every page sits in: the bar, the page, the footer. The home page
+// passes `home` so the body fits one screen and the footer stays off.
+import site from '../data/site.json';
+import '../styles/site.css';
+
+interface Props {
+	title: string;
+	description: string;
+	home?: boolean;
+}
+const { title, description, home = false } = Astro.props;
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const links = [
+	{ href: '/', label: 'Home' },
+	{ href: '/unit', label: 'Unit' },
+	{ href: '/sop', label: 'SOP' },
+	{ href: '/events', label: 'Events' },
+	{ href: `${site.pac}/?page=wiki`, label: 'Wiki', external: true },
+];
+const join = site.discord !== '' ? site.discord : `${site.pac}/?page=apply`;
+const joinLabel = site.discord !== '' ? 'Join Discord' : 'Join us';
+const fullTitle = title === site.short ? `${site.short} - ${site.name}` : `${title} - ${site.short}`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<title>{fullTitle}</title>
+	<meta name="description" content={description}>
+	<meta property="og:title" content={fullTitle}>
+	<meta property="og:description" content={description}>
+	<meta property="og:site_name" content={site.name}>
+	<meta property="og:type" content="website">
+	<link rel="icon" href="/favicon.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+	<link rel="canonical" href={new URL(path === '/' ? '/' : path, Astro.site)}>
+</head>
+<body class:list={{ home }}>
+	<header class="bar">
+		<a class="brand" href="/"><img src="/logo.svg" alt="" width="36" height="36">{site.short}</a>
+		<button class="navtoggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+		<nav class="nav" id="nav" aria-label="Site">
+			{links.map((l) => (
+				<a href={l.href} aria-current={!l.external && l.href === path ? 'page' : undefined}
+				   target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined}>{l.label}</a>
+			))}
+			<a class="btn ghost small" href={`${site.pac}/`} target="_blank" rel="noopener">TAC//PAC</a>
+			<a class="btn small" href={join} target={site.discord !== '' ? '_blank' : undefined} rel="noopener">{joinLabel}</a>
+		</nav>
+	</header>
+	<main>
+		<slot />
+	</main>
+	{!home && (
+		<footer>
+			<a class="brand" href="/"><img src="/logo.svg" alt="" width="28" height="28">{site.short}</a>
+			<nav aria-label="Footer">
+				{links.map((l) => <a href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined}>{l.label}</a>)}
+				<a href={`${site.pac}/`} target="_blank" rel="noopener">TAC//PAC</a>
+			</nav>
+			<span class="copy">&copy; {new Date().getFullYear()} {site.short}</span>
+		</footer>
+	)}
+	<script>
+		const t = document.querySelector('.navtoggle');
+		const n = document.getElementById('nav');
+		if (t && n) {
+			t.addEventListener('click', () => {
+				const open = n.classList.toggle('open');
+				t.setAttribute('aria-expanded', open ? 'true' : 'false');
+			});
+		}
+	</script>
+</body>
+</html>
