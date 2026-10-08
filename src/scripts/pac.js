@@ -57,6 +57,41 @@ export function countdown(root, iso, done) {
 	tick();
 }
 
+/* PAC's names are short and upper case - "TEAM 2 MECH", "SPT TEAM AVN DET",
+ * a role called "JFO / Strike". The site writes them out. */
+const WORDS = {
+	HHC: 'Headquarters', HHD: 'Headquarters', C2: 'Command', TEAM: 'Team', COY: 'Company',
+	INF: 'Infantry', MECH: 'Mechanised', SPT: 'Support', AVN: 'Aviation', DET: 'Detachment',
+	DRONES: 'Drones', FIRES: 'Fires', PLT: 'Platoon', SQD: 'Squad', VEC: 'Vehicle',
+};
+const TERMS = {
+	JFO: 'Joint Fires Observer', ISR: 'Intelligence, Surveillance and Reconnaissance',
+	UAV: 'Drone Operator', EOD: 'Explosive Ordnance Disposal', CLS: 'Combat Lifesaver',
+	MED: 'Medic', ENG: 'Engineer', ATL: 'Assistant Team Lead', TL: 'Team Lead',
+	CAS: 'Close Air Support', MKS: 'Marksman', SNP: 'Sniper', BRC: 'Breacher',
+};
+
+/** "SPT TEAM AVN DET" -> "Support Team Aviation Detachment"; "GHOST 1-1" -> "Ghost 1-1". */
+export function expand(s) {
+	return String(s ?? '').trim().split(/\s+/).filter(Boolean).map((w) => {
+		const u = w.toUpperCase();
+		if (WORDS[u]) return WORDS[u];
+		if (/^\d/.test(w)) return w;
+		return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+	}).join(' ');
+}
+
+/** Spell out the terms a role or skill name abbreviates: "JFO / Strike" -> "Joint Fires Observer / Strike". */
+export function words(s) {
+	return String(s ?? '').replace(/\b[A-Z]{2,4}\b/g, (w) => TERMS[w] || w);
+}
+
+/** A skill's full name from the feed, written out. */
+export function skillName(skill, id) {
+	const n = skill && skill.name ? skill.name : String(id ?? '');
+	return TERMS[n.toUpperCase()] || words(n);
+}
+
 /** Escape for the one place markup is built from data. */
 export function esc(s) {
 	return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

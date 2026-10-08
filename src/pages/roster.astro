@@ -1,0 +1,84 @@
+---
+// The roster: everyone in Alpha Company, by element, with the whole of what
+// TAC//PAC shows the public - rank, slot, qualifications, status, when they
+// enlisted - written out in words rather than tags (user, 2026-10-08: "more
+// details less acronyms and abbreviations").
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+<Base title="Roster" description={`Who serves in Alpha Company, ${site.short}: rank, slot, qualifications and status, live from TAC//PAC.`}>
+	<div class="wrap pagehead">
+		<p class="eyebrow">Alpha Company · {site.short}</p>
+		<h1>The roster</h1>
+		<p class="lede">Every operator on the books, by element, as TAC//PAC holds them right now: rank, the slot they fill, what they are qualified to do, and when they enlisted.</p>
+	</div>
+	<section class="section">
+		<div class="wrap" id="roster">
+			<p class="dim">Loading the roster from TAC//PAC. If it does not appear, it is on <a href={`${site.pac}/`} target="_blank" rel="noopener">TAC//PAC</a>.</p>
+		</div>
+	</section>
+
+	<script>
+		import { feed, esc, expand, skillName, words, PAC } from '../scripts/pac.js';
+		const box = document.getElementById('roster');
+
+		const month = (iso) => {
+			const d = new Date(iso + 'T00:00:00');
+			return Number.isNaN(d.getTime()) ? '' : new Intl.DateTimeFormat(undefined, { month: 'long', year: 'numeric' }).format(d);
+		};
+
+		Promise.all([feed('roster'), feed('orbat')]).then(([r, ob]) => {
+			if (!r.players.length) { box.innerHTML = '<p class="dim">The roster is being set up.</p>'; return; }
+
+			// Which element each squad belongs to, so people group under
+			// "Team 1 · Ghost" rather than under the squad's callsign alone.
+			const elOf = new Map();
+			const order = [];
+			for (const e of ob.elements) {
+				order.push(e.callsign);
+				for (const s of e.squads) elOf.set(s.name, e);
+			}
+			const groups = new Map();
+			for (const p of r.players) {
+				const e = elOf.get(p.group);
+				const key = e ? e.callsign : 'Unassigned';
+				if (!groups.has(key)) groups.set(key, { el: e, people: [] });
+				groups.get(key).people.push(p);
+			}
+			const keys = [...groups.keys()].sort((a, b) => {
+				const ia = order.indexOf(a), ib = order.indexOf(b);
+				return (ia < 0 ? 999 : ia) - (ib < 0 ? 999 : ib);
+			});
+
+			box.innerHTML = keys.map((k) => {
+				const g = groups.get(k);
+				const heading = g.el
+					? `<h2>${esc(expand(g.el.name))} <span class="rs-cs">${esc(g.el.callsign)}</span></h2>`
+					: '<h2>Not yet assigned to an element</h2>';
+				return `<div class="rs-group">${heading}<div class="rs-people">${g.people.map((p) => {
+					const rank = r.ranks[p.rank];
+					const ins = rank && rank.insignia ? `<img src="${esc(rank.insignia)}" alt="">` : '';
+					const quals = p.skills.map((s) => esc(skillName(r.skills[s], s)));
+					const awards = p.awards.map((a) => esc(r.awards[a]?.name || a)).filter(Boolean);
+					const rows = [
+						['Rank', rank ? esc(rank.name) + (rank.payGrade ? ` <span class="muted mono">${esc(rank.payGrade)}</span>` : '') : 'Not yet given'],
+						['Slot', p.role && r.roles[p.role] ? esc(words(r.roles[p.role])) + (p.group ? `, ${esc(expand(p.group))}` : '') : (p.group ? esc(expand(p.group)) : 'No slot yet')],
+						['Qualified as', quals.length ? quals.join(', ') : 'No qualifications yet'],
+						['Awards', awards.length ? awards.join(', ') : ''],
+						['Status', p.status ? esc(r.statuses[p.status] || p.status) : ''],
+						['Enlisted', month(p.enlisted)],
+					].filter(([, v]) => v !== '');
+					return `<article class="rs-card">
+						<div class="rs-ins">${ins}</div>
+						<div class="rs-body">
+							<h3>${esc(p.name)}</h3>
+							<dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+						</div>
+					</article>`;
+				}).join('')}</div></div>`;
+			}).join('');
+		}).catch(() => {
+			box.innerHTML = `<p class="dim">The roster could not be read right now. It is on <a href="${esc(PAC)}/" target="_blank" rel="noopener">TAC//PAC</a>.</p>`;
+		});
+	</script>
+</Base>

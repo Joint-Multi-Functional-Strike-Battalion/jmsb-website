@@ -89,7 +89,7 @@ const faq = [
 
 	<section class="section" id="orbat">
 		<div class="wrap">
-			<div class="section-head"><h2>How we are organised</h2><p>Alpha Company, as it stands in TAC//PAC right now. Ghost is Team 1's name for good; every other team name is a placeholder until that team has a leader, who names it.</p></div>
+			<div class="section-head"><h2>How we are organised</h2><p>Alpha Company, as it stands in TAC//PAC right now. Ghost is Team 1's name for good; every other team name is a placeholder until that team has a leader, who names it. Who fills each slot is on the <a href="/roster">roster</a>.</p></div>
 			<div class="ob" id="ob">
 				{elements.map((e) => (
 					<div class:list={['el', { hq: e.type === 'hq' }]}>
@@ -99,13 +99,6 @@ const faq = [
 					</div>
 				))}
 			</div>
-		</div>
-	</section>
-
-	<section class="section" id="roster">
-		<div class="wrap">
-			<div class="section-head"><h2>Who is on the roster</h2><p id="roster-note">Live from TAC//PAC: name, rank and the qualifications each operator holds.</p></div>
-			<div class="roster" id="roster"><p class="dim">Loading the roster from TAC//PAC.</p></div>
 		</div>
 	</section>
 
@@ -146,7 +139,7 @@ const faq = [
 	</section>
 
 	<script>
-		import { feed, esc, PAC } from '../scripts/pac.js';
+		import { feed, esc, expand, words } from '../scripts/pac.js';
 
 		/* ---- the order of battle, with who fills each slot ---- */
 		feed('orbat').then((ob) => {
@@ -155,37 +148,16 @@ const faq = [
 			el.innerHTML = ob.elements.map((e) => {
 				const type = e.squads[0]?.type || 'inf';
 				return `<div class="el${type === 'hq' ? ' hq' : ''}">
-					<div class="cs">${esc(e.callsign || e.name)}</div>
-					<div class="nm">${esc(e.name)}</div>
+					<div class="cs">${esc(expand(e.callsign || e.name))}</div>
+					<div class="nm">${esc(expand(e.name))}</div>
 					${e.squads.map((s) => {
 						const filled = s.slots.filter((x) => x.player);
 						const open = s.slots.length > filled.length;
-						return `<div class="sq"><div class="sqn"><span class="sym ${esc(s.type)}"></span>${esc(s.name)}</div>
-							<div class="slots">${filled.map((x) => `<span class="chip${leads.test(x.role) ? ' lead' : ''}" title="${esc(ob.roles[x.role] || x.role)}">${esc(x.player.name)}</span>`).join('')}${open ? '<span class="chip open">open slots</span>' : ''}</div></div>`;
+						return `<div class="sq"><div class="sqn"><span class="sym ${esc(s.type)}"></span>${esc(expand(s.name))}</div>
+							<div class="slots">${filled.map((x) => `<span class="chip${leads.test(x.role) ? ' lead' : ''}" title="${esc(words(ob.roles[x.role] || x.role))}">${esc(x.player.name)}</span>`).join('')}${open ? '<span class="chip open">open slots</span>' : ''}</div></div>`;
 					}).join('')}
 				</div>`;
 			}).join('');
 		}).catch(() => { /* the static chart stays */ });
-
-		/* ---- the roster, grouped by element ---- */
-		feed('roster').then((r) => {
-			const box = document.getElementById('roster');
-			if (!r.players.length) { box.innerHTML = '<p class="dim">The roster is being set up.</p>'; return; }
-			const groups = new Map();
-			for (const p of r.players) {
-				const key = (p.group || '').split(' ')[0] || 'Unassigned';
-				if (!groups.has(key)) groups.set(key, []);
-				groups.get(key).push(p);
-			}
-			box.innerHTML = [...groups.entries()].map(([g, ppl]) => `<div class="grp"><h3>${esc(g)}</h3><div class="ppl">${ppl.map((p) => {
-				const rank = r.ranks[p.rank];
-				const ins = rank && rank.insignia ? `<img src="${esc(rank.insignia)}" alt="${esc(rank.name)}">` : `<span>${esc(rank ? rank.abbrev || rank.name : '')}</span>`;
-				const tags = p.skills.map((s) => `<span class="tag" title="${esc(r.skills[s]?.name || s)}">${esc(r.skills[s]?.abbrev || s.toUpperCase())}</span>`).join('');
-				const st = p.status && p.status !== 'active' ? `<span class="tag st">${esc(r.statuses[p.status] || p.status)}</span>` : '';
-				return `<div class="person"><div class="ins">${ins}</div><div><div class="nm">${esc(p.name)}</div><div class="rk">${esc(rank ? rank.name : '')}${p.role && r.roles[p.role] ? ' · ' + esc(r.roles[p.role]) : ''}${p.group ? ' · ' + esc(p.group) : ''}</div><div class="tags">${tags}${st}</div></div></div>`;
-			}).join('')}</div></div>`).join('');
-		}).catch(() => {
-			document.getElementById('roster').innerHTML = `<p class="dim">The roster could not be read right now. It is on <a href="${esc(PAC)}/" target="_blank" rel="noopener">TAC//PAC</a>.</p>`;
-		});
 	</script>
 </Base>

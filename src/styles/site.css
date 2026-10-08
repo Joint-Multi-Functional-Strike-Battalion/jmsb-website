@@ -253,3 +253,17 @@ footer nav a { color: var(--dim); }
 footer .copy { margin-left: auto; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* ---- the roster page ------------------------------------------------------ */
+.rs-group { margin-bottom: clamp(32px, 5vw, 56px); }
+.rs-group h2 { font-size: clamp(26px, 3vw, 36px); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.rs-cs { font-family: var(--mono); font-size: 13px; letter-spacing: .14em; color: var(--brass); margin-left: 12px; vertical-align: middle; }
+.rs-people { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.rs-card { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; }
+.rs-ins { width: 56px; height: 56px; display: grid; place-items: center; background: var(--ground-2); border-radius: var(--r); }
+.rs-ins img { max-width: 50px; max-height: 50px; object-fit: contain; }
+.rs-ins:empty { background: transparent; }
+.rs-body h3 { font-size: 26px; margin-bottom: 8px; }
+.rs-body dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; margin: 0; font-size: 15px; }
+.rs-body dt { color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding-top: 3px; }
+.rs-body dd { margin: 0; min-width: 0; }

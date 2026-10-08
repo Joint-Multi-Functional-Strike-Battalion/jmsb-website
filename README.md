@@ -6,7 +6,8 @@ The 1st Joint Multi-Functional Strike Battalion's public site. A plain
 | Page | File | What |
 |---|---|---|
 | Home | `src/pages/index.astro` | one screen: the logo, the name, one line, Join and About, the next operation counting down, the three servers |
-| Unit | `src/pages/unit.astro` | who we are, what we ask, an operation night, how we are organised, the roster, the mods, questions |
+| Unit | `src/pages/unit.astro` | who we are, what we ask, an operation night, how we are organised, the mods, questions |
+| Roster | `src/pages/roster.astro` | everyone by element: rank, slot, qualifications, status, enlistment - written out, no abbreviations |
 | SOP | `src/pages/sop.astro` | the standard operating procedures |
 | Events | `src/pages/events.astro` | the calendar: next up, coming up, played |
 | Wiki | - | a link to TAC//PAC's wiki |
