@@ -2,6 +2,11 @@
 // The SOP. The text lives in TAC//PAC's wiki as the public page "sop", so the
 // unit edits it there; this page is built from the feed each time the site is
 // built, and keeps a copy in src/data/ for a build that cannot reach PAC.
+//
+// THE DRESSING IS DONE HERE, NOT IN THE TEXT: PAC hands over plain headings,
+// paragraphs and lists, and this page numbers the sections, builds the
+// contents, boxes the sections that deserve a box and lays map-edge rules
+// between the parts - so an edit in PAC never has to know any of it.
 import Base from '../layouts/Base.astro';
 import site from '../data/site.json';
 import fallback from '../data/sop-fallback.html?raw';
@@ -22,20 +27,70 @@ try {
 } catch {
 	// the fallback stands
 }
+
+// Sections boxed as standing reminders, and the parts a map-edge rule goes before.
+const CALLOUTS = ['Real Life Comes First', 'Open Door'];
+const RULES = ['The Basic Rules', 'Disciplinary Policy', 'New Players and Training'];
+
+const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const ticks = [];
+for (let x = 0; x <= 1080; x += 12) {
+	if (Math.abs(x - 540) < 30) continue;
+	const major = (x / 12) % 10 === 0;
+	ticks.push(`<line x1="${x}" y1="${major ? 6 : 13}" x2="${x}" y2="21" stroke="currentColor" stroke-width="${major ? 2 : 1}"/>`);
+}
+const divider = `<div class="divider-wrap in-prose" aria-hidden="true"><svg class="divider" viewBox="0 0 1080 34" preserveAspectRatio="none">${ticks.join('')}<line x1="0" y1="21" x2="510" y2="21" stroke="currentColor" stroke-width="1.5"/><line x1="570" y1="21" x2="1080" y2="21" stroke="currentColor" stroke-width="1.5"/><path d="M540 4 L554 30 L540 23 L526 30 Z" fill="currentColor"/></svg></div>`;
+
+// Split on the h2s, dress each section, and keep the contents as we go.
+const parts = html.split(/(?=<h2>)/);
+const toc = [];
+const sections = parts.map((part) => {
+	const m = part.match(/^<h2>(.*?)<\/h2>/);
+	if (!m) return part;
+	const title = m[1].replace(/<[^>]+>/g, '').trim();
+	const id = slug(title);
+	toc.push({ id, title });
+	const body = part.slice(m[0].length);
+	const inner = `<h2 id="${id}">${m[1]}</h2>${body}`;
+	let out = CALLOUTS.includes(title) ? `<aside class="callout">${inner}</aside>` : `<section class="sop-sec">${inner}</section>`;
+	if (RULES.includes(title)) out = divider + out;
+	return out;
+}).join('');
 ---
 <Base title="SOP" description={`The ${site.short}'s standard operating procedures: what we ask, how we play, how we talk, and the rules.`}>
-	<div class="wrap pagehead">
-		<p class="eyebrow">Standing orders</p>
-		<h1>Standard operating procedures</h1>
-		<p class="lede">What we ask of every member, how we play, how we talk on the net, and the rules that keep it fun. Read it before your first operation.</p>
+	<div class="sop-head">
+		<canvas class="topo" id="sop-topo" aria-hidden="true"></canvas>
+		<div class="p-class">STANDING ORDERS // ALPHA COMPANY, 1ST JMSB</div>
+		<div class="sop-head-in wrap">
+			<div>
+				<p class="eyebrow">Standard operating procedures</p>
+				<h1>How we play</h1>
+				<p class="lede">What we ask of every member, how we run an operation, how we talk on the net, and the rules that keep it fun. Read it before your first operation; you will be held to it from your second.</p>
+			</div>
+			<img src="/logo-patch.svg" alt="" width="180" height="180">
+		</div>
+		<div class="p-class p-foot">READ BEFORE YOUR FIRST OPERATION // JMSB.INFO/SOP</div>
 	</div>
+
 	<section class="section">
+		<div class="wrap sop-layout">
+			<nav class="toc" aria-label="Contents">
+				<p class="eyebrow">Contents</p>
+				<ol>{toc.map((t) => <li><a href={`#${t.id}`}>{t.title}</a></li>)}</ol>
+			</nav>
+			<article class="prose sop" set:html={sections}></article>
+		</div>
 		<div class="wrap">
-			<article class="prose" set:html={html}></article>
 			<div class="prose-foot">
 				{updated !== '' && <span>Updated {updated}</span>}
 				<span>Kept in <a href={`${site.pac}/?page=wiki&p=sop`} target="_blank" rel="noopener">TAC//PAC's wiki</a>{live ? '' : ' (this copy was built from the site\'s own file)'}</span>
 			</div>
 		</div>
 	</section>
+
+	<script>
+		import { contours } from '../scripts/pac.js';
+		const c = document.getElementById('sop-topo');
+		contours(c, c.parentElement, 23);
+	</script>
 </Base>
