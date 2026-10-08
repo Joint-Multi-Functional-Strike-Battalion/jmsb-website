@@ -2,39 +2,57 @@
 // The unit: who we are, what we ask, what an op night is like, how we are
 // organised (live from PAC), who we are (live from PAC), the mods, the FAQ.
 import Base from '../layouts/Base.astro';
+import Divider from '../components/Divider.astro';
 import site from '../data/site.json';
+
+// One line weight, one corner style: the icons from the graphics concepts.
+const icons = {
+	globe: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5s-1.2 6.1-3.8 8.5c-2.6-2.4-3.8-5.2-3.8-8.5s1.2-6.1 3.8-8.5z"/>',
+	pulse: '<path d="M2.5 12.5h4l2-5 3.5 10 3-7.5 1.5 2.5h5"/>',
+	people: '<circle cx="9" cy="8" r="3"/><path d="M3.5 20c.8-3.6 2.8-5.5 5.5-5.5s4.7 1.9 5.5 5.5"/><path d="M17.5 4.5l1 2.1 2.3.3-1.7 1.6.4 2.3-2-1.1-2 1.1.4-2.3-1.7-1.6 2.3-.3z"/>',
+	sliders: '<path d="M4 6h10M18 6h2M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="16" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/>',
+	tablet: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 10.5l3 2 2-3 3 2"/><path d="M10 18h4"/>',
+	chat: '<path d="M4 5h16v11H9l-4 3.5V16H4z"/><path d="M8 9h8M8 12h5"/>',
+	map: '<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/><circle cx="12" cy="11" r="1.5"/>',
+	support: '<path d="M3 16h18l-2 3H5z"/><path d="M6 16v-3h9v3M10 13v-2h4l6-1.5"/>',
+	record: '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2.2"/><path d="M5.5 16c.6-1.8 1.7-2.6 3-2.6s2.4.8 3 2.6M14 9.5h4M14 12.5h4M14 15.5h2.5"/>',
+	cross: '<path d="M9.5 3.5h5v6h6v5h-6v6h-5v-6h-6v-5h6z"/>',
+	crate: '<path d="M3.5 8l8.5-4.5 8.5 4.5v8.5L12 21l-8.5-4.5z"/><path d="M3.5 8L12 12.5 20.5 8M12 12.5V21M7.7 5.8l8.5 4.5"/>',
+};
+const Icon = (name) => `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]}</svg>`;
 const join = site.discord !== '' ? site.discord : `${site.pac}/?page=apply`;
 
-// What an op night is made of. One card each; a screenshot goes in public/ops/
-// as <key>.jpg and the card picks it up.
-const ops = [
-	{ key: 'assault', who: 'Ghost · Raider', title: 'Clearing a town', text: 'Squads working building to building with the mechanised team holding the edge.' },
-	{ key: 'mech', who: 'Nomad', title: 'Mechanised push', text: 'Vehicle crews carrying and covering the infantry on the move.' },
-	{ key: 'air', who: 'Talon', title: 'Air assault', text: 'Helicopter insert into a contested zone, with Talon on call for the way out.' },
-	{ key: 'drones', who: 'Specter', title: 'Eyes overhead', text: 'Drones finding the enemy before the teams reach them, and watching the flanks.' },
-	{ key: 'fires', who: 'Anvil', title: 'Fires on call', text: 'A JFO on the net, a nine-line, and artillery where the enemy is massing.' },
-	{ key: 'recon', who: 'Ghost', title: 'Recon', text: 'A small element out ahead, reporting what the company will run into.' },
-];
 
 // The organisation as the SOP states it. Drawn here so the page says something
 // without JavaScript; the feed redraws it with the live slots.
 const elements = [
-	{ cs: 'Overlord', name: 'HHC', type: 'hq', squads: ['Overlord 6'] },
-	{ cs: 'Ghost', name: 'Team 1 · infantry', type: 'inf', squads: ['Ghost 1-1', 'Ghost 1-2', 'Ghost 1-3', 'Ghost 1-4'] },
-	{ cs: 'Nomad', name: 'Team 2 · mechanised', type: 'mech_inf', squads: ['Nomad 2-1', 'Nomad 2-2', 'Nomad 2-3', 'Nomad 2-4'] },
-	{ cs: 'Raider', name: 'Team 3 · infantry', type: 'inf', squads: ['Raider 3-1', 'Raider 3-2', 'Raider 3-3', 'Raider 3-4'] },
-	{ cs: 'Specter', name: 'Support team · drones', type: 'uav', squads: ['Specter 4-1'] },
-	{ cs: 'Anvil', name: 'Support team · fires', type: 'art', squads: ['Anvil 4-2'] },
-	{ cs: 'Talon', name: 'Support team · aviation', type: 'air', squads: ['Talon 4-3', 'Talon 4-4', 'Talon 4-5', 'Talon 4-6'] },
+	{ cs: 'Overlord', name: 'Headquarters', type: 'hq', squads: ['Overlord 6'] },
+	{ cs: 'Ghost', name: 'Team 1 · infantry', type: 'inf', squads: ['Ghost 1'] },
+	{ cs: 'Nomad', name: 'Team 2 · mechanised', type: 'mech_inf', squads: ['Nomad 2'] },
+	{ cs: 'Raider', name: 'Team 3 · infantry', type: 'inf', squads: ['Raider 3'] },
+	{ cs: 'Support', name: 'Support team · drones, fires, aviation', type: 'support', squads: ['Support 4'] },
+];
+
+// The rank ladder as PAC held it on 2026-10-08. Written into the page so it
+// reads without JavaScript; the feed redraws it with the insignia. How a rank
+// is earned is not on this page: that is still to be decided (/tbd).
+const ranks = [
+	{ name: 'Private', grade: 'E-2' },
+	{ name: 'Corporal', grade: 'E-4' },
+	{ name: 'Sergeant', grade: 'E-5' },
+	{ name: 'Lieutenant', grade: 'O-1' },
+	{ name: 'Captain', grade: 'O-3' },
+	{ name: 'Major', grade: 'O-4' },
+	{ name: 'Colonel', grade: 'O-6' },
 ];
 
 const faq = [
 	['Do I need to have played milsim before?', 'No. Show up 30 minutes before the operation and someone will get you kitted out and on the net. The rest you learn on the job.'],
-	['Is there basic training?', 'There is no course to pass before you play. Qualifications such as Medic or JFO come from the battalion\'s own training nights, and an admin adds them to your record in TAC//PAC once you have shown you can do the job.'],
+	['Is there basic training?', 'No required training. You learn on the job. If you want to be taught something, say so and we will make the time. Qualifications such as Medic or Joint Fires Observer go on your record in TAC//PAC once you have shown you can do the job.'],
 	['Do I have to salute or call people sir?', 'No. Rank is there to define roles in the game, nothing more.'],
 	['Can I be in another unit too?', 'Yes. Multi-clanning is allowed, as long as you follow the SOP and do not poach members.'],
-	['What is a role and what is a skill?', 'Your role is the slot you take in the order of battle: your place in the squad, your loadout, your radio nets. Your skills are what you are qualified to do, and they follow you into any slot. A qualified medic is the medic whatever slot they sit in.'],
-	['Can I lead, or run a mission as Zeus?', 'Yes, but not on day one. Prove yourself first. There is no Zeus rank; if you want to build a mission within the unit\'s guidelines and run it, it can happen.'],
+	['What is a role and what is a skill?', 'Your role is the slot you take on the night: your place in the squad, your loadout, your radio nets. Your skills are what you are qualified to do, and they follow you into any slot. A qualified medic is the medic whatever slot they sit in.'],
+	['Can I lead, or run a mission as Zeus?', 'Make the rank and you can run a team: the team-lead slots ask for Sergeant. There is no Zeus rank; if you want to build a mission within the unit\'s guidelines and run it, it can happen.'],
 	['What do I need to play?', 'A legal copy of Arma 3, the mod set below, TeamSpeak 3 with ACRE2, a working microphone, and English good enough to work a radio.'],
 ];
 ---
@@ -52,8 +70,30 @@ const faq = [
 			</div>
 			<div style="grid-column: span 2">
 				<p>The 1st JMSB plays Arma 3 as a combined-arms company set a few years from now: infantry on the ground, armour alongside them, drones overhead, fires on call and aviation on the radio. Operations are built around teams that plan, move and fight together, and every operator carries a record: a rank, a slot, and the skills they have earned.</p>
-				<p><span class="placeholder">[When the unit was founded, the time zone it plays in, and what an evening with the 1st JMSB feels like - two or three sentences in your own words.]</span></p>
 			</div>
+		</div>
+	</section>
+
+	<Divider />
+	<section class="section" id="features">
+		<div class="wrap">
+			<div class="section-head"><h2>What we are</h2><p>Four things we are after, and what the mod brings to them.</p></div>
+			<div class="cols">
+				<div class="card"><Fragment set:html={Icon('globe')} /><h3>2040, played for real</h3><p>Experimentally realistic near-future gameplay: the kit, the drones and the fires of 2040, run as tactically realistic and accurate as we can get them.</p></div>
+				<div class="card"><Fragment set:html={Icon('pulse')} /><h3>Informal</h3><p>No excessive overhead and no required trainings. We take the fight seriously and the rest lightly.</p></div>
+				<div class="card"><Fragment set:html={Icon('people')} /><h3>Small unit, flexible</h3><p>Operations built around small teams that can change shape on the night.</p></div>
+				<div class="card"><Fragment set:html={Icon('sliders')} /><h3>Highly customised</h3><p>Our own mod, built for how we play, from the tablet on your map to the record that follows you between operations.</p></div>
+			</div>
+			<h3 class="sub">Custom built into the mod</h3>
+			<ul class="feat">
+				<li><Fragment set:html={Icon('tablet')} /><b>TACPAD</b><span>A custom-built tablet on your map screen: live tiles, panels and your own colour scheme.</span></li>
+				<li><Fragment set:html={Icon('chat')} /><b>Messaging</b><span>Custom built from the ground up: threads, radio nets and ready-made report formats, written and read on the tablet.</span></li>
+				<li><Fragment set:html={Icon('map')} /><b>Blue force tracking</b><span>Custom-built tracking of friendly positions with trails, so every leader knows where their people are.</span></li>
+				<li><Fragment set:html={Icon('support')} /><b>TAC//SUPPORT</b><span>A custom-built support page: transport, close air support and artillery called from a map inside the tablet.</span></li>
+				<li><Fragment set:html={Icon('record')} /><b>TAC//PAC</b><span>A custom-built personnel system: your rank, qualifications and awards, with orders written on the web and read in game.</span></li>
+				<li><Fragment set:html={Icon('cross')} /><b>Medic evac</b><span>Custom-built medical evacuation: a medic brings a fallen player back into the fight instead of a respawn.</span></li>
+				<li><Fragment set:html={Icon('crate')} /><b>Logistics</b><span>Custom-built logistics: crates packed per team, resupply, and vehicle repair and rearm in the field.</span></li>
+			</ul>
 		</div>
 	</section>
 
@@ -61,7 +101,7 @@ const faq = [
 		<div class="wrap">
 			<div class="section-head"><h2>What we ask</h2><p>Four things. The rest is in the <a href="/sop">SOP</a>.</p></div>
 			<div class="cols">
-				<div class="card"><h3>16 and up</h3><p>And act it.</p></div>
+				<div class="card"><h3>16 and up</h3><p>And act it.<br>A 15-year-old who acts 30 is fine;<br>a 30-year-old who acts 15 is not.</p></div>
 				<div class="card"><h3>Arma 3 and a mic</h3><p>A legal copy of the game, TeamSpeak 3 with ACRE2, and a microphone that works.</p></div>
 				<div class="card"><h3>English on the net</h3><p>Good enough to send and read a report under pressure.</p></div>
 				<div class="card"><h3>Turn up, or say so</h3><p>Real life comes first. Tell us on Discord when you cannot make it; letting us expect you and not showing is the problem.</p></div>
@@ -69,30 +109,18 @@ const faq = [
 		</div>
 	</section>
 
-	<section class="section" id="ops">
-		<div class="wrap">
-			<div class="section-head"><h2>An operation night</h2><p>What the company does when it steps off.</p></div>
-			<div class="opcards">
-				{ops.map((o) => (
-					<article class="opcard">
-						<div class="shot" style={`background-image: url('/ops/${o.key}.jpg')`}>screenshot</div>
-						<div class="body">
-							<span class="who">{o.who}</span>
-							<h3>{o.title}</h3>
-							<p>{o.text}</p>
-						</div>
-					</article>
-				))}
-			</div>
-		</div>
-	</section>
-
+	<Divider />
 	<section class="section" id="orbat">
 		<div class="wrap">
-			<div class="section-head"><h2>How we are organised</h2><p>Alpha Company, as it stands in TAC//PAC right now. Ghost is Team 1's name for good; every other team name is a placeholder until that team has a leader, who names it. Who fills each slot is on the <a href="/roster">roster</a>.</p></div>
+			<div class="section-head"><h2>How we run</h2><p>Loosely, and on purpose.</p></div>
+			<div class="wip">
+				<p><strong>Still being built.</strong> Most of what you see below is scaffolding. The headquarters, the teams and the squads were set up in TAC//PAC to put the back end through its paces: slots, radio nets, loadouts, the roster, the promotion system. They were never meant to tell anyone where to stand, and nobody is assigned to a slot yet.</p>
+				<p>We run on skills, not on a chart. There is no required training: you learn on the job, and if you want to be taught something, we will make the time. Make the rank and you can run a team. Teams are eight strong; the support team is eight shared between drones, fires and aviation. Ghost is Team 1's name for good; every other name below is a placeholder until that team has a leader, who names it.</p>
+			</div>
 			<div class="ob" id="ob">
 				{elements.map((e) => (
 					<div class:list={['el', { hq: e.type === 'hq' }]}>
+						<img class="emblem" src={e.cs === 'Ghost' ? '/ghost-alpha.png' : `/insignia/${e.cs.toLowerCase()}.svg`} alt="">
 						<div class="cs">{e.cs}</div>
 						<div class="nm">{e.name}</div>
 						{e.squads.map((s) => <div class="sq"><div class="sqn"><span class:list={['sym', e.type]}></span>{s}</div></div>)}
@@ -102,9 +130,36 @@ const faq = [
 		</div>
 	</section>
 
+	<section class="section" id="ranks">
+		<div class="wrap">
+			<div class="section-head"><h2>Ranks</h2><p>The ladder, and what a rank is for. How you climb it is still being decided.</p></div>
+			<ol class="ladder" id="ladder">
+				{ranks.map((r) => <li><span class="ins"></span><b>{r.name}</b><span class="pg">{r.grade}</span></li>)}
+			</ol>
+			<div class="cols" style="margin-top: 24px">
+				<div class="card">
+					<p class="eyebrow">Promotion</p>
+					<h3>Not settled yet</h3>
+					<p>How we promote is on the <a href="/tbd">to-be-decided list</a>. Until it is settled, staff decide, and you start as a Private on enlisting.</p>
+				</div>
+				<div class="card">
+					<p class="eyebrow">What rank is for</p>
+					<h3>Three things</h3>
+					<ul class="plain">
+						<li><b>Running a team.</b> Make Sergeant and you can lead one: the team-lead and command slots ask for it, nothing else does.</li>
+						<li><b>In game.</b> Your TAC//PAC rank is your Arma rank, so the chain of command on the server follows the roster.</li>
+						<li><b>On the roster.</b> Your insignia and pay grade, here and in TAC//PAC.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Divider />
 	<section class="section" id="mods">
 		<div class="wrap">
 			<div class="section-head"><h2>The mods</h2><p>Our own mod and what it needs.</p></div>
+			<p class="lede" style="margin-bottom: 24px">We keep the mod list small and modern. We are not going to add 16 GB of mods to get one rifle, and we will always keep the list as small as we can.</p>
 			<div class="cols">
 				<div class="card">
 					<p class="eyebrow">Ours</p>
@@ -122,7 +177,7 @@ const faq = [
 				<div class="card">
 					<p class="eyebrow">Voice</p>
 					<h3>TeamSpeak 3</h3>
-					<p>ACRE2's radios run through it. You need to hear us and we need to hear you; you cannot stay in game without it.</p>
+					<p>ACRE2's radios run through it. You need to hear us and we need to hear you; you cannot stay in game without it. The server is <code>{site.teamspeak}</code>.</p>
 				</div>
 			</div>
 		</div>
@@ -139,25 +194,33 @@ const faq = [
 	</section>
 
 	<script>
-		import { feed, esc, expand, words } from '../scripts/pac.js';
+		import { feed, esc, expand } from '../scripts/pac.js';
 
-		/* ---- the order of battle, with who fills each slot ---- */
+		/* ---- the structure as PAC holds it: elements and squads, no names ---- */
 		feed('orbat').then((ob) => {
 			const el = document.getElementById('ob');
-			const leads = /^(teamlead|co|xo|tc|pilot)/;
 			el.innerHTML = ob.elements.map((e) => {
 				const type = e.squads[0]?.type || 'inf';
+				const cs = (e.callsign || e.name || '').toLowerCase();
+				const emblem = cs === 'ghost' ? '/ghost-alpha.png' : `/insignia/${cs}.svg`;
 				return `<div class="el${type === 'hq' ? ' hq' : ''}">
+					<img class="emblem" src="${esc(emblem)}" alt="" onerror="this.remove()">
 					<div class="cs">${esc(expand(e.callsign || e.name))}</div>
 					<div class="nm">${esc(expand(e.name))}</div>
-					${e.squads.map((s) => {
-						const filled = s.slots.filter((x) => x.player);
-						const open = s.slots.length > filled.length;
-						return `<div class="sq"><div class="sqn"><span class="sym ${esc(s.type)}"></span>${esc(expand(s.name))}</div>
-							<div class="slots">${filled.map((x) => `<span class="chip${leads.test(x.role) ? ' lead' : ''}" title="${esc(words(ob.roles[x.role] || x.role))}">${esc(x.player.name)}</span>`).join('')}${open ? '<span class="chip open">open slots</span>' : ''}</div></div>`;
-					}).join('')}
+					${e.squads.map((s) => `<div class="sq"><div class="sqn"><span class="sym ${esc(s.type)}"></span>${esc(expand(s.name))}</div></div>`).join('')}
 				</div>`;
 			}).join('');
 		}).catch(() => { /* the static chart stays */ });
+
+		/* ---- the rank ladder, with the insignia PAC holds ---- */
+		feed('roster').then((r) => {
+			const ol = document.getElementById('ladder');
+			const ranks = Object.entries(r.ranks || {}).sort((a, b) => a[1].order - b[1].order);
+			if (ol && ranks.length) ol.innerHTML = ranks.map(([, rk]) => `<li>
+				<span class="ins">${rk.insignia ? `<img src="${esc(rk.insignia)}" alt="">` : ''}</span>
+				<b>${esc(rk.name)}</b>
+				<span class="pg">${esc(rk.payGrade || '')}</span>
+			</li>`).join('');
+		}).catch(() => { /* the ladder written into the page stays */ });
 	</script>
 </Base>

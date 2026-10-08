@@ -135,17 +135,18 @@ main { flex: 1; }
 .hero-in { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: clamp(20px, 4vw, 56px); align-items: center; padding-block: clamp(24px, 4vh, 48px); }
 .hero-in img { width: 100%; max-width: 220px; filter: drop-shadow(0 12px 28px rgba(0,0,0,.5)); justify-self: center; }
 .hero-in h1 { margin: 6px 0 14px; }
-.hero-in .tag { font-size: clamp(18px, 2vw, 24px); color: var(--dim); max-width: 44ch; margin: 0 0 24px; }
+.hero-in .tag { font-size: clamp(16px, 2.6vw, 26px); color: var(--dim); white-space: nowrap; margin: 0 0 24px; }
 .hero-in .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-in .how { margin: 16px 0 0; color: var(--dim); font-size: 16px; max-width: 52ch; }
 .gridref { position: absolute; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: rgba(200,162,74,.75); z-index: 1; }
 .gridref.tl { top: 14px; left: var(--gutter); } .gridref.tr { top: 14px; right: var(--gutter); }
 @media (max-width: 760px) { .hero-in { grid-template-columns: 1fr; text-align: left; } .hero-in img { max-width: 140px; justify-self: start; } }
 
-.hero-foot { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 20px; padding-bottom: clamp(18px, 3vh, 32px); align-items: end; }
+.hero-foot { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 20px; padding-bottom: clamp(18px, 3vh, 32px); align-items: stretch; }
 @media (max-width: 860px) { .hero-foot { grid-template-columns: 1fr; } }
 
 /* The next-operation block: the feed fills it; its state picks what shows. */
-.nextop { border: 1px solid var(--line); border-left: 3px solid var(--brass); background: rgba(44,53,50,.85); border-radius: var(--r); padding: 14px 18px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 24px; align-items: center; min-height: 92px; }
+.nextop { border: 1px solid var(--line); border-left: 3px solid var(--brass); background: rgba(44,53,50,.85); border-radius: var(--r); padding: 14px 18px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 24px; align-items: center; }
 .nextop .eyebrow { margin: 0 0 4px; }
 .nextop .title { font-family: var(--display); font-size: 26px; font-weight: 600; line-height: 1.1; }
 .nextop .when { color: var(--dim); font-size: 15px; margin: 2px 0 0; }
@@ -157,7 +158,7 @@ main { flex: 1; }
 .nextop[data-state="loading"] .title, .nextop[data-state="none"] .title { color: var(--dim); font-size: 20px; }
 @media (max-width: 560px) { .nextop { grid-template-columns: 1fr; } .nextop .count b { font-size: 24px; } }
 
-.servers { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.servers { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; align-content: space-between; }
 .servers li { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; font-size: 14px; border-bottom: 1px solid var(--line-soft); padding-bottom: 4px; }
 .servers b { font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: .06em; text-transform: uppercase; }
 .servers code { color: var(--brass); user-select: all; }
@@ -267,3 +268,79 @@ footer .copy { margin-left: auto; }
 .rs-body dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; margin: 0; font-size: 15px; }
 .rs-body dt { color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding-top: 3px; }
 .rs-body dd { margin: 0; min-width: 0; }
+
+/* ---- how we run, and the rank ladder (unit page) -------------------------- */
+.wip { max-width: 70ch; margin-bottom: 28px; }
+.wip p { color: var(--dim); }
+.wip strong { color: var(--brass); }
+.ladder { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; counter-reset: rank; }
+.ladder li { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 12px 12px; display: grid; justify-items: center; gap: 4px; text-align: center; position: relative; }
+.ladder li::before { counter-increment: rank; content: counter(rank); position: absolute; top: 6px; left: 8px; font-family: var(--mono); font-size: 10px; color: var(--muted); }
+.ladder .ins { height: 56px; display: grid; place-items: center; }
+.ladder .ins img { max-height: 52px; max-width: 96px; object-fit: contain; }
+.ladder .ins:empty { height: 0; }
+.ladder b { font-family: var(--display); font-weight: 600; font-size: 20px; letter-spacing: .04em; text-transform: uppercase; }
+.ladder .pg { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .1em; }
+.ladder .pts { font-family: var(--mono); font-size: 12px; color: var(--brass); }
+ul.plain { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; color: var(--dim); }
+ul.plain b { color: var(--ink); font-family: var(--mono); font-weight: 500; }
+
+/* ---- what we are: the mod's features (unit page) ------------------------- */
+h3.sub { margin: 36px 0 14px; font-size: 22px; letter-spacing: .04em; text-transform: uppercase; color: var(--brass); }
+.feat { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0 32px; }
+.feat li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 12px 0; border-top: 1px solid var(--line-soft); }
+.feat b { font-family: var(--display); font-weight: 600; font-size: 20px; letter-spacing: .04em; text-transform: uppercase; }
+.feat span { color: var(--dim); font-size: 16px; }
+
+/* ---- the roster's qualifications, grouped ------------------------------- */
+.quals { display: grid; gap: 6px; }
+.qcat { display: grid; gap: 3px; }
+.qlabel { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--brass); }
+.qitems { display: flex; flex-wrap: wrap; gap: 4px; }
+.qitems i { font-style: normal; font-size: 14px; padding: 2px 8px; border: 1px solid var(--line); border-radius: 3px; background: var(--ground-2); }
+
+/* ---- to be decided -------------------------------------------------------- */
+.tbd { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; align-items: start; }
+.tbd .card h3 { font-size: 26px; margin-bottom: 12px; }
+.tbd ol { margin: 0; padding-left: 22px; color: var(--dim); }
+.tbd li { margin: 4px 0; }
+.tbd li::marker { color: var(--brass); font-family: var(--mono); }
+
+/* ---- the concepts, on the pages ------------------------------------------ */
+.divider-wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin: 0 auto; color: var(--brass); }
+.divider { display: block; width: 100%; height: 28px; }
+.divider-wrap + .section { border-top: 0; padding-top: clamp(28px, 5vw, 56px); }
+.ico { width: 34px; height: 34px; color: var(--brass); flex: none; }
+.card > .ico { margin-bottom: 12px; display: block; }
+.feat li { grid-template-columns: 34px minmax(0, 1fr); gap: 2px 14px; align-items: start; }
+.feat li .ico { grid-row: 1 / span 2; margin-top: 2px; }
+.ob .el { display: grid; grid-template-columns: minmax(0, 1fr) 52px; grid-auto-rows: auto; }
+.ob .el > .emblem { grid-column: 2; grid-row: 1 / span 2; width: 52px; height: 60px; object-fit: contain; justify-self: end; }
+.ob .el > .cs, .ob .el > .nm { grid-column: 1; }
+.ob .el > .sq { grid-column: 1 / -1; }
+.servers li { align-items: center; }
+.servers .dial { width: 34px; height: 34px; flex: none; margin-right: 8px; }
+.servers li b { flex: 1; }
+.evnext.poster { position: relative; overflow: hidden; isolation: isolate; grid-template-columns: minmax(0, 1fr) auto; padding: 0; border-left: 0; }
+.evnext.poster .topo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.evnext.poster::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(28,35,33,.55), rgba(28,35,33,.85)); }
+.evnext.poster .p-class { grid-column: 1 / -1; font-family: var(--mono); font-size: 11px; letter-spacing: .2em; text-align: center; background: var(--brass); color: var(--on-brass); padding: 4px 10px; }
+.evnext.poster .p-body { padding: 24px 28px 8px; }
+.evnext.poster .count { padding: 8px 28px 24px; align-self: end; }
+@media (max-width: 640px) { .evnext.poster .count { padding-top: 0; } }
+.ob .sym.support::before { background: linear-gradient(to top, transparent 25%, var(--brass) 25%, var(--brass) 38%, transparent 38%); }
+
+/* ---- roles and skills ------------------------------------------------------ */
+.rolegrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.rolegroup { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; }
+.rolegroup h3 { font-size: 22px; letter-spacing: .04em; text-transform: uppercase; color: var(--brass); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--line-soft); }
+.rolegroup dl { margin: 0; display: grid; gap: 10px; }
+.rolegroup dt { font-family: var(--display); font-weight: 600; font-size: 20px; }
+.rolegroup dd { margin: 0 0 4px; color: var(--dim); font-size: 15px; }
+.skillgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.skill p { color: var(--dim); font-size: 15px; }
+.layers { list-style: none; margin: 0; padding: 0; counter-reset: layer; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.layers li { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px 16px 52px; position: relative; display: grid; gap: 4px; }
+.layers li::before { counter-increment: layer; content: counter(layer); position: absolute; left: 16px; top: 14px; font-family: var(--display); font-weight: 700; font-size: 26px; color: var(--brass); }
+.layers b { font-family: var(--display); font-weight: 600; font-size: 20px; letter-spacing: .04em; text-transform: uppercase; }
+.layers span { color: var(--dim); font-size: 15px; }

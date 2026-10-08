@@ -1,0 +1,19 @@
+---
+// A section divider drawn like the edge of a map sheet: fine ticks, a heavier
+// one every tenth, and the brass arrowhead from the logo at the centre.
+const W = 1080;
+const ticks = [];
+for (let x = 0; x <= W; x += 12) {
+	if (Math.abs(x - 540) < 30) continue;
+	const major = (x / 12) % 10 === 0;
+	ticks.push({ x, y1: major ? 6 : 13, w: major ? 2 : 1 });
+}
+---
+<div class="divider-wrap" aria-hidden="true">
+	<svg class="divider" viewBox={`0 0 ${W} 34`} preserveAspectRatio="none">
+		{ticks.map((t) => <line x1={t.x} y1={t.y1} x2={t.x} y2="21" stroke="currentColor" stroke-width={t.w} />)}
+		<line x1="0" y1="21" x2="510" y2="21" stroke="currentColor" stroke-width="1.5" />
+		<line x1="570" y1="21" x2={W} y2="21" stroke="currentColor" stroke-width="1.5" />
+		<path d="M540 4 L554 30 L540 23 L526 30 Z" fill="currentColor" />
+	</svg>
+</div>

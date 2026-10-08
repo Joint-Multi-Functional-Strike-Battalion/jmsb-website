@@ -1,0 +1,150 @@
+---
+// Roles and skills: the two halves of every player. A role is the slot you
+// take on the night and changes with the mission; a skill is what you are
+// qualified to do and follows you into any slot. The role list is drawn from
+// TAC//PAC's order of battle, with the words written into the page in case
+// the feed is down.
+import Base from '../layouts/Base.astro';
+import Divider from '../components/Divider.astro';
+import site from '../data/site.json';
+
+// The slots as PAC holds them on 2026-10-08, one block per element.
+const roles = [
+	{ el: 'Headquarters · Overlord', slots: [
+		['Commander', 'Runs the operation: the plan, the orders, the calls that matter.'],
+		['Executive Officer', 'Second in command. Keeps the company moving while the commander fights the fight.'],
+		['Staff', 'Plans, comms and reports for the commander.'],
+	] },
+	{ el: 'Team 1 · Ghost, Team 3 · Raider', slots: [
+		['Team Lead', 'Leads movement, makes decisions, handles comms. Asks for Sergeant.'],
+		['Assistant Team Lead', 'Second in the team, first when the lead is down.'],
+		['Recon Specialist', 'The flexible seat, set per mission: scout, security, anti-armour or the long gun. Six of them in a team.'],
+	] },
+	{ el: 'Team 2 · Nomad', slots: [
+		['Vehicle Commander', 'Commands the vehicles and the team; the link between the dismounts on the ground and everyone outside the hull.'],
+		['Driver / Assistant Commander', 'Drives, keeps the vehicle running, and takes the team when the commander is down.'],
+		['Dismount', 'Rides in the vehicles and fights on foot when the team dismounts. Six of them in a team.'],
+	] },
+	{ el: 'Support Team', slots: [
+		['Specter · Drone Section', 'Flies the drones for the company: finds the enemy first and keeps the picture up.'],
+		['Anvil · Fires Section', 'The guns and the mortars: takes the fire missions and puts rounds where they are asked for.'],
+		['Talon · Pilot', 'Flies the aircraft: inserts, extracts, resupply, close air support.'],
+		['Talon · Copilot', 'Second seat, sensors and the radios.'],
+	] },
+];
+
+// What each qualification does. The names come from PAC; the words are ours.
+const skills = [
+	['cls', 'Combat Lifesaver', 'Basic ACE medical: bandages, tourniquets, IVs, triage. Keeps a teammate alive until the medic arrives.'],
+	['medic', 'Medic', 'Full ACE medical. Medic bags, surgical kit and the personal aid kit in your arsenal.'],
+	['eng', 'Engineer', 'ACE engineer: repairs vehicles in the field.'],
+	['breacher', 'Breacher / EOD', 'Explosives specialist: charges, mines, defusal kit and detectors in your arsenal.'],
+	['jfo', 'Joint Fires Observer', 'Calls close air support, artillery and mortars with a nine-line.'],
+	['isr', 'ISR', 'Intelligence, surveillance and reconnaissance: the drone and sensor feeds, and the ISR kit.'],
+	['uav', 'Drone Operator', 'Flies and hacks drones.'],
+	['marksman', 'Marksman', 'Designated marksman rifles and long optics in your arsenal.'],
+	['sniper', 'Sniper', 'Precision rifles and long optics in your arsenal.'],
+];
+---
+<Base title="Roles and skills" description={`How roles and skills work in the ${site.short}: the slot you take on the night, and what you are qualified to do.`}>
+	<div class="wrap pagehead">
+		<p class="eyebrow">Two halves of every player</p>
+		<h1>Roles and skills</h1>
+		<p class="lede">Your role is the slot you take on the night. Your skills are what you are qualified to do, and they come with you into any slot. A qualified medic is the medic whatever slot they sit in.</p>
+	</div>
+
+	<section class="section" id="how">
+		<div class="wrap">
+			<div class="cols">
+				<div class="card">
+					<p class="eyebrow">Roles</p>
+					<h3>Mission-based, not permanent</h3>
+					<p>You are not locked into one role. The team adjusts to who is available, and if there is no need for a role on the night, we do not force it. You may do a different role each operation. You are expected to adapt, and to communicate.</p>
+					<p>The role supports the team, not the other way around.</p>
+				</div>
+				<div class="card">
+					<p class="eyebrow">Skills</p>
+					<h3>Earned by doing</h3>
+					<p>A skill goes on your record in TAC//PAC once you have shown you can do the job. There is no course to pass first: you learn by playing, and if you want to be taught something, we will make the time.</p>
+					<p>Your skills follow you into any slot, and they unlock the kit that goes with them in the arsenal.</p>
+				</div>
+				<div class="card">
+					<p class="eyebrow">What we don't do</p>
+					<h3>No pipelines</h3>
+					<p>No rigid career tracks, no mandatory training hours, no permanent assignments. Make the rank and you can run a team.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Divider />
+	<section class="section" id="roles">
+		<div class="wrap">
+			<div class="section-head"><h2>The roles</h2><p>The seats in Alpha Company, as TAC//PAC holds them. A seat is not a qualification: the medic, the joint fires observer and the drone operator are skills, and whoever holds them fills whichever seat needs them that night.</p></div>
+			<div class="rolegrid" id="rolegrid">
+				{roles.map((g) => (
+					<div class="rolegroup">
+						<h3>{g.el}</h3>
+						<dl>{g.slots.map(([n, d]) => <><dt>{n}</dt><dd>{d}</dd></>)}</dl>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<Divider />
+	<section class="section" id="skills">
+		<div class="wrap">
+			<div class="section-head"><h2>The skills</h2><p>What each qualification lets you do, and what it adds to your arsenal.</p></div>
+			<div class="skillgrid" id="skillgrid">
+				{skills.map(([id, n, d]) => <div class="card skill" data-skill={id}><h3>{n}</h3><p>{d}</p></div>)}
+			</div>
+		</div>
+	</section>
+
+	<Divider />
+	<section class="section" id="arsenal">
+		<div class="wrap">
+			<div class="section-head"><h2>Your arsenal</h2><p>Each layer adds to the one before.</p></div>
+			<ol class="layers">
+				<li><b>Common</b><span>Everyone: rifles, ammunition, uniforms and kit.</span></li>
+				<li><b>Element</b><span>If your team or squad has its own list.</span></li>
+				<li><b>Role</b><span>The slot's own extras.</span></li>
+				<li><b>Skills</b><span>A custom arsenal for each qualification you hold. Given one in the field? Its gear is there the next time you open the arsenal.</span></li>
+			</ol>
+			<p class="dim" style="margin-top: 20px">Everyone sees your skills: on the tablet's squad list, the map and the slot menu your name carries them, so the team knows who the medic is before anyone asks.</p>
+		</div>
+	</section>
+
+	<script>
+		import { feed, esc, expand, words } from '../scripts/pac.js';
+
+		/* The roles as PAC holds them right now, with PAC's own descriptions
+		   where it has them; the words written into the page stand otherwise. */
+		feed('orbat').then((ob) => {
+			const info = ob.roleInfo || {};
+			if (!Object.keys(info).length) return;
+			const grid = document.getElementById('rolegrid');
+			grid.innerHTML = ob.elements.map((e) => {
+				const seen = new Set();
+				const rows = [];
+				for (const s of e.squads) for (const slot of s.slots) {
+					if (seen.has(slot.role)) continue;
+					seen.add(slot.role);
+					const r = info[slot.role] || { name: ob.roles[slot.role] || slot.role, description: '', minRank: '' };
+					const rank = r.minRank ? ` <span class="muted">Asks for ${esc(expand(r.minRank))}.</span>` : '';
+					rows.push(`<dt>${esc(words(r.name))}</dt><dd>${esc(words(r.description))}${rank}</dd>`);
+				}
+				return `<div class="rolegroup"><h3>${esc(expand(e.name))} · ${esc(expand(e.callsign))}</h3><dl>${rows.join('')}</dl></div>`;
+			}).join('');
+		}).catch(() => { /* the page's own words stay */ });
+
+		/* The skill names, as PAC spells them. */
+		feed('roster').then((r) => {
+			for (const [id, s] of Object.entries(r.skills || {})) {
+				const card = document.querySelector(`.skill[data-skill="${id}"] h3`);
+				if (card && s.name && s.name.length > 4) card.textContent = s.name;
+			}
+		}).catch(() => {});
+	</script>
+</Base>

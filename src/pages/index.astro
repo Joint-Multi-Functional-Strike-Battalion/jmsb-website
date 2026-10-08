@@ -5,22 +5,35 @@ import Base from '../layouts/Base.astro';
 import site from '../data/site.json';
 const join = site.discord !== '' ? site.discord : `${site.pac}/?page=apply`;
 const joinLabel = site.discord !== '' ? 'Join Discord' : 'Apply to join';
+
+// The server list drawn like radio presets: one dial per server, the needle a
+// notch further round each time.
+const all = [...site.servers.map((s) => ({ name: s.name, addr: `${s.host}:${s.port}` })), { name: 'TeamSpeak', addr: site.teamspeak }];
+const rows = all.map((s, i) => {
+	const a = (-90 + i * 60) * Math.PI / 180;
+	return { ...s, nx: (23 + Math.sin(a) * 13).toFixed(1), ny: (23 - Math.cos(a) * 13).toFixed(1) };
+});
+const ticks = [];
+for (let a = -120; a <= 120; a += 20) {
+	const r = a * Math.PI / 180;
+	ticks.push({ x1: (23 + Math.sin(r) * 18).toFixed(1), y1: (23 - Math.cos(r) * 18).toFixed(1), x2: (23 + Math.sin(r) * 21).toFixed(1), y2: (23 - Math.cos(r) * 21).toFixed(1) });
+}
 ---
 <Base title={site.short} description={`${site.name}: an Arma 3 unit. Who we are, when we play, how to join.`} home>
 	<section class="hero">
 		<canvas id="topo" aria-hidden="true"></canvas>
 		<span class="gridref tl">ALPHA COY · 1ST JMSB</span>
-		<span class="gridref tr">OVERLORD 6 · ACTUAL</span>
 		<div class="hero-in">
 			<img src="/logo.svg" alt="1st JMSB crossed arrows" width="220" height="220">
 			<div>
 				<p class="eyebrow">Arma 3 · combined arms</p>
 				<h1>{site.name}</h1>
-				<p class="tag">{site.tagline} Every operator brings a job and a record to the fight.</p>
+				<p class="tag">{site.tagline}</p>
 				<div class="btns">
 					<a class="btn" href={join} target={site.discord !== '' ? '_blank' : undefined} rel="noopener">{joinLabel}</a>
 					<a class="btn ghost" href="/unit">About the unit</a>
 				</div>
+				<p class="how">Apply, or just show up and play. New to us? Come early and we will get you kitted out.</p>
 			</div>
 		</div>
 		<div class="hero-foot">
@@ -38,13 +51,22 @@ const joinLabel = site.discord !== '' ? 'Join Discord' : 'Apply to join';
 				</div>
 			</div>
 			<ul class="servers" aria-label="Servers">
-				{site.servers.map((s) => <li><b>{s.name}</b><code>{s.host}:{s.port}</code></li>)}
+				{rows.map((s) => (
+					<li>
+						<svg class="dial" viewBox="0 0 46 46" aria-hidden="true">
+							<circle cx="23" cy="23" r="15" fill="#2c3532" stroke="#c8a24a" stroke-width="1.5" />
+							{ticks.map((k) => <line x1={k.x1} y1={k.y1} x2={k.x2} y2={k.y2} stroke="#9aa39d" stroke-width="1.2" />)}
+							<line x1="23" y1="23" x2={s.nx} y2={s.ny} stroke="#c8a24a" stroke-width="2.5" stroke-linecap="round" />
+						</svg>
+						<b>{s.name}</b><code>{s.addr}</code>
+					</li>
+				))}
 			</ul>
 		</div>
 	</section>
 
 	<script>
-		import { feed, when, countdown } from '../scripts/pac.js';
+		import { feed, when, countdown, contours } from '../scripts/pac.js';
 
 		/* ---- the next operation, from PAC ---- */
 		const box = document.getElementById('nextop');
@@ -68,54 +90,8 @@ const joinLabel = site.discord !== '' ? 'Join Discord' : 'Apply to join';
 			whenEl.innerHTML = '<a href="/events">Events</a>';
 		});
 
-		/* ---- the contour map behind the hero ----
-		   Drawn, not a picture: a value-noise field cut into contour lines in
-		   the brass, with a faint grid. Replaced by a screenshot when the unit
-		   has one it likes (put it in public/ and set the .shotbg). */
+		/* ---- the contour map behind the hero (src/scripts/pac.js) ---- */
 		const canvas = document.getElementById('topo');
-		const hero = canvas.parentElement;
-		const hash = (x, y) => { const h = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return h - Math.floor(h); };
-		const smooth = (t) => t * t * (3 - 2 * t);
-		const noise = (x, y) => {
-			const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
-			const a = hash(xi, yi), b = hash(xi + 1, yi), c = hash(xi, yi + 1), d = hash(xi + 1, yi + 1);
-			const u = smooth(xf), v = smooth(yf);
-			return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
-		};
-		const field = (x, y) => noise(x, y) * 0.6 + noise(x * 2.1 + 5, y * 2.1 + 9) * 0.28 + noise(x * 4.3 + 1, y * 4.3 + 3) * 0.12;
-		function draw() {
-			const w = hero.clientWidth, h = hero.clientHeight, dpr = Math.min(window.devicePixelRatio || 1, 2);
-			if (!w || !h) return;
-			canvas.width = w * dpr; canvas.height = h * dpr;
-			const ctx = canvas.getContext('2d');
-			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-			ctx.fillStyle = '#1c2321'; ctx.fillRect(0, 0, w, h);
-			const cell = 8, cols = Math.ceil(w / cell) + 1, rows = Math.ceil(h / cell) + 1, s = 1 / 170, vals = [];
-			for (let j = 0; j < rows; j++) { vals[j] = []; for (let i = 0; i < cols; i++) vals[j][i] = field(i * cell * s + 11, j * cell * s + 7); }
-			for (let L = 0; L < 14; L++) {
-				const lvl = 0.22 + L * 0.04;
-				ctx.strokeStyle = L % 5 === 0 ? 'rgba(200,162,74,0.42)' : 'rgba(200,162,74,0.16)';
-				ctx.lineWidth = L % 5 === 0 ? 1.4 : 1;
-				ctx.beginPath();
-				for (let j = 0; j < rows - 1; j++) for (let i = 0; i < cols - 1; i++) {
-					const a = vals[j][i], b = vals[j][i + 1], c = vals[j + 1][i + 1], d = vals[j + 1][i];
-					const x = i * cell, y = j * cell, p = [];
-					if ((a < lvl) !== (b < lvl)) p.push([x + cell * (lvl - a) / (b - a), y]);
-					if ((b < lvl) !== (c < lvl)) p.push([x + cell, y + cell * (lvl - b) / (c - b)]);
-					if ((d < lvl) !== (c < lvl)) p.push([x + cell * (lvl - d) / (c - d), y + cell]);
-					if ((a < lvl) !== (d < lvl)) p.push([x, y + cell * (lvl - a) / (d - a)]);
-					if (p.length >= 2) { ctx.moveTo(p[0][0], p[0][1]); ctx.lineTo(p[1][0], p[1][1]); }
-					if (p.length === 4) { ctx.moveTo(p[2][0], p[2][1]); ctx.lineTo(p[3][0], p[3][1]); }
-				}
-				ctx.stroke();
-			}
-			ctx.strokeStyle = 'rgba(244,242,236,0.06)'; ctx.lineWidth = 1; ctx.beginPath();
-			for (let gx = 0; gx < w; gx += 96) { ctx.moveTo(gx + .5, 0); ctx.lineTo(gx + .5, h); }
-			for (let gy = 0; gy < h; gy += 96) { ctx.moveTo(0, gy + .5); ctx.lineTo(w, gy + .5); }
-			ctx.stroke();
-		}
-		draw();
-		let rt;
-		window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(draw, 120); });
+		contours(canvas, canvas.parentElement, 0);
 	</script>
 </Base>

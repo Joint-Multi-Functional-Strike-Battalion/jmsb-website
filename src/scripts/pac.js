@@ -92,6 +92,55 @@ export function skillName(skill, id) {
 	return TERMS[n.toUpperCase()] || words(n);
 }
 
+/* A contour map, drawn rather than photographed: a value-noise field cut into
+ * contour lines in the brass, with a faint grid, on the slate ground. Behind
+ * the home hero and the next-operation poster. */
+export function contours(canvas, host, seed = 0) {
+	const hash = (x, y) => { const h = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return h - Math.floor(h); };
+	const smooth = (t) => t * t * (3 - 2 * t);
+	const noise = (x, y) => {
+		const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+		const a = hash(xi, yi), b = hash(xi + 1, yi), c = hash(xi, yi + 1), d = hash(xi + 1, yi + 1);
+		const u = smooth(xf), v = smooth(yf);
+		return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+	};
+	const field = (x, y) => noise(x, y) * 0.6 + noise(x * 2.1 + 5, y * 2.1 + 9) * 0.28 + noise(x * 4.3 + 1, y * 4.3 + 3) * 0.12;
+	const draw = () => {
+		const w = host.clientWidth, h = host.clientHeight, dpr = Math.min(window.devicePixelRatio || 1, 2);
+		if (!w || !h) return;
+		canvas.width = w * dpr; canvas.height = h * dpr;
+		const ctx = canvas.getContext('2d');
+		ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+		ctx.fillStyle = '#1c2321'; ctx.fillRect(0, 0, w, h);
+		const cell = 8, cols = Math.ceil(w / cell) + 1, rows = Math.ceil(h / cell) + 1, s = 1 / 170, vals = [];
+		for (let j = 0; j < rows; j++) { vals[j] = []; for (let i = 0; i < cols; i++) vals[j][i] = field(i * cell * s + 11 + seed, j * cell * s + 7 + seed * 0.7); }
+		for (let L = 0; L < 14; L++) {
+			const lvl = 0.22 + L * 0.04;
+			ctx.strokeStyle = L % 5 === 0 ? 'rgba(200,162,74,0.42)' : 'rgba(200,162,74,0.16)';
+			ctx.lineWidth = L % 5 === 0 ? 1.4 : 1;
+			ctx.beginPath();
+			for (let j = 0; j < rows - 1; j++) for (let i = 0; i < cols - 1; i++) {
+				const a = vals[j][i], b = vals[j][i + 1], c = vals[j + 1][i + 1], d = vals[j + 1][i];
+				const x = i * cell, y = j * cell, p = [];
+				if ((a < lvl) !== (b < lvl)) p.push([x + cell * (lvl - a) / (b - a), y]);
+				if ((b < lvl) !== (c < lvl)) p.push([x + cell, y + cell * (lvl - b) / (c - b)]);
+				if ((d < lvl) !== (c < lvl)) p.push([x + cell * (lvl - d) / (c - d), y + cell]);
+				if ((a < lvl) !== (d < lvl)) p.push([x, y + cell * (lvl - a) / (d - a)]);
+				if (p.length >= 2) { ctx.moveTo(p[0][0], p[0][1]); ctx.lineTo(p[1][0], p[1][1]); }
+				if (p.length === 4) { ctx.moveTo(p[2][0], p[2][1]); ctx.lineTo(p[3][0], p[3][1]); }
+			}
+			ctx.stroke();
+		}
+		ctx.strokeStyle = 'rgba(244,242,236,0.06)'; ctx.lineWidth = 1; ctx.beginPath();
+		for (let gx = 0; gx < w; gx += 96) { ctx.moveTo(gx + .5, 0); ctx.lineTo(gx + .5, h); }
+		for (let gy = 0; gy < h; gy += 96) { ctx.moveTo(0, gy + .5); ctx.lineTo(w, gy + .5); }
+		ctx.stroke();
+	};
+	draw();
+	let rt;
+	window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(draw, 120); });
+}
+
 /** Escape for the one place markup is built from data. */
 export function esc(s) {
 	return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

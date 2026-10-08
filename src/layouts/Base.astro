@@ -14,9 +14,11 @@ const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const links = [
 	{ href: '/', label: 'Home' },
 	{ href: '/unit', label: 'Unit' },
+	{ href: '/roles', label: 'Roles' },
 	{ href: '/roster', label: 'Roster' },
 	{ href: '/sop', label: 'SOP' },
 	{ href: '/events', label: 'Events' },
+	{ href: '/tbd', label: 'To be decided' },
 	{ href: `${site.pac}/?page=wiki`, label: 'Wiki', external: true },
 ];
 const join = site.discord !== '' ? site.discord : `${site.pac}/?page=apply`;
@@ -34,6 +36,8 @@ const fullTitle = title === site.short ? `${site.short} - ${site.name}` : `${tit
 	<meta property="og:description" content={description}>
 	<meta property="og:site_name" content={site.name}>
 	<meta property="og:type" content="website">
+	<meta property="og:image" content={new URL('/og.png', Astro.site)}>
+	<meta name="twitter:card" content="summary_large_image">
 	<link rel="icon" href="/favicon.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

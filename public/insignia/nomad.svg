@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 128" width="110" height="128" role="img" aria-label="Nomad insignia"><path d="M55 4 L104 18 V62 C104 94 82 114 55 124 C28 114 6 94 6 62 V18 Z" fill="#1c2321" stroke="#c8a24a" stroke-width="3"/>
+          <circle cx="55" cy="62" r="26" fill="none" stroke="#f4f2ec" stroke-width="5"/>
+          <circle cx="55" cy="62" r="7" fill="#c8a24a"/>
+          <path d="M55 36 V55 M55 69 V88 M29 62 H48 M62 62 H81" stroke="#f4f2ec" stroke-width="4"/>
+          <path d="M34 100 L55 92 L76 100" stroke="#c8a24a" stroke-width="3" fill="none"/></svg>

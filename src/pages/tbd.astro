@@ -1,0 +1,54 @@
+---
+// To be decided: the open questions about how the unit plays, written down
+// so members can see them and weigh in. Short on purpose; each one is a
+// question, where we are now, and the choices.
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+
+const open = [
+	{
+		title: 'Primary weapons',
+		question: 'Which rifles do we standardise on?',
+		now: 'Two weapon mods are in the set today, SPS and MCC, and both have rifles in game.',
+		options: ['Keep both and let the arsenal offer either', 'Pick one mod and drop the other', 'A standard rifle per team, from whichever mod carries it'],
+	},
+	{
+		title: 'Order of battle',
+		question: 'How fixed is the structure?',
+		now: 'The headquarters, teams and squads exist in TAC//PAC as a test of the back end. Nobody is assigned to anything, and on an operation night people take whatever slot the mission needs.',
+		options: ['No defined slots: turn up, take what is needed that night', 'Leaders only: the team and squad leads are assigned, everyone else fills in', 'Every slot: a place for every member, as a traditional order of battle'],
+	},
+	{
+		title: 'Promotion',
+		question: 'How do we promote?',
+		now: 'TAC//PAC keeps a points formula: hours on the server, operations attended, months served, months at your rank, training and awards, with a line to cross for each rank. Automatic promotion is off, so today staff promote by hand.',
+		options: ['Points, confirmed by staff: cross the line and a leader signs it off', 'Points, automatic: cross the line and the rank follows on its own', 'Staff decision only: no formula, leaders promote when someone is ready', 'Time and attendance only: operations attended and months served, nothing else'],
+	},
+	{
+		title: 'Medical',
+		question: 'Basic ACE medical, or more advanced?',
+		now: 'The mod runs basic ACE medical, and supports Advanced Combat Medicine on top of it.',
+		options: ['Basic ACE medical: quicker treatment, easier to learn', 'ACE with Advanced Combat Medicine: airway, deeper wounds, more for the medics to do'],
+	},
+];
+---
+<Base title="To be decided" description={`The open questions about how the ${site.short} plays: weapons, medical, and what comes next.`}>
+	<div class="wrap pagehead">
+		<p class="eyebrow">Open questions</p>
+		<h1>To be decided</h1>
+		<p class="lede">Things we have not settled yet. If you have an opinion, say so on Discord.</p>
+	</div>
+	<section class="section">
+		<div class="wrap tbd">
+			{open.map((o) => (
+				<article class="card">
+					<p class="eyebrow">{o.title}</p>
+					<h3>{o.question}</h3>
+					<p><b>Where we are:</b> {o.now}</p>
+					<p class="muted" style="margin-bottom: 6px">The choices</p>
+					<ol>{o.options.map((c) => <li>{c}</li>)}</ol>
+				</article>
+			))}
+		</div>
+	</section>
+</Base>

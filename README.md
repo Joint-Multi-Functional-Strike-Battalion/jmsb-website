@@ -1,15 +1,17 @@
 # jmsb.info
 
 The 1st Joint Multi-Functional Strike Battalion's public site. A plain
-[Astro](https://astro.build) site: five pages, no framework, no docs theme.
+[Astro](https://astro.build) site: seven pages, no framework, no docs theme.
 
 | Page | File | What |
 |---|---|---|
 | Home | `src/pages/index.astro` | one screen: the logo, the name, one line, Join and About, the next operation counting down, the three servers |
-| Unit | `src/pages/unit.astro` | who we are, what we ask, an operation night, how we are organised, the mods, questions |
-| Roster | `src/pages/roster.astro` | everyone by element: rank, slot, qualifications, status, enlistment - written out, no abbreviations |
+| Unit | `src/pages/unit.astro` | who we are, what we are, what we ask, how we run, ranks, the mods, questions |
+| Roles | `src/pages/roles.astro` | the two halves of a player: roles (mission-based, from PAC's order of battle) and skills (what each qualification does), and the layered arsenal |
+| Roster | `src/pages/roster.astro` | staff (the PAC admins) first, then everyone else: rank, qualifications, status, enlistment - written out, no abbreviations |
 | SOP | `src/pages/sop.astro` | the standard operating procedures |
 | Events | `src/pages/events.astro` | the calendar: next up, coming up, played |
+| To be decided | `src/pages/tbd.astro` | the open questions - weapons, medical - with where we are and the choices |
 | Wiki | - | a link to TAC//PAC's wiki |
 
 ## Where the words come from
@@ -25,9 +27,7 @@ The 1st Joint Multi-Functional Strike Battalion's public site. A plain
 - **The pages themselves** - the About text, the operation-night cards, the
   mods and the FAQ are written in `unit.astro`.
 
-Screenshots: `public/ops/<key>.jpg` for the operation-night cards (assault,
-mech, air, drones, fires, recon). The home hero draws a contour map until a
-screenshot replaces it.
+The home hero draws a contour map until a screenshot replaces it.
 
 ## Build and deploy
 

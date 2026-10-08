@@ -17,7 +17,7 @@ import site from '../data/site.json';
 	</section>
 
 	<script>
-		import { feed, when, zone, countdown, esc, PAC } from '../scripts/pac.js';
+		import { feed, when, zone, countdown, contours, esc, PAC } from '../scripts/pac.js';
 		const box = document.getElementById('ev');
 		const note = document.getElementById('ev-note');
 		const z = zone();
@@ -33,11 +33,14 @@ import site from '../data/site.json';
 			let out = '';
 			if (ev.next) {
 				const n = ev.next;
-				out += `<div class="evnext" id="evnext">
-					<div><p class="eyebrow">Next up</p><h2>${esc(n.title)}</h2>
+				out += `<div class="evnext poster" id="evnext">
+					<canvas class="topo" aria-hidden="true"></canvas>
+					<div class="p-class">NEXT OPERATION // ${esc(when(n.start).toUpperCase())}</div>
+					<div class="p-body"><p class="eyebrow">Next up</p><h2>${esc(n.title)}</h2>
 						<p class="when">${esc(when(n.start, true))}${n.server ? ` · ${esc(n.server)} server` : ''}${n.minutes ? ` · ${n.minutes % 60 === 0 ? n.minutes / 60 + ' h' : n.minutes + ' min'}` : ''}</p>
 						${n.summary ? `<p class="sum">${esc(n.summary)}</p>` : ''}</div>
 					<div class="count" aria-label="Time until it starts"><span><b data-d>0</b><i>days</i></span><span><b data-h>00</b><i>hrs</i></span><span><b data-m>00</b><i>min</i></span><span><b data-s>00</b><i>sec</i></span></div>
+					<div class="p-class p-foot">${esc((n.server || 'JMSB').toUpperCase())} SERVER // JMSB.INFO</div>
 				</div>`;
 			}
 			out += '<h2 style="margin-bottom:14px">Coming up</h2>';
@@ -49,7 +52,10 @@ import site from '../data/site.json';
 			}
 			box.innerHTML = out;
 			const nx = document.getElementById('evnext');
-			if (nx) countdown(nx, ev.next.start, () => { nx.querySelector('.count').innerHTML = '<b>Under way</b>'; });
+			if (nx) {
+				contours(nx.querySelector('.topo'), nx, 37);
+				countdown(nx, ev.next.start, () => { nx.querySelector('.count').innerHTML = '<b>Under way</b>'; });
+			}
 		}).catch(() => {
 			box.innerHTML = `<p class="dim">The calendar could not be read right now. It is on <a href="${esc(PAC)}/?page=events" target="_blank" rel="noopener">TAC//PAC</a>.</p>`;
 		});
