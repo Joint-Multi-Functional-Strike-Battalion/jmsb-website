@@ -1,0 +1,165 @@
+---
+// SMARTCARDS: the pocket reference cards, built for a phone and read on
+// anything. One deck is one JSON file under src/content/smartcards/, pulled
+// from the mod repo by `npm run cards:pull` (the JSON is the master: the
+// printed PDF and PNG come out of the same data). Three kinds of page from
+// one route: /smartcards/ (every deck and its cards), /smartcards/<deck>/
+// (one deck) and /smartcards/<deck>/<card>/ (the card itself).
+// On the card: a jump rail of its sections, arrows and a swipe to the next
+// or previous card, tables scaled to fit the width and pinch-zoomed from
+// there (user, 2026-10-09). Print links appear once the PDFs are uploaded
+// and src/data/smartcards-links.json names them.
+import Base from '../../layouts/Base.astro';
+import Banner from '../../components/Banner.astro';
+import links from '../../data/smartcards-links.json';
+
+const files = import.meta.glob('../../content/smartcards/*.json', { import: 'default', eager: true });
+const slugOf = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const decks = Object.entries(files).map(([file, data]) => {
+	const slug = file.replace(/^.*\//, '').replace(/\.json$/, '');
+	const cards = data.cards.map((c, i) => ({ ...c, n: i + 1, slug: slugOf(c.id), href: `/smartcards/${slug}/${slugOf(c.id)}/` }));
+	return { slug, name: data.name, org: data.organization, short: data.name.replace(/^JMSB\s+/i, ''), version: data.version, assets: data.assets || {}, cards, href: `/smartcards/${slug}/` };
+}).sort((a, b) => a.slug.localeCompare(b.slug));
+
+export async function getStaticPaths() {
+	const files = import.meta.glob('../../content/smartcards/*.json', { import: 'default', eager: true });
+	const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+	const paths = [{ params: { path: undefined } }];
+	for (const [file, data] of Object.entries(files)) {
+		const d = file.replace(/^.*\//, '').replace(/\.json$/, '');
+		paths.push({ params: { path: d } });
+		for (const c of data.cards) paths.push({ params: { path: `${d}/${slug(c.id)}` } });
+	}
+	return paths;
+}
+
+const parts = (Astro.params.path || '').split('/').filter(Boolean);
+const deck = parts[0] ? decks.find((d) => d.slug === parts[0]) : null;
+const card = deck && parts[1] ? deck.cards.find((c) => c.slug === parts[1]) : null;
+const prev = card ? deck.cards[card.n - 2] : null;
+const next = card ? deck.cards[card.n] : null;
+
+// an image block names an asset; the site has its own logo, the rest were
+// copied beside the deck under public/smartcards/<deck>/
+const assetUrl = (key) => {
+	if (key === 'logo') return '/logo.svg';
+	const path = deck.assets[key] || '';
+	return `/smartcards/${deck.slug}/${key}${path.slice(path.lastIndexOf('.'))}`;
+};
+const sections = card ? card.print_layout.areas.flatMap((a) => a.sections).filter((s) => s.heading) : [];
+const secId = (s) => slugOf(s.heading);
+const dl = card ? (links[deck.slug]?.[card.id] || {}) : {};
+const downloads = [['pdf', 'Print PDF'], ['pdf_dark', 'Print PDF, dark']].filter(([k]) => dl[k]);
+
+const title = card ? card.role.replace(/\s*·\s*/g, ' / ') : deck ? deck.short : 'SmartCards';
+const crumbs = [{ href: '/smartcards/', label: 'SmartCards' }];
+if (deck) crumbs.push({ href: deck.href, label: deck.short });
+if (card) crumbs.push({ label: card.role });
+---
+<Base title={`${title} - SmartCards`} description={card ? `${card.subtitle}. ${card.banner}` : 'Pocket reference cards: what to do, in order, on a phone screen.'}>
+	{!card && <Banner eyebrow="Reference" title="SmartCards" lede="The pocket cards: what to do, in order, sized for a phone. Swipe or use the arrows to move card to card. Each one also prints." strip="SMARTCARDS // SAGITTAE IN TENEBRIS" foot="JMSB.INFO/SMARTCARDS" seed={47} />}
+
+	<section class:list={['section', 'sc', { 'sc-cardpage': !!card }]}>
+		<div class="wrap wide">
+			<p class="qv-crumbs">{crumbs.map((c, i) => <>{i > 0 && <span>›</span>}{c.href ? <a href={c.href}>{c.label}</a> : <span>{c.label}</span>}</>)}</p>
+
+			{!deck && decks.map((d) => (
+				<div class="sc-deck">
+					<div class="section-head"><h2><a href={d.href}>{d.short}</a></h2><p class="mono muted">{d.cards.length} cards · {d.version}</p></div>
+					<div class="sc-grid">{d.cards.map((c) => (
+						<a class="card sc-tile" href={c.href}><span class="sc-level">Level {c.level}</span><h3>{c.role}</h3><p>{c.subtitle}</p><p class="sc-tile-banner">{c.banner}</p></a>
+					))}</div>
+				</div>
+			))}
+
+			{deck && !card && (<>
+				<p class="eyebrow">{deck.name}</p><h1 class="sc-h1">{deck.short}</h1>
+				<div class="sc-grid">{deck.cards.map((c) => (
+					<a class="card sc-tile" href={c.href}><span class="sc-level">Level {c.level}</span><h3>{c.role}</h3><p>{c.subtitle}</p><p class="sc-tile-banner">{c.banner}</p></a>
+				))}</div>
+			</>)}
+
+			{card && (
+				<article class="sc-card" id="sc-card" data-prev={prev?.href} data-next={next?.href}>
+					<nav class="sc-arrows" aria-label="Cards">
+						{prev ? <a class="sc-arrow prev" href={prev.href} rel="prev"><span>‹</span><small>{prev.role}</small></a> : <span class="sc-arrow prev off"><span>‹</span></span>}
+						<span class="sc-pos">{card.n} / {deck.cards.length}</span>
+						{next ? <a class="sc-arrow next" href={next.href} rel="next"><small>{next.role}</small><span>›</span></a> : <span class="sc-arrow next off"><span>›</span></span>}
+					</nav>
+
+					<header class="sc-head">
+						<img src="/logo.svg" alt="" width="56" height="56">
+						<div class="sc-title"><h1>{card.title}</h1><p>{deck.org}</p></div>
+						<div class="sc-role"><b>{card.role}</b><span>{card.subtitle}</span></div>
+					</header>
+					{card.banner && <p class="sc-banner">{card.banner}</p>}
+
+					{sections.length > 1 && <nav class="sc-rail" aria-label="On this card"><ol>{sections.map((s) => <li><a href={`#${secId(s)}`}>{s.letter && <b>{s.letter}</b>}{s.heading}</a></li>)}</ol></nav>}
+
+					<div class="sc-areas" style={`--cols: ${card.print_layout.columns}`}>
+						{card.print_layout.areas.map((a) => (
+							<div class="sc-area" data-span={a.span || undefined}>
+								{a.sections.map((s) => (
+									<section class="sc-sec" id={s.heading ? secId(s) : undefined}>
+										{s.heading && <h2 class="sc-sh">{s.letter && <b>{s.letter}</b>}{s.heading}</h2>}
+										{s.blocks.map((b) => {
+											if (b.type === 'image') return <figure class="sc-img"><img src={assetUrl(b.asset)} alt={b.alt || ''} loading="lazy"></figure>;
+											if (b.type === 'list') return <ul class="sc-list">{b.items.map((it) => <li>{it.label && <b>{it.label}:</b>} {it.text}</li>)}</ul>;
+											if (b.type === 'ordered') return <ol class="sc-list">{b.items.map((it) => <li>{it.label && <b>{it.label}:</b>} {it.text}</li>)}</ol>;
+											if (b.type === 'note') return <p class="sc-note">{b.label && <b>{b.label}:</b>} {b.text}</p>;
+											if (b.type === 'table') return <div class="sc-tbl" style={`--tc: ${b.columns.length}`}><table><thead><tr>{b.columns.map((c) => <th>{c}</th>)}</tr></thead><tbody>{b.rows.map((r) => <tr>{r.map((c) => <td>{c}</td>)}</tr>)}</tbody></table></div>;
+											return null;
+										})}
+									</section>
+								))}
+							</div>
+						))}
+					</div>
+
+					<footer class="sc-foot">
+						{downloads.length > 0 && <span class="sc-dl">{downloads.map(([k, label]) => <a class="btn ghost small" href={dl[k]} target="_blank" rel="noopener">{label}</a>)}</span>}
+						<span class="mono muted">{deck.short} · card {card.n} of {deck.cards.length} · {deck.version}</span>
+					</footer>
+
+					<nav class="sc-arrows foot" aria-label="Cards">
+						{prev ? <a class="sc-arrow prev" href={prev.href}><span>‹</span><small>{prev.role}</small></a> : <span class="sc-arrow prev off"><span>‹</span></span>}
+						<a class="sc-pos" href={deck.href}>All cards</a>
+						{next ? <a class="sc-arrow next" href={next.href}><small>{next.role}</small><span>›</span></a> : <span class="sc-arrow next off"><span>›</span></span>}
+					</nav>
+				</article>
+			)}
+		</div>
+	</section>
+
+	{card && <script>
+		// Card to card: a swipe sideways on a phone, the arrow keys on a keyboard.
+		// A swipe only counts while the page is not pinch-zoomed, so zooming a
+		// table and panning across it never changes card.
+		const art = document.getElementById('sc-card');
+		const go = (dir) => { const to = art.dataset[dir]; if (to) location.href = to; };
+		let x0 = 0, y0 = 0, t0 = 0, live = false;
+		const scale = () => window.visualViewport?.scale || 1;
+		art.addEventListener('touchstart', (e) => { live = e.touches.length === 1 && scale() <= 1.01; if (!live) return; x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; t0 = Date.now(); }, { passive: true });
+		art.addEventListener('touchend', (e) => {
+			if (!live || scale() > 1.01) return;
+			const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+			if (Date.now() - t0 < 700 && Math.abs(dx) > 70 && Math.abs(dy) < Math.abs(dx) / 2) go(dx < 0 ? 'next' : 'prev');
+		}, { passive: true });
+		document.addEventListener('keydown', (e) => { if (e.target.matches('input, textarea')) return; if (e.key === 'ArrowRight') go('next'); if (e.key === 'ArrowLeft') go('prev'); });
+
+		// A table wider than its column is scaled down to fit, then read with a
+		// pinch zoom (user, 2026-10-09: fit, with a zoom), instead of wrapping
+		// every cell into one word per line or scrolling sideways.
+		const fit = (box) => {
+			const t = box.firstElementChild;
+			box.style.height = ''; t.style.transform = '';
+			const w = box.clientWidth, need = t.scrollWidth;
+			if (need > w + 1) { const k = w / need; t.style.transform = `scale(${k})`; box.style.height = `${t.offsetHeight * k}px`; }
+		};
+		const boxes = [...document.querySelectorAll('.sc-tbl')];
+		const fitAll = () => boxes.forEach(fit);
+		if (document.fonts?.ready) document.fonts.ready.then(fitAll);
+		fitAll();
+		new ResizeObserver(fitAll).observe(art);
+	</script>}
+</Base>

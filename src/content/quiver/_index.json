@@ -1,0 +1,482 @@
+[
+ {
+  "slug": "team-leader",
+  "title": "Team Leader",
+  "chapter": "Roles",
+  "kind": "role",
+  "summary": "The seat that runs the team on the night: slot 1, the net, the plan, and the handoff to the drones.",
+  "order": 1,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "assistant-team-leader",
+  "title": "Assistant Team Leader",
+  "chapter": "Roles",
+  "kind": "role",
+  "summary": "Second in command: runs the net if the team leader drops, senior scout, and keeps the trail element together.",
+  "order": 2,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "basics",
+  "title": "Basic skills",
+  "chapter": "Basics",
+  "kind": "guide",
+  "summary": "Key binds, ACE interaction, ammo, basic comms, ACE report, friend or foe, weapon status.",
+  "order": 10,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "skill-cls",
+  "title": "Combat Lifesaver",
+  "chapter": "Skills",
+  "kind": "skill",
+  "summary": "Stops the bleeding and keeps an airway open until the medic arrives; carries the Medic Bag.",
+  "order": 10,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "tacpad",
+  "title": "The TACPAD",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "Your map screen is the tablet: live tiles, the squad rail, the message reader and the tools, all on the map.",
+  "order": 10,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "skill-medic",
+  "title": "Medic",
+  "chapter": "Skills",
+  "kind": "skill",
+  "summary": "Everything that goes inside: advanced airways, chest tubes, lines, drugs and fractures.",
+  "order": 11,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "tac-msg",
+  "title": "TAC//MSG: messages and reports",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "How to read the net, send a message, file a report and work a task - all from the map.",
+  "order": 11,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "skill-eng",
+  "title": "Engineer",
+  "chapter": "Skills",
+  "kind": "skill",
+  "summary": "Keeps the vehicles running: repair, refuel, rearm, and the explosives that are not a breacher's.",
+  "order": 12,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "reports",
+  "title": "The reports",
+  "chapter": "The mod",
+  "kind": "reference",
+  "summary": "The report cards TAC//MSG carries, line by line, and what each one does when it is sent.",
+  "order": 12,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "skill-breacher",
+  "title": "Breacher / EOD",
+  "chapter": "Skills",
+  "kind": "skill",
+  "summary": "Opens what is shut and makes safe what is left behind: charges, mines, IEDs.",
+  "order": 13,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "tac-support",
+  "title": "TAC//SUPPORT: transport, air and artillery",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "Tasking the company's support from a map inside the tablet.",
+  "order": 13,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "skill-jfo",
+  "title": "Joint Fires Observer",
+  "chapter": "Skills",
+  "kind": "skill",
+  "summary": "Puts the company's fires where the team leader wants them: artillery, mortars, close air.",
+  "order": 14,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "patrol-base",
+  "title": "Patrol base",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "Four kits on the ground and a name: a base anyone can put up, with a marker, a mast and a staging zone.",
+  "order": 14,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "hacking-and-intel",
+  "title": "Hacking, intel and the scanner",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "Breaking into towers and drones for a product, depositing captured intel, and the EW scanner on your screen.",
+  "order": 15,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "skill-isr",
+  "title": "ISR",
+  "chapter": "Skills",
+  "kind": "skill",
+  "summary": "Intelligence, surveillance and reconnaissance: the eyes the plan is built on.",
+  "order": 15,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "jamming",
+  "title": "Jamming",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "What a jamming field does to your radio, your messages and your GPS, and how to end it.",
+  "order": 16,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "skill-uav",
+  "title": "UAV operator",
+  "chapter": "Skills",
+  "kind": "skill",
+  "summary": "Flies the drones: the team's reach over the next hill and the strike that goes with it.",
+  "order": 16,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "skill-marksman",
+  "title": "Marksman",
+  "chapter": "Skills",
+  "kind": "skill",
+  "summary": "The team's long gun inside the team: precise fire out to where the rifles stop.",
+  "order": 17,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "vehicles",
+  "title": "Vehicles: the motorpool and the staging zone",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "Drawing a vehicle, and repairing, rearming and re-skinning it inside the staging zone.",
+  "order": 17,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "skill-sniper",
+  "title": "Sniper",
+  "chapter": "Skills",
+  "kind": "skill",
+  "summary": "Works away from the team: reconnaissance, precision fire at range, and the patience both take.",
+  "order": 18,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "tac-roles",
+  "title": "TAC//ROLES: taking a slot",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "The role menu in the staging zone: pick a seat, take its loadout.",
+  "order": 18,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "skill-heavy",
+  "title": "Heavy Weapons",
+  "chapter": "Skills",
+  "kind": "skill",
+  "summary": "The anti-armour and heavy-weapons hand: every launcher and its rounds, and the gun theory behind them.",
+  "order": 19,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "tac-pac-in-game",
+  "title": "TAC//PAC in game",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "Your record, the roster, the OPORD and your requests, on the tablet.",
+  "order": 19,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "combat-skills",
+  "title": "Combat skills",
+  "chapter": "Combat skills",
+  "kind": "skill",
+  "summary": "Cover and concealment, overwatch, movement, bounding and peeling, fatigue, formations, movement techniques, reaction to contact.",
+  "order": 20,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-bags",
+  "title": "Medical bags",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "What is in each bag, who may open it, and how to take a casualty's bags.",
+  "order": 20,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "vector-marker",
+  "title": "The Vector and the marker keys",
+  "chapter": "The mod",
+  "kind": "guide",
+  "summary": "Two keys that turn what you are looking at into a marker.",
+  "order": 21,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "tactical-movement",
+  "title": "Tactical movement",
+  "chapter": "Combat skills",
+  "kind": "guide",
+  "summary": "Moving a team that is not yet in contact: techniques, routes and legs, navigation aids, danger areas, security, and what to do on contact.",
+  "order": 22,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "acre",
+  "title": "ACRE communications",
+  "chapter": "Communications",
+  "kind": "guide",
+  "summary": "Installing ACRE2, radio configuration before and in the mission, the personal radio, keys and the headset.",
+  "order": 30,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-menu",
+  "title": "The medical menu",
+  "chapter": "Medical",
+  "kind": "guide",
+  "summary": "The one window everything medical happens in: the tabs, the body colours, what a wound name means, and why a casualty is out.",
+  "order": 37,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-first-aid",
+  "title": "Soldier first aid: the 3 Bs",
+  "chapter": "Medical",
+  "kind": "guide",
+  "summary": "What every rifleman does for himself and his buddy before the lifesaver arrives.",
+  "order": 38,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-cls",
+  "title": "Combat Lifesaver: MARCH",
+  "chapter": "Medical",
+  "kind": "skill",
+  "summary": "The lifesaver's drill under ACM - massive haemorrhage, airway, respiration, circulation, head and hypothermia - the kit for each, and the handover to the medic.",
+  "order": 40,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-medic",
+  "title": "Medic: MARCH",
+  "chapter": "Medical",
+  "kind": "skill",
+  "summary": "The medic's MARCH: everything that goes inside - advanced airways, chest, lines, blood, drugs, fractures.",
+  "order": 41,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-casevac",
+  "title": "CASEVAC",
+  "chapter": "Medical",
+  "kind": "guide",
+  "summary": "When to call, the 6-line CASEVAC, choosing the priority, and getting the casualty ready to move.",
+  "order": 42,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-mist",
+  "title": "MIST report",
+  "chapter": "Medical",
+  "kind": "guide",
+  "summary": "The casualty hand-over: mechanism, injuries, symptoms and vitals, treatment given.",
+  "order": 43,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-drugs",
+  "title": "Drugs",
+  "chapter": "Medical",
+  "kind": "reference",
+  "summary": "Every drug in ACM by who may give it - self aid, the lifesaver, the medic - what it does, and what not to mix.",
+  "order": 44,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-cbrn",
+  "title": "CBRN",
+  "chapter": "Medical",
+  "kind": "guide",
+  "summary": "Chemical agents, protection, self and buddy aid, and what the lifesaver and the medic do about them.",
+  "order": 46,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-evacuation",
+  "title": "Evacuation",
+  "chapter": "Medical",
+  "kind": "guide",
+  "summary": "ACM's evacuation: what it is, what it needs, converting a casualty and evacuating them.",
+  "order": 48,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "medical-items",
+  "title": "Items by level",
+  "chapter": "Medical",
+  "kind": "reference",
+  "summary": "Every ACM and ACE medical item, by who carries it: self and buddy aid, the lifesaver, the medic.",
+  "order": 49,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "land-navigation",
+  "title": "Land navigation",
+  "chapter": "Navigation",
+  "kind": "guide",
+  "summary": "Reading the map, contour lines, terrain features, grids, ACE map tools, bearings and the compass.",
+  "order": 50,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "engineering",
+  "title": "Engineering",
+  "chapter": "Engineering",
+  "kind": "skill",
+  "summary": "Vehicle repair, refuel and rearm, explosive charges, mines, IEDs and detonators.",
+  "order": 60,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "heavy-weapons",
+  "title": "Heavy weapons",
+  "chapter": "Weapons",
+  "kind": "skill",
+  "summary": "Aiming devices, mils and MOA, machine-gun theory, fires with respect to ground, target and gun, light anti-armour.",
+  "order": 70,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "sniper",
+  "title": "Sniper",
+  "chapter": "Weapons",
+  "kind": "skill",
+  "summary": "The special operations sniper: mission, qualifications, ballistics, skills and equipment.",
+  "order": 72,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "mortar",
+  "title": "Indirect fire: the Mk6",
+  "chapter": "Fires",
+  "kind": "skill",
+  "summary": "Range and direction, the Vector 21 and Kestrel, wind, indirect-fire theory, sheaves, setting up the Mk6.",
+  "order": 80,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "vector-21",
+  "title": "The Vector 21 rangefinder",
+  "chapter": "Fires",
+  "kind": "guide",
+  "summary": "Distance, azimuth, inclination, two-point measurements, fall of shot and the units.",
+  "order": 82,
+  "public": true,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "tfar",
+  "title": "TFAR communications",
+  "chapter": "Communications",
+  "kind": "guide",
+  "summary": "Task Force Radio: configuration, the personal radio and the interface. Not the unit's radio - we run ACRE2.",
+  "order": 90,
+  "public": false,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "tfar-setup",
+  "title": "TFAR setup",
+  "chapter": "Communications",
+  "kind": "guide",
+  "summary": "Installing the TFAR TeamSpeak plugin, step by step. Not the unit's radio - we run ACRE2.",
+  "order": 91,
+  "public": false,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "ctab",
+  "title": "Basic cTab",
+  "chapter": "Communications",
+  "kind": "guide",
+  "summary": "cTab key binds and interfaces. The unit runs its own TACPAD; kept for reference.",
+  "order": 95,
+  "public": false,
+  "updated": "2026-10-09"
+ },
+ {
+  "slug": "sign-a-mod",
+  "title": "Sign a mod with DSUtils",
+  "chapter": "Reference",
+  "kind": "reference",
+  "summary": "Making a key and signing PBOs with DSUtils.",
+  "order": 96,
+  "public": false,
+  "updated": "2026-10-09"
+ }
+]

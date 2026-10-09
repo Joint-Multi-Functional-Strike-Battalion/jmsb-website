@@ -1,0 +1,32 @@
+<h2>Agents</h2>
+<p>Four chemical agents are modelled. Three of them kill.</p>
+<table><thead><tr><th>Agent</th><th>Type</th><th>Looks like</th><th>Delivered by</th><th>Absorbed through</th></tr></thead><tbody><tr><td>CS</td><td>Tear agent</td><td>Faint grey gas</td><td>CS grenades, 40mm CS shells, mortars</td><td>Lungs, eyes</td></tr><tr><td>Chlorine</td><td>Pulmonary agent</td><td>Bright yellow gas</td><td>Mortars, chemical IEDs</td><td>Lungs, skin</td></tr><tr><td>Sarin</td><td>Nerve agent</td><td>Colorless gas</td><td>Mortars, chemical IEDs</td><td>Lungs, skin</td></tr><tr><td>Lewisite</td><td>Blister agent</td><td>Colorless gas</td><td>Mortars, chemical IEDs</td><td>Not stated on the wiki</td></tr></tbody></table>
+<table><thead><tr><th>Agent</th><th>Immediate</th><th>Moderate</th><th>Prolonged</th></tr></thead><tbody><tr><td>CS</td><td>Coughing, pain</td><td>Blindness</td><td>Difficulty breathing</td></tr><tr><td>Chlorine</td><td>Coughing, pain, choking</td><td>Airway inflammation, blindness</td><td>Unconsciousness, respiratory arrest, death</td></tr><tr><td>Sarin</td><td>Coughing, pain</td><td>Muscle spasms</td><td>Unconsciousness, airway spasm, respiratory arrest, death</td></tr><tr><td>Lewisite</td><td>Coughing, pain, chemical burns</td><td>Blindness</td><td>Unconsciousness, airway inflammation, respiratory arrest, shock, death</td></tr></tbody></table>
+<p>Sarin and lewisite are colorless. The first sign is coughing and pain with no visible gas.</p>
+<h2>Protection</h2>
+<p>A gas mask stops inhalation and a CBRN suit stops skin absorption.</p>
+<table><thead><tr><th>Agent</th><th>Gas mask</th><th>CBRN suit</th></tr></thead><tbody><tr><td>CS</td><td>Stops all effects</td><td>Not needed</td></tr><tr><td>Chlorine</td><td>Stops inhalation</td><td>Stops skin exposure</td></tr><tr><td>Sarin</td><td>Stops inhalation</td><td>Stops skin exposure</td></tr><tr><td>Lewisite</td><td>Stops inhalation</td><td>Stops skin exposure</td></tr></tbody></table>
+<ul><li>Filters get used up while exposed. Replace them.</li><li>Vanilla masks and suits count by default. Modded ones must be added in the ACM settings.</li></ul>
+<p>Vehicles:</p>
+<table><thead><tr><th>Type</th><th>Examples</th><th>Protection</th></tr></thead><tbody><tr><td>Overpressured</td><td>CBRN vehicles, some IFVs and tanks</td><td>Full. Agents cannot get in</td></tr><tr><td>Sealed</td><td>Some MRAPs, APCs, IFVs, tanks</td><td>Only while shut. Opening a door, turning out or dismounting ends it, and the cabin can be contaminated</td></tr><tr><td>Unprotected</td><td>Open-top, bikes, civilian</td><td>None</td></tr></tbody></table>
+<p>Which vehicles are sealed or overpressured is set in the ACM settings.</p>
+<h2>Self aid and buddy aid</h2>
+<p>Mask up, suit up, get out of the gas, then check your buddy.</p>
+<p>Self aid:</p>
+<ol><li>Put on the gas mask. Put on the CBRN suit if the gas is yellow or you cannot see any.</li><li>Move out of the gas.</li><li>Swap the filter if you were in it for long.</li><li>Blinded: wash your eyes with water.</li><li>In pain: paracetamol.</li></ol>
+<p>Buddy aid:</p>
+<ol><li>Mask your buddy if they have not done it.</li><li>Drag them out of the gas.</li><li>Blinded: wash their eyes with water.</li><li>Unconscious: run the 3 Bs. Bleeding, breathing, beating.</li><li>Call CLS for muscle spasms, choking, chemical burns or anyone unconscious.</li></ol>
+<p>Muscle spasms mean nerve agent. Only the antidote stops it, and CLS carries it.</p>
+<h2>CLS</h2>
+<p>CLS carries the nerve agent autoinjectors and keeps the airway open until the Medic arrives.</p>
+<table><thead><tr><th>Agent</th><th>CLS action</th></tr></thead><tbody><tr><td>CS</td><td>Painkiller. Wash eyes with water</td></tr><tr><td>Chlorine</td><td>Painkiller. Wash eyes with water. Call the Medic if breathing worsens</td></tr><tr><td>Sarin</td><td>2 to 3 ATNA autoinjectors. Midazolam autoinjector for seizures. Call the Medic</td></tr><tr><td>Lewisite</td><td>Call the Medic. Shock needs fluids</td></tr></tbody></table>
+<table><thead><tr><th>Autoinjector</th><th>Dose</th><th>Onset</th><th>Lasts</th><th>Effect on vitals</th></tr></thead><tbody><tr><td>ATNA</td><td>2 to 3 injections to start</td><td>Under 15 s</td><td>About 15 min</td><td>Raises heart rate and blood pressure</td></tr><tr><td>Midazolam</td><td>1 injection</td><td>Under 30 s</td><td>About 20 min</td><td>Lowers heart rate and blood pressure</td></tr></tbody></table>
+<p>ATNA and midazolam autoinjectors:</p>
+<p class="qv-row"><img src="/quiver/img/acm/autoinjector_atna.png" alt="ATNA autoinjector" title="ATNA autoinjector"> <img src="/quiver/img/acm/autoinjector_midazolam.png" alt="Midazolam autoinjector" title="Midazolam autoinjector"></p>
+<ul><li>Run MARCH on every unconscious casualty once they are out of the gas.</li><li>Severe airway inflammation and airway spasm both end in respiratory arrest. Only a surgical airway fixes them.</li><li>An NPA or OPA may not go into an inflamed airway.</li></ul>
+<h2>Medic</h2>
+<p>The Medic gives atropine and fluids and cuts the surgical airway.</p>
+<table><thead><tr><th>Agent</th><th>Kills by</th><th>Medic action</th></tr></thead><tbody><tr><td>CS</td><td>Does not kill</td><td>Painkiller. Wash eyes</td></tr><tr><td>Chlorine</td><td>Airway inflammation, respiratory arrest</td><td>Painkiller. Wash eyes. Surgical airway for severe inflammation</td></tr><tr><td>Sarin</td><td>Airway spasm, respiratory arrest</td><td>Atropine 2 to 4 mg to start, more if needed, or 2 to 3 ATNA. Midazolam for seizures. Surgical airway for spasm</td></tr><tr><td>Lewisite</td><td>Airway inflammation, respiratory arrest, shock</td><td>Fluids for shock. Surgical airway for severe inflammation</td></tr></tbody></table>
+<p>Atropine and CricKit:</p>
+<p class="qv-row"><img src="/quiver/img/acm/vial_atropine.png" alt="Atropine vial" title="Atropine vial"> <img src="/quiver/img/acm/kit_cric.png" alt="CricKit" title="CricKit"></p>
+<ul><li>Atropine: IV or IM, 1 mg per 1 ml vial. Onset under 5 s IV, under 15 s IM. Lasts about 15 minutes. Raises heart rate.</li><li>Airway spasm can make the BVM ineffective. Go to a surgical airway.</li><li>A surgical airway needs a CricKit.</li><li>The unit medication notes list dimercaprol 3 to 5 mg/kg IM for lewisite, never IV. The wiki overview does not list it. Confirm it exists in the current ACM build before issuing it.</li></ul>

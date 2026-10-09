@@ -1,0 +1,19 @@
+<h2>What it is</h2>
+<p>Casualty conversion turns an unconscious player into an AI casualty and sends the player back to the reinforcement area.</p>
+<ul><li>The player stops waiting on the ground and rejoins by transport from the reinforcement area.</li><li>The AI casualty stays where it fell. It still needs treatment and evacuation.</li><li>Medical gameplay does not change. Only the time a player spends unconscious does.</li><li>It needs mission-side setup and ACM settings before it works.</li></ul>
+<h2>Requirements</h2>
+<p>All of these must be true before the convert action appears.</p>
+<table><thead><tr><th>Requirement</th><th>Always or by setting</th></tr></thead><tbody><tr><td>Casualty is unconscious</td><td>Always</td></tr><tr><td>Casualty is alive</td><td>Always</td></tr><tr><td>Casualty is not bleeding externally</td><td>Always</td></tr><tr><td>Casualty tickets remain</td><td>Always</td></tr><tr><td>Casualty is in a medical facility or vehicle</td><td>By setting</td></tr><tr><td>Medic has the required medic trait</td><td>By setting</td></tr><tr><td>Ertapenem has been given</td><td>By setting</td></tr></tbody></table>
+<p>Ertapenem dose is 1 g, IV or IM. It is a vial medication, so the Medic gives it.</p>
+<h2>Convert</h2>
+<p>Convert once the casualty is stable and will be down for a while.</p>
+<ol><li>Stop all external bleeding.</li><li>Move the casualty to a medical facility or vehicle, if the mission requires it.</li><li>Give ertapenem, if the mission requires it.</li><li>Use the convert action on the casualty.</li></ol>
+<p class="qv-fig"><img src="/quiver/img/acm/convert_action.png" alt="Convert casualty action" title="Convert casualty action"></p>
+<p>The player goes to the reinforcement area. The AI casualty stays with you.</p>
+<h2>Evacuate</h2>
+<p>Carry the converted casualty to the evacuation object and use the evacuate action.</p>
+<ol><li>Keep treating the AI casualty. It can still die.</li><li>Carry it to the evacuation object set by the mission.</li><li>Use the evacuate action on that object while carrying.</li></ol>
+<p class="qv-fig"><img src="/quiver/img/acm/evacuate_action.png" alt="Evacuate casualty action" title="Evacuate casualty action"></p>
+<h2>Tickets</h2>
+<p>Converting costs a casualty ticket and evacuating gives it back.</p>
+<table><thead><tr><th>Event</th><th>Effect</th></tr></thead><tbody><tr><td>Convert a casualty</td><td>Uses 1 casualty ticket</td></tr><tr><td>Evacuate the converted casualty</td><td>Returns the casualty ticket</td></tr><tr><td>Converted casualty dies</td><td>Counts as a player death and uses 1 respawn ticket</td></tr><tr><td>No casualty tickets left</td><td>No more conversions</td></tr></tbody></table>

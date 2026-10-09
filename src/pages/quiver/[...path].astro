@@ -1,0 +1,164 @@
+---
+// THE QUIVER, built from files. The handbook lives in this repo -
+// src/content/quiver/<slug>.html with _index.json beside them - and nowhere
+// else: PAC's wiki is the members' documents, not training (user, 2026-10-08).
+// Three kinds of page come out of one route: /quiver/ (the chapters),
+// /quiver/<chapter>/ (its pages) and /quiver/<chapter>/<page>/ (the page).
+// Same look as before: a contents column, search, breadcrumbs, QV codes, badges.
+import Base from '../../layouts/Base.astro';
+import Banner from '../../components/Banner.astro';
+import site from '../../data/site.json';
+import index from '../../content/quiver/_index.json';
+
+const bodies = import.meta.glob('../../content/quiver/*.html', { query: '?raw', import: 'default', eager: true });
+const slugOf = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const pad = (n) => String(n).padStart(2, '0');
+const KIND = { guide: 'Guide', policy: 'Policy', skill: 'Skill', role: 'Role', reference: 'Reference' };
+
+// Chapters in the order their first page has; pages by order then title. A
+// members-only page is not published here at all.
+const chapters = [];
+for (const p of index.filter((x) => x.public)) {
+	const cslug = slugOf(p.chapter);
+	let c = chapters.find((x) => x.slug === cslug);
+	if (!c) { c = { slug: cslug, name: p.chapter, pages: [] }; chapters.push(c); }
+	c.pages.push({ ...p, html: bodies[`../../content/quiver/${p.slug}.html`] || '' });
+}
+chapters.forEach((c, i) => { c.n = i + 1; c.pages.forEach((p, j) => { p.code = `QV/${pad(c.n)}.${pad(j + 1)}`; }); });
+
+export async function getStaticPaths() {
+	const idx = (await import('../../content/quiver/_index.json')).default;
+	const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+	const paths = [{ params: { path: undefined } }];
+	const seen = new Set();
+	for (const p of idx.filter((x) => x.public)) {
+		const c = slug(p.chapter);
+		if (!seen.has(c)) { seen.add(c); paths.push({ params: { path: c } }); }
+		paths.push({ params: { path: `${c}/${p.slug}` } });
+	}
+	return paths;
+}
+
+const parts = (Astro.params.path || '').split('/').filter(Boolean);
+const chapter = parts[0] ? chapters.find((c) => c.slug === parts[0]) : null;
+const page = chapter && parts[1] ? chapter.pages.find((p) => p.slug === parts[1]) : null;
+const href = (c, s) => `/quiver/${c}/${s ? `${s}/` : ''}`;
+
+// THE PAGE AS GROUPS OF BLOCKS (the user, 2026-10-09, pointed at UNITAF's
+// handbook: expandable cards for sub-skills). An h2 opens a group, an h3 a
+// block inside it; a group with no h3s is one block of its own, and text between
+// an h2 and its first h3 is an "Overview" card (user, 2026-10-09: sections that
+// did not collapse). Every block is
+// a card: collapsed, its code, badge and title; opened, its body. A card's code
+// is the page's code plus its place, QV/03.04/G2.1, so no two cards in the
+// handbook share one (user, 2026-10-09: "g1 g2 g3 needs to be more unique").
+const text = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+const groups = [];
+if (page) {
+	const parts = page.html.split(/(?=<h2>)/);
+	let g = 0;
+	for (const part of parts) {
+		const m = part.match(/^<h2>([\s\S]*?)<\/h2>/);
+		if (!m) { if (text(part)) groups.push({ n: 0, id: `${page.slug}-intro`, title: '', blocks: [{ id: `${page.slug}-intro-1`, code: '', title: '', body: part }] }); continue; }
+		g += 1;
+		const group = { n: g, id: `${page.slug}-${g}`, title: text(m[1]), blocks: [] };
+		const rest = part.slice(m[0].length);
+		const subs = rest.split(/(?=<h3>)/);
+		let b = 0;
+		for (const sub of subs) {
+			const h = sub.match(/^<h3>([\s\S]*?)<\/h3>/);
+			if (!h) { if (text(sub)) group.blocks.push({ id: `${group.id}-0`, code: `${page.code}/G${g}.0`, title: subs.length > 1 ? 'Overview' : group.title, body: sub, lead: subs.length > 1 }); continue; }
+			b += 1;
+			group.blocks.push({ id: `${group.id}-${b}`, code: `${page.code}/G${g}.${b}`, title: text(h[1]), body: sub.slice(h[0].length), lead: false });
+		}
+		groups.push(group);
+	}
+}
+const heads = groups.filter((g) => g.n > 0).map((g) => ({ id: g.id, text: g.title }));
+const title = page ? page.title : chapter ? chapter.name : 'The Quiver';
+const crumbs = [{ href: '/quiver/', label: 'The Quiver' }];
+if (chapter) crumbs.push({ href: href(chapter.slug), label: chapter.name });
+if (page) crumbs.push({ label: page.title });
+---
+<Base title={page || chapter ? `${title} - The Quiver` : 'The Quiver'} description={page?.summary || `The ${site.short}'s handbook: how we fight, talk, move and treat, written down and open to anyone.`}>
+	<Banner eyebrow="The handbook" title="The Quiver" lede="Where the arrows are kept: how we fight, talk, move and treat, written down where anyone can read it. Nothing here is a course to pass; read what you need and ask to be shown. Members' documents live in TAC//PAC behind a sign-in." strip="THE QUIVER // SAGITTAE IN TENEBRIS" foot="JMSB.INFO/QUIVER" seed={41} />
+
+	<section class="section qv">
+		<div class="wrap wide qv-layout">
+			<nav class="qv-side" aria-label="Handbook">
+				<label class="qv-search"><span class="idc-label">Search</span><input type="search" id="qv-q" placeholder="Find a page…  Ctrl K" autocomplete="off"></label>
+				<ol class="qv-chapters" id="qv-chapters">
+					{chapters.map((c) => (
+						<li class:list={['qv-ch', { open: chapter?.slug === c.slug }]} data-chapter={c.slug}>
+							<a class="qv-chlink" href={href(c.slug)}><span class="qv-n">{pad(c.n)}</span><span>{c.name}</span><span class="qv-count">{c.pages.length}</span></a>
+							<ol>{c.pages.map((p) => <li class:list={{ current: page?.slug === p.slug }} data-search={`${p.title} ${p.summary} ${c.name}`.toLowerCase()}><a href={href(c.slug, p.slug)}>{p.title}{p.kind && <i class="qv-k">{KIND[p.kind]}</i>}</a></li>)}</ol>
+						</li>
+					))}
+				</ol>
+			</nav>
+			<div class="qv-main">
+				<p class="qv-crumbs">{crumbs.map((c, i) => <>{i > 0 && <span>›</span>}{c.href ? <a href={c.href}>{c.label}</a> : <span>{c.label}</span>}</>)}</p>
+				<article class="qv-page">
+					{!chapter && (<>
+						<p class="qv-code">QV/00</p><h1>The handbook</h1>
+						<p class="qv-lede">Every chapter, and what is in it.</p>
+						<div class="qv-cards">{chapters.map((c) => <a class="card qv-card" href={href(c.slug)}><p class="qv-code">QV/{pad(c.n)}</p><h3>{c.name}</h3><p>{c.pages.map((p) => p.title).join(' · ')}</p><span class="qv-count">{c.pages.length} page{c.pages.length === 1 ? '' : 's'}</span></a>)}</div>
+					</>)}
+					{chapter && !page && (<>
+						<p class="qv-code">QV/{pad(chapter.n)}</p><h1>{chapter.name}</h1>
+						<div class="qv-blocks">{chapter.pages.map((p) => <a class="qv-block" href={href(chapter.slug, p.slug)}><span class="qv-code">{p.code}</span>{p.kind && <span class:list={['qv-badge', p.kind]}>{KIND[p.kind]}</span>}<h3>{p.title}</h3>{p.summary && <p>{p.summary}</p>}</a>)}</div>
+					</>)}
+					{page && (<>
+						<p class="qv-code">{page.code}{page.kind && <span class:list={['qv-badge', page.kind]}>{KIND[page.kind]}</span>}</p>
+						<h1>{page.title}</h1>
+						{page.summary && <p class="qv-lede">{page.summary}</p>}
+						{heads.length > 1 && <nav class="qv-onpage"><p class="eyebrow">On this page</p><ol>{heads.map((h) => <li><a href={`#${h.id}`}>{h.text}</a></li>)}</ol></nav>}
+						<div class="qv-tools"><button type="button" class="qv-btn" data-open="1">Expand all</button><button type="button" class="qv-btn" data-open="0">Collapse all</button></div>
+						<div class="qv-groups">
+							{groups.map((g) => (
+								<section class="qv-group" id={g.id}>
+									{g.n > 0 && g.blocks.some((bk) => !bk.lead && bk.title !== g.title) && <h2 class="qv-gh"><span class="qv-code">{page.code}/G{g.n}</span>{g.title}</h2>}
+									{g.blocks.map((bk) => g.n === 0
+										? <div class="prose qv-body qv-lead" set:html={bk.body}></div>
+										: <details class="qv-blockcard" id={bk.id}>
+												<summary><span class="qv-code">{bk.title === g.title ? `${page.code}/G${g.n}` : bk.code}</span><span class:list={['qv-badge', page.kind || 'guide']}>{KIND[page.kind] || 'Guide'}</span><b>{bk.title}</b></summary>
+												<div class="prose qv-body" set:html={bk.body}></div>
+											</details>)}
+								</section>
+							))}
+						</div>
+					</>)}
+				</article>
+				<div class="prose-foot">
+					{page && <span><a href={href(chapter.slug)}>{chapter.name}</a></span>}
+					{page?.updated && <span>Updated {page.updated}</span>}
+					{chapter && !page && <span><a href="/quiver/">All chapters</a></span>}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		// Search filters the contents column; Ctrl+K focuses it.
+		const q = document.getElementById('qv-q');
+		const items = [...document.querySelectorAll('#qv-chapters li[data-search]')];
+		const chapters = [...document.querySelectorAll('#qv-chapters .qv-ch')];
+		q.addEventListener('input', () => {
+			const needle = q.value.trim().toLowerCase();
+			items.forEach((li) => { li.hidden = !!needle && !li.dataset.search.includes(needle); });
+			chapters.forEach((c) => {
+				const shown = [...c.querySelectorAll('li[data-search]')].some((li) => !li.hidden);
+				c.hidden = !!needle && !shown;
+				if (needle) c.classList.add('open'); else c.classList.toggle('open', c.dataset.chapter === (location.pathname.split('/')[2] || ''));
+			});
+		});
+		// the cards: expand/collapse all, and a deep link opens its card
+		const cards = [...document.querySelectorAll('details.qv-blockcard')];
+		document.querySelectorAll('.qv-btn[data-open]').forEach((b) => b.addEventListener('click', () => cards.forEach((d) => { d.open = b.dataset.open === '1'; })));
+		const openHash = () => { const el = location.hash && document.querySelector(location.hash); if (el) { const d = el.closest('details') || (el.tagName === 'DETAILS' ? el : null); if (d) d.open = true; } };
+		window.addEventListener('hashchange', openHash); openHash();
+		// a screenshot opens full screen on a click, and closes on the next
+		document.querySelectorAll('.qv-fig img').forEach((im) => im.addEventListener('click', () => { if (document.fullscreenElement) document.exitFullscreen(); else im.requestFullscreen?.().catch(() => {}); }));
+		document.addEventListener('keydown', (e) => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); q.focus(); q.select(); } });
+	</script>
+</Base>

@@ -1,0 +1,9 @@
+{
+  "_": "Download links for the printed cards, filled in by hand once the PDFs are uploaded (Google Drive). Key: deck slug, then card id. An empty string shows nothing.",
+  "acm": {
+    "self-buddy-aid": { "pdf": "", "pdf_dark": "" },
+    "cls": { "pdf": "", "pdf_dark": "" },
+    "medic-treatment": { "pdf": "", "pdf_dark": "" },
+    "medic-drugs": { "pdf": "", "pdf_dark": "" }
+  }
+}

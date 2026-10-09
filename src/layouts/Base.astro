@@ -18,9 +18,9 @@ const links = [
 	{ href: '/roster', label: 'Roster' },
 	{ href: '/sop', label: 'SOP' },
 	{ href: '/quiver', label: 'Quiver' },
+	{ href: '/smartcards', label: 'SmartCards' },
 	{ href: '/events', label: 'Events' },
 	{ href: '/tbd', label: 'To be decided' },
-	{ href: `${site.pac}/?page=wiki`, label: 'Wiki', external: true },
 ];
 const join = site.discord !== '' ? site.discord : `${site.pac}/?page=apply`;
 const joinLabel = site.discord !== '' ? 'Join Discord' : 'Join us';
@@ -44,10 +44,20 @@ const fullTitle = title === site.short ? `${site.short} - ${site.name}` : `${tit
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 	<link rel="canonical" href={new URL(path === '/' ? '/' : path, Astro.site)}>
+	<script is:inline>
+		// Light or dark before the first paint: the saved choice, else dark (the site's own look).
+		(function () {
+			var t = null;
+			try { t = localStorage.getItem('theme'); } catch (e) {}
+			if (t !== 'light' && t !== 'dark') t = 'dark';
+			document.documentElement.setAttribute('data-theme', t);
+		})();
+	</script>
 </head>
 <body class:list={{ home }}>
 	<header class="bar">
 		<a class="brand" href="/"><img src="/logo.svg" alt="" width="36" height="36">{site.short}</a>
+		<button class="theme" type="button" id="theme" aria-label="Switch between light and dark" title="Light / dark"><span class="sun"></span><span class="moon"></span></button>
 		<button class="navtoggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
 		<nav class="nav" id="nav" aria-label="Site">
 			{links.map((l) => (
@@ -78,6 +88,13 @@ const fullTitle = title === site.short ? `${site.short} - ${site.name}` : `${tit
 		const showTop = () => { top.hidden = window.scrollY < window.innerHeight * 1.5; };
 		window.addEventListener('scroll', showTop, { passive: true }); showTop();
 		top.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+		// Light / dark: the button flips it and remembers it on this device.
+		const th = document.getElementById('theme');
+		th?.addEventListener('click', () => {
+			const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+			document.documentElement.setAttribute('data-theme', next);
+			try { localStorage.setItem('theme', next); } catch (e) {}
+		});
 		const t = document.querySelector('.navtoggle');
 		const n = document.getElementById('nav');
 		if (t && n) {
