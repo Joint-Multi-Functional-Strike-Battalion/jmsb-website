@@ -8,7 +8,7 @@ The 1st Joint Multi-Functional Strike Battalion's public site. A plain
 | Home | `src/pages/index.astro` | one screen: the logo, the name, one line, Join and About, the next operation counting down, the three servers |
 | Unit | `src/pages/unit.astro` | who we are, what we are, what we ask, how we run, ranks, the mods, questions |
 | Roles | `src/pages/roles.astro` | the two halves of a player: roles (mission-based, from PAC's order of battle) and skills (what each qualification does), and the layered arsenal |
-| Roster | `src/pages/roster.astro` | staff (the PAC admins) first, then everyone else: rank, qualifications, status, enlistment - written out, no abbreviations |
+| Roster | `src/pages/roster.astro` | identification cards: the member's photo from PAC (or the patch), rank with insignia, pay grade, assignment, enlistment, qualifications in full; staff first, then everyone else, each by rank |
 | SOP | `src/pages/sop.astro` | the standard operating procedures |
 | Events | `src/pages/events.astro` | the calendar: next up, coming up, played |
 | To be decided | `src/pages/tbd.astro` | the open questions - weapons, medical - with where we are and the choices |

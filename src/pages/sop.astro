@@ -8,6 +8,8 @@
 // contents, boxes the sections that deserve a box and lays map-edge rules
 // between the parts - so an edit in PAC never has to know any of it.
 import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
+import Contents from '../components/Contents.astro';
 import site from '../data/site.json';
 import fallback from '../data/sop-fallback.html?raw';
 
@@ -58,26 +60,11 @@ const sections = parts.map((part) => {
 }).join('');
 ---
 <Base title="SOP" description={`The ${site.short}'s standard operating procedures: what we ask, how we play, how we talk, and the rules.`}>
-	<div class="sop-head">
-		<canvas class="topo" id="sop-topo" aria-hidden="true"></canvas>
-		<div class="p-class">STANDING ORDERS // ALPHA COMPANY, 1ST JMSB</div>
-		<div class="sop-head-in wrap">
-			<div>
-				<p class="eyebrow">Standard operating procedures</p>
-				<h1>How we play</h1>
-				<p class="lede">What we ask of every member, how we run an operation, how we talk on the net, and the rules that keep it fun. Read it before your first operation; you will be held to it from your second.</p>
-			</div>
-			<img src="/logo-patch.svg" alt="" width="180" height="180">
-		</div>
-		<div class="p-class p-foot">READ BEFORE YOUR FIRST OPERATION // JMSB.INFO/SOP</div>
-	</div>
+	<Banner eyebrow="Standard operating procedures" title="How we play" lede="What we ask of every member, how we run an operation, how we talk on the net, and the rules that keep it fun. Read it before your first operation; you will be held to it from your second." strip="STANDING ORDERS // ALPHA COMPANY, 1ST JMSB" foot="READ BEFORE YOUR FIRST OPERATION // JMSB.INFO/SOP" seed={23} />
 
 	<section class="section">
 		<div class="wrap sop-layout">
-			<nav class="toc" aria-label="Contents">
-				<p class="eyebrow">Contents</p>
-				<ol>{toc.map((t) => <li><a href={`#${t.id}`}>{t.title}</a></li>)}</ol>
-			</nav>
+			<Contents items={toc} />
 			<article class="prose sop" set:html={sections}></article>
 		</div>
 		<div class="wrap">
@@ -88,9 +75,4 @@ const sections = parts.map((part) => {
 		</div>
 	</section>
 
-	<script>
-		import { contours } from '../scripts/pac.js';
-		const c = document.getElementById('sop-topo');
-		contours(c, c.parentElement, 23);
-	</script>
 </Base>

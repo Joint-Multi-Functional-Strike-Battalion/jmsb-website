@@ -1,0 +1,35 @@
+---
+// The page banner: a contour map behind the title, a brass strip above and
+// below like the classification lines on an order, and the shoulder patch on
+// the right. First drawn for the SOP; the user wanted it on every page.
+interface Props {
+	eyebrow: string;
+	title: string;
+	lede?: string;
+	strip: string;
+	foot?: string;
+	seed?: number;
+	ledeId?: string;
+}
+const { eyebrow, title, lede = '', strip, foot = 'JMSB.INFO', seed = 23, ledeId } = Astro.props;
+---
+<div class="banner" data-seed={seed}>
+	<canvas class="topo" aria-hidden="true"></canvas>
+	<div class="p-class">{strip}</div>
+	<div class="banner-in wrap">
+		<div>
+			<p class="eyebrow">{eyebrow}</p>
+			<h1>{title}</h1>
+			{lede !== '' && <p class="lede" id={ledeId}>{lede}</p>}
+		</div>
+		<img src="/logo-patch.svg" alt="" width="180" height="180">
+	</div>
+	<div class="p-class p-foot">{foot}</div>
+</div>
+<script>
+	import { contours } from '../scripts/pac.js';
+	document.querySelectorAll('.banner').forEach((b) => {
+		const c = b.querySelector('canvas.topo');
+		if (c) contours(c, b, Number(b.getAttribute('data-seed')) || 0);
+	});
+</script>

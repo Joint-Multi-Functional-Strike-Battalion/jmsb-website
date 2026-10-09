@@ -2,6 +2,8 @@
 // The unit: who we are, what we ask, what an op night is like, how we are
 // organised (live from PAC), who we are (live from PAC), the mods, the FAQ.
 import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
+import Contents from '../components/Contents.astro';
 import Divider from '../components/Divider.astro';
 import site from '../data/site.json';
 
@@ -46,6 +48,17 @@ const ranks = [
 	{ name: 'Colonel', grade: 'O-6' },
 ];
 
+// The contents column, one entry per section below.
+const contents = [
+	{ id: 'about', title: 'Who we are' },
+	{ id: 'features', title: 'What we are' },
+	{ id: 'asks', title: 'What we ask' },
+	{ id: 'orbat', title: 'How we run' },
+	{ id: 'ranks', title: 'Ranks' },
+	{ id: 'mods', title: 'The mods' },
+	{ id: 'faq', title: 'Questions' },
+];
+
 const faq = [
 	['Do I need to have played milsim before?', 'No. Show up 30 minutes before the operation and someone will get you kitted out and on the net. The rest you learn on the job.'],
 	['Is there basic training?', 'No required training. You learn on the job. If you want to be taught something, say so and we will make the time. Qualifications such as Medic or Joint Fires Observer go on your record in TAC//PAC once you have shown you can do the job.'],
@@ -57,12 +70,12 @@ const faq = [
 ];
 ---
 <Base title="The unit" description={`Who the ${site.short} are, what we ask of members, how an operation night runs, how the company is organised, and the mods we play with.`}>
-	<div class="wrap pagehead">
-		<p class="eyebrow">Alpha Company · {site.short}</p>
-		<h1>The unit</h1>
-		<p class="lede">An Arma 3 unit that fights as one company: a headquarters, three teams and a support team working the same operation, with the roles and qualifications of every operator kept in TAC//PAC.</p>
-	</div>
+	<Banner eyebrow={`Alpha Company · ${site.short}`} title="The unit" lede="An Arma 3 unit that fights as one company: a headquarters, three teams and a support team working the same operation, with the roles and qualifications of every operator kept in TAC//PAC." strip="ALPHA COMPANY // 1ST JMSB" foot="JMSB.INFO/UNIT" seed={5} />
 
+	<section class="section">
+		<div class="wrap sop-layout">
+			<Contents items={contents} />
+			<div class="toc-body">
 	<section class="section" id="about">
 		<div class="wrap cols">
 			<div>
@@ -190,6 +203,9 @@ const faq = [
 				{faq.map(([q, a]) => <details><summary>{q}</summary><p set:html={a}></p></details>)}
 			</div>
 			<p style="margin-top: 28px"><a class="btn" href={join} target={site.discord !== '' ? '_blank' : undefined} rel="noopener">{site.discord !== '' ? 'Join Discord' : 'Apply to join'}</a></p>
+		</div>
+	</section>
+			</div>
 		</div>
 	</section>
 

@@ -3,6 +3,7 @@
 // so members can see them and weigh in. Short on purpose; each one is a
 // question, where we are now, and the choices.
 import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
 import site from '../data/site.json';
 
 const open = [
@@ -33,11 +34,7 @@ const open = [
 ];
 ---
 <Base title="To be decided" description={`The open questions about how the ${site.short} plays: weapons, medical, and what comes next.`}>
-	<div class="wrap pagehead">
-		<p class="eyebrow">Open questions</p>
-		<h1>To be decided</h1>
-		<p class="lede">Things we have not settled yet. If you have an opinion, say so on Discord.</p>
-	</div>
+	<Banner eyebrow="Open questions" title="To be decided" lede="Things we have not made final yet. We have strong opinions on each of them, and we want more input before we settle them - so if you have one, say so on Discord." strip="TO BE DECIDED // OPEN QUESTIONS" foot="JMSB.INFO/TBD" seed={41} />
 	<section class="section">
 		<div class="wrap tbd">
 			{open.map((o) => (

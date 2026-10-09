@@ -111,12 +111,12 @@ export function contours(canvas, host, seed = 0) {
 		canvas.width = w * dpr; canvas.height = h * dpr;
 		const ctx = canvas.getContext('2d');
 		ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-		ctx.fillStyle = '#1c2321'; ctx.fillRect(0, 0, w, h);
+		ctx.fillStyle = '#20261c'; ctx.fillRect(0, 0, w, h);
 		const cell = 8, cols = Math.ceil(w / cell) + 1, rows = Math.ceil(h / cell) + 1, s = 1 / 170, vals = [];
 		for (let j = 0; j < rows; j++) { vals[j] = []; for (let i = 0; i < cols; i++) vals[j][i] = field(i * cell * s + 11 + seed, j * cell * s + 7 + seed * 0.7); }
 		for (let L = 0; L < 14; L++) {
 			const lvl = 0.22 + L * 0.04;
-			ctx.strokeStyle = L % 5 === 0 ? 'rgba(200,162,74,0.42)' : 'rgba(200,162,74,0.16)';
+			ctx.strokeStyle = L % 5 === 0 ? 'rgba(194,168,120,0.42)' : 'rgba(194,168,120,0.16)';
 			ctx.lineWidth = L % 5 === 0 ? 1.4 : 1;
 			ctx.beginPath();
 			for (let j = 0; j < rows - 1; j++) for (let i = 0; i < cols - 1; i++) {
@@ -131,7 +131,7 @@ export function contours(canvas, host, seed = 0) {
 			}
 			ctx.stroke();
 		}
-		ctx.strokeStyle = 'rgba(244,242,236,0.06)'; ctx.lineWidth = 1; ctx.beginPath();
+		ctx.strokeStyle = 'rgba(233,228,211,0.06)'; ctx.lineWidth = 1; ctx.beginPath();
 		for (let gx = 0; gx < w; gx += 96) { ctx.moveTo(gx + .5, 0); ctx.lineTo(gx + .5, h); }
 		for (let gy = 0; gy < h; gy += 96) { ctx.moveTo(0, gy + .5); ctx.lineTo(w, gy + .5); }
 		ctx.stroke();

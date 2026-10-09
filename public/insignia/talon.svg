@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 128" width="110" height="128" role="img" aria-label="Talon aviation insignia"><path d="M55 4 L104 18 V62 C104 94 82 114 55 124 C28 114 6 94 6 62 V18 Z" fill="#1c2321" stroke="#c8a24a" stroke-width="3"/>
-          <path d="M22 34 H88 M55 34 V44" stroke="#c8a24a" stroke-width="3"/>
-          <path d="M20 56 C36 48 48 50 55 60 C62 50 74 48 90 56 C76 58 66 64 60 72 H50 C44 64 34 58 20 56 Z" fill="#f4f2ec"/>
-          <path d="M46 74 C42 86 44 96 50 102 M55 74 C55 88 55 96 55 104 M64 74 C68 86 66 96 60 102" stroke="#c8a24a" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 128" width="110" height="128" role="img" aria-label="Talon aviation insignia"><path d="M55 4 L104 18 V62 C104 94 82 114 55 124 C28 114 6 94 6 62 V18 Z" fill="#20261c" stroke="#c2a878" stroke-width="3"/>
+          <path d="M22 34 H88 M55 34 V44" stroke="#c2a878" stroke-width="3"/>
+          <path d="M20 56 C36 48 48 50 55 60 C62 50 74 48 90 56 C76 58 66 64 60 72 H50 C44 64 34 58 20 56 Z" fill="#e9e4d3"/>
+          <path d="M46 74 C42 86 44 96 50 102 M55 74 C55 88 55 96 55 104 M64 74 C68 86 66 96 60 102" stroke="#c2a878" stroke-width="4" fill="none" stroke-linecap="round"/></svg>

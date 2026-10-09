@@ -2,14 +2,11 @@
 // Events: the calendar from TAC//PAC. The next operation with a countdown,
 // then what is coming, then what was played. Times are the visitor's own.
 import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
 import site from '../data/site.json';
 ---
 <Base title="Events" description={`The ${site.short}'s calendar: the next operation, what is coming up, and what was played.`}>
-	<div class="wrap pagehead">
-		<p class="eyebrow">The calendar</p>
-		<h1>Events</h1>
-		<p class="lede" id="ev-note">Operations, training nights and events, straight from TAC//PAC. Times are shown in your own time zone.</p>
-	</div>
+	<Banner eyebrow="The calendar" title="Events" lede="Operations, training nights and events, straight from TAC//PAC." strip="THE CALENDAR // LIVE FROM TAC//PAC" foot="JMSB.INFO/EVENTS" seed={29} />
 	<section class="section">
 		<div class="wrap" id="ev">
 			<p class="dim">Loading the calendar. If it does not appear, it is on <a href={`${site.pac}/?page=events`} target="_blank" rel="noopener">TAC//PAC</a>.</p>
@@ -17,11 +14,8 @@ import site from '../data/site.json';
 	</section>
 
 	<script>
-		import { feed, when, zone, countdown, contours, esc, PAC } from '../scripts/pac.js';
+		import { feed, when, countdown, contours, esc, PAC } from '../scripts/pac.js';
 		const box = document.getElementById('ev');
-		const note = document.getElementById('ev-note');
-		const z = zone();
-		if (z) note.textContent = `Operations, training nights and events, straight from TAC//PAC. Times are shown in your own time zone (${z}).`;
 
 		const row = (e, past) => `<li class="ev${past ? ' past' : ''}${e.cancelled ? ' cancelled' : ''}">
 			<span class="d">${esc(when(e.start))}</span>

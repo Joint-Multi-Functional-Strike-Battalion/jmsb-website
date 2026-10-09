@@ -17,6 +17,7 @@ const links = [
 	{ href: '/roles', label: 'Roles' },
 	{ href: '/roster', label: 'Roster' },
 	{ href: '/sop', label: 'SOP' },
+	{ href: '/quiver', label: 'Quiver' },
 	{ href: '/events', label: 'Events' },
 	{ href: '/tbd', label: 'To be decided' },
 	{ href: `${site.pac}/?page=wiki`, label: 'Wiki', external: true },
@@ -60,6 +61,7 @@ const fullTitle = title === site.short ? `${site.short} - ${site.name}` : `${tit
 	<main>
 		<slot />
 	</main>
+	<a class="totop" href="#" id="totop" aria-label="Back to top" hidden><span>Top</span></a>
 	{!home && (
 		<footer>
 			<a class="brand" href="/"><img src="/logo.svg" alt="" width="28" height="28">{site.short}</a>
@@ -71,6 +73,11 @@ const fullTitle = title === site.short ? `${site.short} - ${site.name}` : `${tit
 		</footer>
 	)}
 	<script>
+		// Back to top, once a long page has been scrolled a screen and a half.
+		const top = document.getElementById('totop');
+		const showTop = () => { top.hidden = window.scrollY < window.innerHeight * 1.5; };
+		window.addEventListener('scroll', showTop, { passive: true }); showTop();
+		top.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 		const t = document.querySelector('.navtoggle');
 		const n = document.getElementById('nav');
 		if (t && n) {

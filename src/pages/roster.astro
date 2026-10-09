@@ -1,90 +1,144 @@
 ---
-// The roster: staff first, then everyone else, with the whole of what TAC//PAC
-// shows the public - rank, qualifications, status, when they enlisted - written
-// out in words (user, 2026-10-08: "more details less acronyms and
-// abbreviations"; "break in to staff ... then an unlabelled section with
-// everyone else"). Nobody is assigned to a slot yet, so a slot line shows only
-// when there is one.
+// The roster as identification cards (the user's pick, 2026-10-08): a light
+// card on the dark site, the member's photo if they added one in TAC//PAC,
+// the rank with its insignia, every field labelled and nothing abbreviated,
+// the qualifications in a column and the awards in a row. Staff (the PAC
+// admins) first, then everyone else; a search box and a sort above them.
 import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
 import site from '../data/site.json';
 ---
-<Base title="Roster" description={`Who serves in Alpha Company, ${site.short}: rank, qualifications and status, live from TAC//PAC.`}>
-	<div class="wrap pagehead">
-		<p class="eyebrow">Alpha Company · {site.short}</p>
-		<h1>The roster</h1>
-		<p class="lede">Everyone on the books, as TAC//PAC holds them right now: rank, what they are qualified to do, and when they enlisted. Early days: the structure in TAC//PAC is still being tested, and nobody is assigned to a slot yet.</p>
-	</div>
+<Base title="Roster" description={`Who serves in Alpha Company, ${site.short}: rank, qualifications, awards and status, live from TAC//PAC.`}>
+	<Banner eyebrow={`Alpha Company · ${site.short}`} title="The roster" lede="Everyone on the books, as TAC//PAC holds them right now: rank, what they are qualified to do, what they have been awarded, and when they enlisted. Early days: the structure in TAC//PAC is still being tested, and nobody is assigned to a slot yet." strip="THE ROSTER // LIVE FROM TAC//PAC" foot="JMSB.INFO/ROSTER" seed={17} />
 	<section class="section">
-		<div class="wrap" id="roster">
-			<p class="dim">Loading the roster from TAC//PAC. If it does not appear, it is on <a href={`${site.pac}/`} target="_blank" rel="noopener">TAC//PAC</a>.</p>
+		<div class="wrap wide">
+			<form class="rs-tools" role="search" onsubmit="return false">
+				<label class="rs-search"><span class="idc-label">Search</span><input type="search" id="rs-q" placeholder="Name, rank, qualification, award…" autocomplete="off"></label>
+				<label class="rs-sort"><span class="idc-label">Sort</span>
+					<select id="rs-sort">
+						<option value="rank">Rank, highest first</option>
+						<option value="name">Name, A to Z</option>
+						<option value="oldest">Longest serving first</option>
+						<option value="newest">Newest first</option>
+					</select>
+				</label>
+				<span class="rs-count" id="rs-count" aria-live="polite"></span>
+			</form>
+			<div id="roster">
+				<p class="dim">Loading the roster from TAC//PAC. If it does not appear, it is on <a href={`${site.pac}/`} target="_blank" rel="noopener">TAC//PAC</a>.</p>
+			</div>
 		</div>
 	</section>
 
 	<script>
 		import { feed, esc, expand, skillName, words, PAC } from '../scripts/pac.js';
 		const box = document.getElementById('roster');
+		const q = document.getElementById('rs-q');
+		const sortSel = document.getElementById('rs-sort');
+		const count = document.getElementById('rs-count');
 
 		const month = (iso) => {
 			const d = new Date(iso + 'T00:00:00');
 			return Number.isNaN(d.getTime()) ? '' : new Intl.DateTimeFormat(undefined, { month: 'long', year: 'numeric' }).format(d);
 		};
 
-		/* Qualifications in groups, not one long line (user, 2026-10-08:
-		   "should be more structured and less of a csv list"). */
-		const CATS = [
-			['Medical', ['cls', 'medic']],
-			['Engineering and breaching', ['eng', 'breacher']],
-			['Fires and reconnaissance', ['jfo', 'isr', 'uav']],
-			['Marksmanship', ['marksman', 'sniper']],
-		];
-		const quals = (r, p) => {
-			const left = new Set(p.skills);
-			const groups = [];
-			for (const [label, ids] of CATS) {
-				const have = ids.filter((id) => left.has(id));
-				if (!have.length) continue;
-				have.forEach((id) => left.delete(id));
-				groups.push([label, have]);
+		/* A barcode that is only decoration, but differs per member: the bars
+		   come from a hash of the name, so no two cards match. */
+		const barcode = (name) => {
+			let h = 2166136261;
+			for (const c of name) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619) >>> 0; }
+			let x = 0, out = '';
+			while (x < 220) {
+				const w = 1 + (h & 3); h = (Math.imul(h, 1103515245) + 12345) >>> 0;
+				out += `<rect x="${x}" y="0" width="${w}" height="28"/>`;
+				x += w + 1 + (h & 3); h = (Math.imul(h, 1103515245) + 12345) >>> 0;
 			}
-			if (left.size) groups.push(['Other', [...left]]);
-			return groups.map(([label, ids]) => `<div class="qcat"><span class="qlabel">${esc(label)}</span><span class="qitems">${ids.map((id) => `<i>${esc(skillName(r.skills[id], id))}</i>`).join('')}</span></div>`).join('');
+			return `<svg class="idc-bar" viewBox="0 0 224 28" aria-hidden="true">${out}</svg>`;
 		};
 
-		const card = (r, p) => {
+		/* Everything the card shows, worked out once per player, so the search
+		   and the sort read words rather than ids. */
+		const prepare = (r, p) => {
 			const rank = r.ranks[p.rank];
-			const ins = rank && rank.insignia ? `<img src="${esc(rank.insignia)}" alt="">` : '';
-			const q = quals(r, p);
-			const awards = p.awards.map((a) => esc(r.awards[a]?.name || a)).filter(Boolean);
-			const slot = p.role && r.roles[p.role]
-				? esc(words(r.roles[p.role])) + (p.group ? `, ${esc(expand(p.group))}` : '')
-				: (p.group ? esc(expand(p.group)) : '');
-			const rows = [
-				['Rank', rank ? esc(rank.name) + (rank.payGrade ? ` <span class="muted mono">${esc(rank.payGrade)}</span>` : '') : ''],
-				['Slot', slot],
-				['Qualified as', q ? `<div class="quals">${q}</div>` : ''],
-				['Awards', awards.length ? awards.join(', ') : ''],
-				['Status', p.status ? esc(r.statuses[p.status] || p.status) : ''],
-				['Enlisted', month(p.enlisted)],
-			].filter(([, v]) => v !== '');
-			return `<article class="rs-card">
-				<div class="rs-ins">${ins}</div>
-				<div class="rs-body">
-					<h3>${esc(p.name)}</h3>
-					<dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+			const quals = p.skills.map((s) => skillName(r.skills[s], s));
+			const awards = p.awards.map((a) => r.awards[a] || { name: a, image: null });
+			// Staff is a stamp on the card, not the assignment: the slot stays the slot.
+			const assignment = p.role && r.roles[p.role] ? words(r.roles[p.role]) + (p.group ? `, ${expand(p.group)}` : '')
+				: (p.group ? expand(p.group) : 'Alpha Company');
+			const status = p.status ? (r.statuses[p.status] || p.status) : '';
+			return {
+				p, quals, awards, assignment, status,
+				rankName: rank ? rank.name : 'Private',
+				rankOrder: rank ? rank.order : -1,
+				payGrade: rank && rank.payGrade ? rank.payGrade : '',
+				insignia: rank && rank.insignia ? rank.insignia : '',
+				enlisted: month(p.enlisted),
+				haystack: [p.name, rank ? rank.name : '', rank ? rank.payGrade || '' : '', assignment, status, ...quals, ...awards.map((a) => a.name)].join(' ').toLowerCase(),
+			};
+		};
+
+		const card = (m) => {
+			const photo = m.p.avatar
+				? `<img class="idc-photo" src="${esc(m.p.avatar)}" alt="">`
+				: `<div class="idc-photo idc-nophoto"><img src="/logo-patch.svg" alt=""></div>`;
+			return `<article class="idc">
+				<div class="idc-top"><span>1st JMSB · Alpha Company · Identification</span>${m.p.staff ? '<span class="idc-stamp">Staff</span>' : ''}<img src="/logo-patch.svg" alt="" width="36" height="36"></div>
+				<div class="idc-body">
+					<div class="idc-left">
+						${photo}
+						<div class="idc-rank">${m.insignia ? `<img src="${esc(m.insignia)}" alt="">` : ''}<b>${esc(m.rankName)}</b></div>
+					</div>
+					<dl class="idc-fields">
+						<dt>Name</dt><dd class="idc-name">${esc(m.p.name)}</dd>
+						<dt>Pay grade</dt><dd>${esc(m.payGrade)}</dd>
+						<dt>Assignment</dt><dd>${esc(m.assignment)}</dd>
+						<dt>Enlisted</dt><dd>${esc(m.enlisted)}</dd>
+					</dl>
+					<div class="idc-quals">
+						<span class="idc-label">Qualified as</span>
+						${m.quals.length ? `<ul>${m.quals.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="muted">None yet</p>'}
+					</div>
+					<div class="idc-awards">
+						<span class="idc-label">Awards</span>
+						${m.awards.length
+							? `<ul>${m.awards.map((a) => `<li>${a.image ? `<img src="${esc(a.image)}" alt="" title="${esc(a.name)}">` : ''}<span>${esc(a.name)}</span></li>`).join('')}</ul>`
+							: '<p class="muted">None yet</p>'}
+					</div>
 				</div>
+				<div class="idc-foot">${barcode(m.p.name)}<span class="idc-status${m.status && m.status.toLowerCase() !== 'active' ? ' off' : ''}">${m.status ? esc(m.status.toUpperCase()) : 'ON THE BOOKS'}</span></div>
 			</article>`;
 		};
 
+		const SORTS = {
+			rank:   (a, b) => b.rankOrder - a.rankOrder || a.p.name.localeCompare(b.p.name),
+			name:   (a, b) => a.p.name.localeCompare(b.p.name),
+			oldest: (a, b) => (a.p.enlisted || '9999').localeCompare(b.p.enlisted || '9999') || a.p.name.localeCompare(b.p.name),
+			newest: (a, b) => (b.p.enlisted || '').localeCompare(a.p.enlisted || '') || a.p.name.localeCompare(b.p.name),
+		};
+
+		let members = [];
+		const render = () => {
+			const needle = q.value.trim().toLowerCase();
+			const shown = members.filter((m) => !needle || needle.split(/\s+/).every((w) => m.haystack.includes(w)));
+			shown.sort(SORTS[sortSel.value] || SORTS.rank);
+			count.textContent = needle ? `${shown.length} of ${members.length}` : `${members.length} on the books`;
+			const staff = shown.filter((m) => m.p.staff);
+			const rest = shown.filter((m) => !m.p.staff);
+			let out = '';
+			if (staff.length) out += `<div class="rs-group"><h2>Staff</h2><div class="idc-grid">${staff.map(card).join('')}</div></div>`;
+			if (rest.length) out += `<div class="rs-group"><div class="idc-grid">${rest.map(card).join('')}</div></div>`;
+			if (!shown.length) out = needle
+				? `<p class="dim">Nobody matches "${esc(q.value.trim())}".</p>`
+				: '<p class="dim">The rest of the company goes here as people enlist.</p>';
+			box.innerHTML = out;
+		};
+		q.addEventListener('input', render);
+		sortSel.addEventListener('change', render);
+
 		feed('roster').then((r) => {
 			if (!r.players.length) { box.innerHTML = '<p class="dim">The roster is being set up.</p>'; return; }
-			const staff = r.players.filter((p) => p.staff);
-			const rest = r.players.filter((p) => !p.staff);
-			let out = '';
-			if (staff.length) out += `<div class="rs-group"><h2>Staff</h2><div class="rs-people">${staff.map((p) => card(r, p)).join('')}</div></div>`;
-			out += rest.length
-				? `<div class="rs-group"><div class="rs-people">${rest.map((p) => card(r, p)).join('')}</div></div>`
-				: '<div class="rs-group"><p class="dim">The rest of the company goes here as people enlist.</p></div>';
-			box.innerHTML = out;
+			members = r.players.map((p) => prepare(r, p));
+			render();
 		}).catch(() => {
 			box.innerHTML = `<p class="dim">The roster could not be read right now. It is on <a href="${esc(PAC)}/" target="_blank" rel="noopener">TAC//PAC</a>.</p>`;
 		});

@@ -1,0 +1,126 @@
+---
+// THE QUIVER: the unit's handbook, where the arrows are kept. Every PUBLIC
+// page of TAC//PAC's wiki, laid out the way a force manual is (the user,
+// 2026-10-08, pointed at UNITAF's handbook): a fixed contents column with the
+// chapters and their pages, a search box, breadcrumbs, a code on every page,
+// a badge for what kind of page it is. Read live from the feed: a page written
+// in PAC and marked public is here on the next load. Sensitive documents stay
+// in PAC's wiki behind a sign-in. /quiver/ is the index; /quiver/?c=<chapter>
+// opens a chapter, /quiver/?c=<chapter>&s=<page> a page.
+import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
+import site from '../data/site.json';
+---
+<Base title="The Quiver" description={`The ${site.short}'s handbook: how we fight, talk, move and treat, written down and open to anyone.`}>
+	<Banner eyebrow="The handbook" title="The Quiver" lede="Where the arrows are kept: how we fight, talk, move and treat, written down where anyone can read it. Nothing here is a course to pass; read what you need and ask to be shown. Members' documents live in TAC//PAC's wiki behind a sign-in." strip="THE QUIVER // SAGITTAE IN TENEBRIS" foot="JMSB.INFO/QUIVER" seed={41} />
+
+	<section class="section qv">
+		<div class="wrap wide qv-layout">
+			<nav class="qv-side" aria-label="Handbook">
+				<label class="qv-search"><span class="idc-label">Search</span><input type="search" id="qv-q" placeholder="Find a page…  Ctrl K" autocomplete="off"></label>
+				<ol class="qv-chapters" id="qv-chapters"><li><span class="dim">Loading…</span></li></ol>
+				<p class="eyebrow toc-sub">Members only</p>
+				<p class="toc-note">Sensitive documents are in <a href={`${site.pac}/?page=wiki`} target="_blank" rel="noopener">TAC//PAC's wiki</a>. Sign in there to read them.</p>
+			</nav>
+			<div class="qv-main">
+				<p class="qv-crumbs" id="qv-crumbs"><a href="/quiver/">The Quiver</a></p>
+				<article class="qv-page" id="qv-page"><p class="dim">Loading the handbook from TAC//PAC…</p></article>
+				<div class="prose-foot" id="qv-foot"></div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		import { feed, esc, when, PAC } from '../scripts/pac.js';
+		const chaptersEl = document.getElementById('qv-chapters');
+		const pageEl = document.getElementById('qv-page');
+		const crumbs = document.getElementById('qv-crumbs');
+		const foot = document.getElementById('qv-foot');
+		const q = document.getElementById('qv-q');
+		const params = new URLSearchParams(location.search);
+		const want = { c: params.get('c') || '', s: params.get('s') || '' };
+		const slugOf = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+		const KIND = { guide: 'Guide', policy: 'Policy', skill: 'Skill', role: 'Role', reference: 'Reference' };
+		const href = (c, s) => `/quiver/?c=${encodeURIComponent(c)}${s ? `&s=${encodeURIComponent(s)}` : ''}`;
+		const pad = (n) => String(n).padStart(2, '0');
+
+		/* Chapters in the order their first page has; pages inside by order
+		   then title - the feed already sorts them that way. A page without a
+		   chapter goes under "Other pages", last. The SOP has its own page on
+		   the site, so it is not listed here. */
+		const organise = (pages) => {
+			const chapters = [];
+			for (const p of pages) {
+				if (p.slug === 'sop') continue;
+				const name = p.chapter || 'Other pages';
+				const slug = p.chapter ? slugOf(p.chapter) : 'other';
+				let ch = chapters.find((c) => c.slug === slug);
+				if (!ch) { ch = { slug, name, pages: [] }; chapters.push(ch); }
+				ch.pages.push(p);
+			}
+			const other = chapters.findIndex((c) => c.slug === 'other');
+			if (other >= 0) chapters.push(chapters.splice(other, 1)[0]);
+			chapters.forEach((c, i) => { c.n = i + 1; c.pages.forEach((p, j) => { p.code = `QV/${pad(c.n)}.${pad(j + 1)}`; p.chapterSlug = c.slug; p.chapterName = c.name; }); });
+			return chapters;
+		};
+
+		const sidebar = (chapters, needle) => {
+			chaptersEl.innerHTML = chapters.map((c) => {
+				const pages = c.pages.filter((p) => !needle || `${p.title} ${p.summary || ''} ${c.name}`.toLowerCase().includes(needle));
+				if (!pages.length) return '';
+				const open = needle || c.slug === want.c;
+				return `<li class="qv-ch${open ? ' open' : ''}">
+					<a class="qv-chlink" href="${href(c.slug)}"><span class="qv-n">${pad(c.n)}</span><span>${esc(c.name)}</span><span class="qv-count">${c.pages.length}</span></a>
+					<ol>${pages.map((p) => `<li${p.slug === want.s ? ' class="current"' : ''}><a href="${href(c.slug, p.slug)}">${esc(p.title)}${p.kind ? ` <i class="qv-k">${KIND[p.kind] || ''}</i>` : ''}</a></li>`).join('')}</ol>
+				</li>`;
+			}).join('') || '<li><span class="dim">Nothing matches</span></li>';
+		};
+
+		const index = (chapters) => {
+			crumbs.innerHTML = '<a href="/quiver/">The Quiver</a>';
+			pageEl.innerHTML = `<p class="qv-code">QV/00</p><h1>The handbook</h1><p class="qv-lede">Every chapter, and what is in it. The pages come straight from TAC//PAC's wiki as they are written.</p>` +
+				`<div class="qv-cards">${chapters.map((c) => `<a class="card qv-card" href="${href(c.slug)}"><p class="qv-code">QV/${pad(c.n)}</p><h3>${esc(c.name)}</h3><p>${esc(c.pages.map((p) => p.title).join(' · '))}</p><span class="qv-count">${c.pages.length} page${c.pages.length === 1 ? '' : 's'}</span></a>`).join('')}</div>`;
+			foot.innerHTML = `<span>Kept in <a href="${esc(PAC)}/?page=wiki" target="_blank" rel="noopener">TAC//PAC's wiki</a></span>`;
+		};
+
+		const chapter = (c) => {
+			crumbs.innerHTML = `<a href="/quiver/">The Quiver</a> <span>›</span> <span>${esc(c.name)}</span>`;
+			pageEl.innerHTML = `<p class="qv-code">QV/${pad(c.n)}</p><h1>${esc(c.name)}</h1>` +
+				`<div class="qv-blocks">${c.pages.map((p) => `<a class="qv-block" href="${href(c.slug, p.slug)}"><span class="qv-code">${p.code}</span>${p.kind ? `<span class="qv-badge ${p.kind}">${KIND[p.kind]}</span>` : ''}<h3>${esc(p.title)}</h3>${p.summary ? `<p>${esc(p.summary)}</p>` : ''}</a>`).join('')}</div>`;
+			foot.innerHTML = `<span><a href="/quiver/">All chapters</a></span>`;
+		};
+
+		const page = async (c, p) => {
+			crumbs.innerHTML = `<a href="/quiver/">The Quiver</a> <span>›</span> <a href="${href(c.slug)}">${esc(c.name)}</a> <span>›</span> <span>${esc(p.title)}</span>`;
+			const doc = await feed('page', { slug: p.slug });
+			document.title = `${doc.title} - The Quiver - ${document.title.split(' - ').pop()}`;
+			pageEl.innerHTML = `<p class="qv-code">${p.code}${doc.kind ? ` <span class="qv-badge ${doc.kind}">${KIND[doc.kind]}</span>` : ''}</p><h1>${esc(doc.title)}</h1>${doc.summary ? `<p class="qv-lede">${esc(doc.summary)}</p>` : ''}<div class="prose sop qv-body">${doc.html || ''}</div>`;
+			// on this page: the h2s, numbered under the page's code
+			const heads = [...pageEl.querySelectorAll('.qv-body h2')];
+			if (heads.length > 1) {
+				heads.forEach((h, i) => { h.id = `${p.slug}-${i + 1}`; });
+				const onPage = document.createElement('nav');
+				onPage.className = 'qv-onpage';
+				onPage.innerHTML = `<p class="eyebrow">On this page</p><ol>${heads.map((h, i) => `<li><a href="#${h.id}">${esc(h.textContent)}</a></li>`).join('')}</ol>`;
+				pageEl.querySelector('.qv-body').before(onPage);
+			}
+			foot.innerHTML = `<span><a href="${href(c.slug)}">${esc(c.name)}</a></span>${doc.updatedAt ? `<span>Updated ${esc(when(doc.updatedAt))}</span>` : ''}<span>Kept in <a href="${esc(PAC)}/?page=wiki&p=${encodeURIComponent(p.slug)}" target="_blank" rel="noopener">TAC//PAC's wiki</a></span>`;
+		};
+
+		feed('wiki').then((w) => {
+			const chapters = organise(w.pages || []);
+			sidebar(chapters, '');
+			q.addEventListener('input', () => sidebar(chapters, q.value.trim().toLowerCase()));
+			document.addEventListener('keydown', (e) => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); q.focus(); q.select(); } });
+			if (!chapters.length) { pageEl.innerHTML = '<h1>The handbook</h1><p>Nothing is published yet. Pages go up as they are written in TAC//PAC and marked public.</p>'; return; }
+			const c = chapters.find((x) => x.slug === want.c);
+			if (!c) return index(chapters);
+			const p = want.s ? c.pages.find((x) => x.slug === want.s) : null;
+			if (!p) return chapter(c);
+			return page(c, p).catch(() => { pageEl.innerHTML = `<h1>Not here</h1><p>That page is not public, or not there. <a href="${href(c.slug)}">${esc(c.name)}</a>.</p>`; });
+		}).catch(() => {
+			pageEl.innerHTML = `<p class="dim">The handbook could not be read right now. It is in <a href="${esc(PAC)}/?page=wiki" target="_blank" rel="noopener">TAC//PAC's wiki</a>.</p>`;
+			chaptersEl.innerHTML = '';
+		});
+	</script>
+</Base>

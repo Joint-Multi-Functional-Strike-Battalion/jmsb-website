@@ -22,7 +22,7 @@ for (let a = -120; a <= 120; a += 20) {
 <Base title={site.short} description={`${site.name}: an Arma 3 unit. Who we are, when we play, how to join.`} home>
 	<section class="hero">
 		<canvas id="topo" aria-hidden="true"></canvas>
-		<span class="gridref tl">ALPHA COY · 1ST JMSB</span>
+		<div class="p-class">ALPHA COMPANY // 1ST JOINT MULTI-FUNCTIONAL STRIKE BATTALION</div>
 		<div class="hero-in">
 			<img src="/logo.svg" alt="1st JMSB crossed arrows" width="220" height="220">
 			<div>
@@ -54,15 +54,16 @@ for (let a = -120; a <= 120; a += 20) {
 				{rows.map((s) => (
 					<li>
 						<svg class="dial" viewBox="0 0 46 46" aria-hidden="true">
-							<circle cx="23" cy="23" r="15" fill="#2c3532" stroke="#c8a24a" stroke-width="1.5" />
-							{ticks.map((k) => <line x1={k.x1} y1={k.y1} x2={k.x2} y2={k.y2} stroke="#9aa39d" stroke-width="1.2" />)}
-							<line x1="23" y1="23" x2={s.nx} y2={s.ny} stroke="#c8a24a" stroke-width="2.5" stroke-linecap="round" />
+							<circle cx="23" cy="23" r="15" fill="#3a4433" stroke="#c2a878" stroke-width="1.5" />
+							{ticks.map((k) => <line x1={k.x1} y1={k.y1} x2={k.x2} y2={k.y2} stroke="#a9ae95" stroke-width="1.2" />)}
+							<line x1="23" y1="23" x2={s.nx} y2={s.ny} stroke="#c2a878" stroke-width="2.5" stroke-linecap="round" />
 						</svg>
 						<b>{s.name}</b><code>{s.addr}</code>
 					</li>
 				))}
 			</ul>
 		</div>
+		<div class="p-class p-foot">ARMA 3 // JMSB.INFO</div>
 	</section>
 
 	<script>

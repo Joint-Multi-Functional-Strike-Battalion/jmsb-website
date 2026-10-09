@@ -1,0 +1,16 @@
+---
+// The contents column: the numbered list that sits beside the SOP, now beside
+// the Unit and the Roster too (user, 2026-10-08: "add contents to the unit and
+// roster like sop has"). Sticky on wide screens, a grid above the page on
+// narrow ones - site.css .toc. Anything in the slot goes under the list.
+interface Props {
+	items: { id: string; title: string }[];
+	label?: string;
+}
+const { items, label = 'Contents' } = Astro.props;
+---
+<nav class="toc" aria-label={label}>
+	<p class="eyebrow">{label}</p>
+	<ol>{items.map((t) => <li><a href={`#${t.id}`}>{t.title}</a></li>)}</ol>
+	<slot />
+</nav>

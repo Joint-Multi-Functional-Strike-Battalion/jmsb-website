@@ -5,6 +5,8 @@
 // TAC//PAC's order of battle, with the words written into the page in case
 // the feed is down.
 import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
+import Contents from '../components/Contents.astro';
 import Divider from '../components/Divider.astro';
 import site from '../data/site.json';
 
@@ -45,14 +47,21 @@ const skills = [
 	['marksman', 'Marksman', 'Designated marksman rifles and long optics in your arsenal.'],
 	['sniper', 'Sniper', 'Precision rifles and long optics in your arsenal.'],
 ];
+// The contents column, one entry per section below.
+const contents = [
+	{ id: 'how', title: 'How it works' },
+	{ id: 'roles', title: 'The roles' },
+	{ id: 'skills', title: 'The skills' },
+	{ id: 'arsenal', title: 'Your arsenal' },
+];
 ---
 <Base title="Roles and skills" description={`How roles and skills work in the ${site.short}: the slot you take on the night, and what you are qualified to do.`}>
-	<div class="wrap pagehead">
-		<p class="eyebrow">Two halves of every player</p>
-		<h1>Roles and skills</h1>
-		<p class="lede">Your role is the slot you take on the night. Your skills are what you are qualified to do, and they come with you into any slot. A qualified medic is the medic whatever slot they sit in.</p>
-	</div>
+	<Banner eyebrow="Two halves of every player" title="Roles and skills" lede="Your role is the slot you take on the night. Your skills are what you are qualified to do, and they come with you into any slot. A qualified medic is the medic whatever slot they sit in." strip="ROLES AND SKILLS // TWO HALVES OF EVERY PLAYER" foot="JMSB.INFO/ROLES" seed={11} />
 
+	<section class="section">
+		<div class="wrap sop-layout">
+			<Contents items={contents} />
+			<div class="toc-body">
 	<section class="section" id="how">
 		<div class="wrap">
 			<div class="cols">
@@ -113,6 +122,9 @@ const skills = [
 				<li><b>Skills</b><span>A custom arsenal for each qualification you hold. Given one in the field? Its gear is there the next time you open the arsenal.</span></li>
 			</ol>
 			<p class="dim" style="margin-top: 20px">Everyone sees your skills: on the tablet's squad list, the map and the slot menu your name carries them, so the team knows who the medic is before anyone asks.</p>
+		</div>
+	</section>
+			</div>
 		</div>
 	</section>
 
