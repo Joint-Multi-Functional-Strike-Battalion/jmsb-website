@@ -1,0 +1,30 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 820 300' width='820' height='300' role='img' aria-label='Traveling: the Detachment&#39;s elements in column, about 20 metres apart'>
+<title>Traveling: the Detachment&#39;s elements in column, about 20 metres apart</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='820' height='300' fill='#ffffff'/>
+<text x='410.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>TRAVELING</text><text x='410.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Contact not likely - speed matters more than security</text>
+<rect x='48.0' y='135.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='48.0' y1='135.0' x2='92.0' y2='165.0' stroke='#20261c' stroke-width='2'/><line x1='48.0' y1='165.0' x2='92.0' y2='135.0' stroke='#20261c' stroke-width='2'/>
+<text x='70' y='194' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Trail Group</text>
+<rect x='206.0' y='140.0' width='28' height='20' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='206.0' y1='140.0' x2='234.0' y2='160.0' stroke='#20261c' stroke-width='2'/><line x1='206.0' y1='160.0' x2='234.0' y2='140.0' stroke='#20261c' stroke-width='2'/>
+<text x='220' y='194' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Medic, weapons</text><text x='220' y='212' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>(optional)</text>
+<rect x='348.0' y='135.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='348.0' y1='135.0' x2='392.0' y2='165.0' stroke='#20261c' stroke-width='2'/><line x1='348.0' y1='165.0' x2='392.0' y2='135.0' stroke='#20261c' stroke-width='2'/>
+<text x='370' y='194' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Group</text>
+<rect x='506.0' y='140.0' width='28' height='20' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='506.0' y1='140.0' x2='534.0' y2='160.0' stroke='#20261c' stroke-width='2'/><line x1='506.0' y1='160.0' x2='534.0' y2='140.0' stroke='#20261c' stroke-width='2'/>
+<text x='520' y='194' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Detachment</text><text x='520' y='212' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>leader</text>
+<rect x='648.0' y='135.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='648.0' y1='135.0' x2='692.0' y2='165.0' stroke='#20261c' stroke-width='2'/><line x1='648.0' y1='165.0' x2='692.0' y2='135.0' stroke='#20261c' stroke-width='2'/>
+<text x='670' y='194' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Lead Group</text>
+<path d='M145.0,110 L100,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<path d='M145.0,110 L190,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='145.0' y='100' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>~20 m</text>
+<path d='M295.0,110 L250,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<path d='M295.0,110 L340,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='295.0' y='100' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>~20 m</text>
+<path d='M445.0,110 L400,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<path d='M445.0,110 L490,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='445.0' y='100' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>~20 m</text>
+<path d='M595.0,110 L550,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<path d='M595.0,110 L640,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='595.0' y='100' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>~20 m</text>
+<path d='M710,150 L800,150' fill='none' stroke='#20261c' stroke-width='4' marker-end='url(#ah)'/>
+<text x='410.0' y='250' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Men about 10 m apart inside each Group, about 20 m between elements.</text><text x='410.0' y='268' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Fastest and least dispersed of the three techniques - and the least secure.</text>
+</svg>

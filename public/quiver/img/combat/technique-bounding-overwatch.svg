@@ -1,0 +1,37 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 860 600' width='860' height='600' role='img' aria-label='Bounding overwatch: one Group bounds to the next position while another covers it from a set position and the third waits'>
+<title>Bounding overwatch: one Group bounds to the next position while another covers it from a set position and the third waits</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='860' height='600' fill='#ffffff'/>
+<text x='430.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>BOUNDING OVERWATCH</text><text x='430.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Contact likely - one Group moves while another covers it from a set position</text>
+<ellipse cx='430' cy='440' rx='120' ry='60' fill='none' stroke='#d7dbd0' stroke-width='2'/>
+<ellipse cx='430' cy='440' rx='75' ry='34' fill='none' stroke='#d7dbd0' stroke-width='2'/>
+<ellipse cx='250' cy='180' rx='110' ry='60' fill='none' stroke='#d7dbd0' stroke-width='2'/>
+<ellipse cx='250' cy='180' rx='60' ry='30' fill='none' stroke='#d7dbd0' stroke-width='2'/>
+<ellipse cx='690' cy='190' rx='110' ry='55' fill='none' stroke='#d7dbd0' stroke-width='2'/>
+<ellipse cx='690' cy='190' rx='60' ry='28' fill='none' stroke='#d7dbd0' stroke-width='2'/>
+<circle cx='60' cy='110' r='16' fill='#a5c88a' opacity='.8'/>
+<circle cx='86' cy='150' r='16' fill='#a5c88a' opacity='.8'/>
+<circle cx='60' cy='190' r='16' fill='#a5c88a' opacity='.8'/>
+<circle cx='86' cy='230' r='16' fill='#a5c88a' opacity='.8'/>
+<circle cx='60' cy='270' r='16' fill='#a5c88a' opacity='.8'/>
+<circle cx='86' cy='310' r='16' fill='#a5c88a' opacity='.8'/>
+<circle cx='60' cy='350' r='16' fill='#a5c88a' opacity='.8'/>
+<circle cx='86' cy='390' r='16' fill='#a5c88a' opacity='.8'/>
+<text x='72' y='455' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>trees</text>
+<path d='M430,430 L209,185 A330,330 0 0 1 651,185 z' fill='#1565c0' opacity='0.1' stroke='#1565c0' stroke-width='1.5'/>
+<rect x='408.0' y='415.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='408.0' y1='415.0' x2='452.0' y2='445.0' stroke='#20261c' stroke-width='2'/><line x1='408.0' y1='445.0' x2='452.0' y2='415.0' stroke='#20261c' stroke-width='2'/>
+<text x='430' y='470' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#1565c0'>OVERWATCH Group</text><text x='430' y='488' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#1565c0'>set, covering both routes</text>
+<rect x='486.0' y='410.0' width='28' height='20' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='486.0' y1='410.0' x2='514.0' y2='430.0' stroke='#20261c' stroke-width='2'/><line x1='486.0' y1='430.0' x2='514.0' y2='410.0' stroke='#20261c' stroke-width='2'/>
+<text x='536' y='425' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>DL</text>
+<rect x='148.0' y='405.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='148.0' y1='405.0' x2='192.0' y2='435.0' stroke='#20261c' stroke-width='2'/><line x1='148.0' y1='435.0' x2='192.0' y2='405.0' stroke='#20261c' stroke-width='2'/>
+<path d='M175,400 C190,320 205,260 240,214' fill='none' stroke='#2e7d32' stroke-width='2.5' marker-end='url(#ahg)'/>
+<rect x='228.0' y='175.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='228.0' y1='175.0' x2='272.0' y2='205.0' stroke='#20261c' stroke-width='2'/><line x1='228.0' y1='205.0' x2='272.0' y2='175.0' stroke='#20261c' stroke-width='2'/>
+<text x='170' y='456' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>BOUNDING Group</text><text x='170' y='474' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>uses the trees</text>
+<text x='250' y='150' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>next overwatch position</text>
+<rect x='678.0' y='425.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='678.0' y1='425.0' x2='722.0' y2='455.0' stroke='#20261c' stroke-width='2'/><line x1='678.0' y1='455.0' x2='722.0' y2='425.0' stroke='#20261c' stroke-width='2'/>
+<text x='700' y='476' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Third Group</text><text x='700' y='494' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>waits for orders</text>
+<path d='M690,420 C670,340 680,260 690,222' fill='none' stroke='#20261c' stroke-width='1.8' stroke-dasharray='6 5' marker-end='url(#ah)'/>
+<text x='700' y='140' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>its bound, when ordered</text>
+<rect x='668.0' y='175.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='668.0' y1='175.0' x2='712.0' y2='205.0' stroke='#20261c' stroke-width='2'/><line x1='668.0' y1='205.0' x2='712.0' y2='175.0' stroke='#20261c' stroke-width='2'/>
+<text x='430.0' y='545' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Every bound ends inside the overwatch&#39;s range. The Detachment leader stays with the overwatch.</text><text x='430.0' y='563' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>When the bounding Group is set, the roles swap and the next bound begins.</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 640' width='800' height='640' role='img' aria-label='The clock method: 12 o&#39;clock is the gun-target line, and targets are called by clock direction'>
+<title>The clock method: 12 o&#39;clock is the gun-target line, and targets are called by clock direction</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='800' height='640' fill='#ffffff'/>
+<text x='400.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>THE CLOCK  -  12 o&#39;clock is always where the gun points</text><text x='400.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Call a target by its clock direction from the gun-target line</text>
+<path d='M201,345 A199,199 0 0 1 599,345 z' fill='#2e7d32' opacity='.10'/>
+<ellipse cx='400' cy='345' rx='225' ry='225' fill='none' stroke='#20261c' stroke-width='2' opacity='1'/>
+<ellipse cx='400' cy='345' rx='199' ry='199' fill='none' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<path d='M400,345 m-225,0 a225,225 0 1 0 450,0 a225,225 0 1 0 -450,0 M400,345 m-199,0 a199,199 0 1 1 398,0 a199,199 0 1 1 -398,0' fill='#eef0ea' fill-rule='evenodd'/>
+<text x='506.0' y='166.402614397699' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>1</text>
+<text x='583.5973856023011' y='244.0' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>2</text>
+<text x='612.0' y='350.0' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>3</text>
+<text x='583.5973856023011' y='456.0' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>4</text>
+<text x='506.0' y='533.597385602301' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>5</text>
+<text x='400.0' y='562.0' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>6</text>
+<text x='294.00000000000006' y='533.5973856023011' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>7</text>
+<text x='216.40261439769898' y='456.0' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>8</text>
+<text x='188.0' y='350.0' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>9</text>
+<text x='216.402614397699' y='243.99999999999997' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>10</text>
+<text x='293.9999999999999' y='166.40261439769904' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>11</text>
+<text x='399.99999999999994' y='138.0' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#20261c'>12</text>
+<line x1='400' y1='329' x2='400' y2='146' stroke='#20261c' stroke-width='2' stroke-dasharray='8 5'/>
+<line x1='400' y1='120' x2='400' y2='98' stroke='#20261c' stroke-width='2' stroke-dasharray='8 5'/>
+<text x='410' y='106' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>gun-target line / line of sight</text>
+<text x='400' y='435' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#2e7d32'>left shoulder  -  front  -  right shoulder</text>
+<text x='400' y='453' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#2e7d32'>(9 to 3: the gunner&#39;s frontal arc)</text>
+<path d='M376,275 A90,90 0 0 0 290,315' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<path d='M424,275 A90,90 0 0 1 510,315' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<text x='290' y='339' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>traverse left</text>
+<text x='510' y='339' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>traverse right</text>
+<path d='M400.0,329.0 L406.5,349.7 L393.5,349.7 z' fill='#2e7d32'/><circle cx='400' cy='345' r='9' fill='#2e7d32'/>
+<text x='400' y='377' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>Gun</text>
+<line x1='410' y1='339' x2='521.9038105676658' y2='275.0' stroke='#d32f2f' stroke-width='1.5' stroke-dasharray='4 4'/>
+<path d='M516.0,278.0 L530.7,262.0 L537.2,273.2 z' fill='#d32f2f'/><circle cx='529.9038105676658' cy='270.0' r='9' fill='#d32f2f'/>
+<line x1='541.9038105676658' y1='262.0' x2='640' y2='196' stroke='#d32f2f' stroke-width='1.2'/>
+<text x='644' y='192' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#d32f2f'>"Two o&#39;clock, 300,</text>
+<text x='644' y='210' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#d32f2f'>troops in the open"</text>
+</svg>

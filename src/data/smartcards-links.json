@@ -1,9 +1,10 @@
 {
-  "_": "Download links for the printed cards, filled in by hand once the PDFs are uploaded (Google Drive). Key: deck slug, then card id. An empty string shows nothing.",
+  "_": "Download links for the printed cards, hosted on Google Drive (the user's folder, 2026-10-09). Key: deck slug, then card id; `folder` is the deck's whole folder. An empty string shows nothing.",
   "acm": {
-    "self-buddy-aid": { "pdf": "", "pdf_dark": "" },
-    "cls": { "pdf": "", "pdf_dark": "" },
-    "medic-treatment": { "pdf": "", "pdf_dark": "" },
-    "medic-drugs": { "pdf": "", "pdf_dark": "" }
+    "folder": "https://drive.google.com/drive/folders/1ufCFbOGS5CnNyF6EabCkJGB0ikUCgT_W?usp=sharing",
+    "self-buddy-aid": { "pdf": "https://drive.google.com/file/d/1yN8zH7_Ck7W6ddV0DBn2QPa2YqOzt3-k/view", "pdf_dark": "https://drive.google.com/file/d/1gGl02YAwahlAiVVtbTHx1pLXfQ6-maB-/view" },
+    "cls": { "pdf": "https://drive.google.com/file/d/1cDZwB2Nw7QU6bJ3hukHcNcRs5c2L-lLr/view", "pdf_dark": "https://drive.google.com/file/d/1PxfTO2k5Nd8HfCoeb1zCBP8YYTI83z6m/view" },
+    "medic-treatment": { "pdf": "https://drive.google.com/file/d/1xBUQy3SeAonfYvqb7IuxR95VATq7J1hG/view", "pdf_dark": "https://drive.google.com/file/d/1u3rHPDu0sizs-TtFFv8ZrA-6xTuOxPI2/view" },
+    "medic-drugs": { "pdf": "https://drive.google.com/file/d/1rC5ssAH5ifqXjBFkXLSHXGVBGK38pc05/view", "pdf_dark": "https://drive.google.com/file/d/1hFjJqqzg7MLKO37ujG72UB-0gZ4NTohS/view" }
   }
 }

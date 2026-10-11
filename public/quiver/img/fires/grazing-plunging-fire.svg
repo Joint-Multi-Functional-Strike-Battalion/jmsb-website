@@ -1,0 +1,35 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 860 600' width='860' height='600' role='img' aria-label='Grazing fire stays within one metre of the ground; plunging fire comes down steeply onto a short beaten zone'>
+<title>Grazing fire stays within one metre of the ground; plunging fire comes down steeply onto a short beaten zone</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='860' height='600' fill='#ffffff'/>
+<text x='430.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>FIRE AND THE GROUND  -  grazing or plunging</text>
+<text x='40' y='66' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#2e7d32'>GRAZING</text>
+<text x='140' y='66' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>the middle of the cone stays within 1 m of the ground</text>
+<path d='M30,170 L200,166 L380,160 L560,156 L700,158 L830,170 L830,200 L30,200 z' fill='#c8b98f' stroke='#20261c' stroke-width='2'/>
+<path d='M30.0,136.0 L200.0,132.0 L380.0,126.0 L560.0,122.0 L700.0,124.0 L830.0,136.0' fill='none' stroke='#6b7260' stroke-width='1.2' stroke-dasharray='4 4'/>
+<text x='826' y='128' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>1 m</text>
+<path d='M70,152 C300,132 560,126 790,150' fill='none' stroke='#d32f2f' stroke-width='3'/>
+<path d='M70,152 C300,116 560,106 790,132' fill='none' stroke='#d32f2f' stroke-width='1.5' stroke-dasharray='6 4'/>
+<path d='M70,152 C300,148 560,146 790,160' fill='none' stroke='#d32f2f' stroke-width='1.5' stroke-dasharray='6 4'/>
+<path d='M72.0,156.0 L51.3,162.5 L51.3,149.5 z' fill='#2e7d32'/><circle cx='56' cy='156' r='9' fill='#2e7d32'/>
+<text x='430' y='226' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>Rounds stay low the whole way: anyone standing on that line is hit.</text>
+<text x='430' y='246' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Light/medium MG out to about 600 m, heavy MG about 700 m.</text>
+<line x1='30' y1='268' x2='830' y2='268' stroke='#d7dbd0' stroke-width='2'/>
+<g transform='translate(0,-44)'>
+<text x='40' y='346' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#d32f2f'>PLUNGING</text>
+<text x='150' y='346' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>the rounds come down steeply: little or no danger space</text>
+<path d='M30,420 C90,410 130,430 190,470 C260,520 330,575 420,580 C500,585 540,520 580,470 C620,420 700,410 830,400 L830,610 L30,610 z' fill='#c8b98f' stroke='#20261c' stroke-width='2'/>
+<path d='M73.9,412.0 L52.7,407.2 L59.2,396.0 z' fill='#2e7d32'/><circle cx='60' cy='404' r='9' fill='#2e7d32'/>
+<path d='M76,410 C250,420 380,500 420,566' fill='none' stroke='#d32f2f' stroke-width='2.5' stroke-dasharray='7 4'/>
+<ellipse cx='420' cy='574' rx='26' ry='8' fill='#5f5f5f' stroke='#20261c' stroke-width='1' opacity='1'/>
+<text x='452' y='562' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#20261c'>high ground into low</text>
+<path d='M76,408 C300,330 560,330 640,416' fill='none' stroke='#d32f2f' stroke-width='2.5' stroke-dasharray='7 4'/>
+<ellipse cx='646' cy='420' rx='24' ry='7' fill='#5f5f5f' stroke='#20261c' stroke-width='1' opacity='1' transform='rotate(-12 646 420)'/>
+<text x='560' y='360' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#20261c'>long range</text>
+<path d='M265.8,517.2 L246.5,527.2 L244.2,514.4 z' fill='#2e7d32'/><circle cx='250' cy='520' r='9' fill='#2e7d32'/>
+<path d='M266,516 C380,500 470,492 552,500' fill='none' stroke='#d32f2f' stroke-width='2.5' stroke-dasharray='7 4'/>
+<ellipse cx='560' cy='502' rx='9' ry='20' fill='#5f5f5f' stroke='#20261c' stroke-width='1' opacity='1' transform='rotate(30 560 502)'/>
+<text x='470' y='476' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#20261c'>into rising ground</text>
+</g>
+<text x='430.0' y='588' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>The beaten zone shrinks to a short dark patch, and the dip in between is dead space.</text>
+</svg>

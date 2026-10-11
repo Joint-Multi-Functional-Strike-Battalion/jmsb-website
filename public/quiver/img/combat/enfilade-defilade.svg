@@ -1,0 +1,39 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 860 680' width='860' height='680' role='img' aria-label='Enfilade and defilade: the ground behind a rise or in a dip is hidden from fire, and fire from the end of a line runs along it'>
+<title>Enfilade and defilade: the ground behind a rise or in a dip is hidden from fire, and fire from the end of a line runs along it</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='860' height='680' fill='#ffffff'/>
+<defs><clipPath id='airA'><path d='M20,60 L420,60 L420,270 L340,270 A70,80 0 0 0 200,270 L20,270 z'/></clipPath><clipPath id='airB'><path d='M440,60 L840,60 L840,270 L800,270 A105.0,70 0 0 1 590,270 L440,270 z'/></clipPath></defs><text x='430.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>ENFILADE AND DEFILADE</text><text x='430.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Enfilade: ground your fire can sweep.  Defilade: ground the fire cannot reach.</text>
+<g clip-path='url(#airA)'><path d='M85,226 L420,159 L420,270 L125,270 z' fill='#fde68a'/><path d='M258,191 L420,159 L420,270 L258,270 z' fill='#a5d6a7'/></g>
+<line x1='85' y1='226' x2='420' y2='158.5819497834342' stroke='#20261c' stroke-width='1.2' stroke-dasharray='5 4'/>
+<path d='M20,270 L200,270 A70,80 0 0 1 340,270 L420,270 L420,310 L20,310 z' fill='#3a4433'/>
+<g fill='none' stroke='#2e7d32' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><path d='M41,270 L53,268 L55,250'/><path d='M55,250 L69,252 L69,270'/><path d='M55,250 L53,226'/><path d='M53,230 L69,232'/></g><circle cx='55' cy='218' r='7' fill='#2e7d32'/><line x1='49' y1='228' x2='85' y2='226' stroke='#20261c' stroke-width='3'/>
+<text x='270' y='248' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#fff'>HILL</text>
+<text x='170' y='248' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>swept</text>
+<text x='375' y='256' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#2e7d32'>defilade</text>
+<text x='220' y='376' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>A rise hides the ground behind it.</text><text x='220' y='394' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Fight from there and you are in defilade.</text>
+<g clip-path='url(#airB)'><path d='M505,226 L840,156 L840,470 L590,270 z' fill='#fde68a'/><path d='M590,270 L840,399 L840,470 L590,470 z' fill='#a5d6a7'/></g>
+<line x1='505' y1='226' x2='730' y2='342.47058823529414' stroke='#20261c' stroke-width='1.2' stroke-dasharray='5 4'/>
+<path d='M440,270 L590,270 A105.0,70 0 0 0 800,270 L840,270 L840,350 L440,350 z' fill='#3a4433'/>
+<g fill='none' stroke='#2e7d32' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><path d='M461,270 L473,268 L475,250'/><path d='M475,250 L489,252 L489,270'/><path d='M475,250 L473,226'/><path d='M473,230 L489,232'/></g><circle cx='475' cy='218' r='7' fill='#2e7d32'/><line x1='469' y1='228' x2='505' y2='226' stroke='#20261c' stroke-width='3'/>
+<text x='770' y='180' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>swept</text>
+<text x='632' y='320' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>defilade</text>
+<text x='640' y='376' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>A ditch or a dip: the fire passes over</text><text x='640' y='394' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>the near part of the bottom.</text>
+<line x1='430' y1='80' x2='430' y2='380' stroke='#d7dbd0' stroke-width='1.5'/>
+<line x1='30' y1='420' x2='830' y2='420' stroke='#d7dbd0' stroke-width='1.5'/>
+<text x='430.0' y='448' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>Enfilade fire hits a line from its end, so one burst runs down the whole of it</text>
+<rect x='260' y='506' width='420' height='28' rx='4' fill='#c8b98f' stroke='#20261c' stroke-width='1'/>
+<path d='M290.0,536.0 L283.5,515.3 L296.5,515.3 z' fill='#d32f2f'/><circle cx='290' cy='520' r='9' fill='#d32f2f'/>
+<path d='M362.0,536.0 L355.5,515.3 L368.5,515.3 z' fill='#d32f2f'/><circle cx='362' cy='520' r='9' fill='#d32f2f'/>
+<path d='M434.0,536.0 L427.5,515.3 L440.5,515.3 z' fill='#d32f2f'/><circle cx='434' cy='520' r='9' fill='#d32f2f'/>
+<path d='M506.0,536.0 L499.5,515.3 L512.5,515.3 z' fill='#d32f2f'/><circle cx='506' cy='520' r='9' fill='#d32f2f'/>
+<path d='M578.0,536.0 L571.5,515.3 L584.5,515.3 z' fill='#d32f2f'/><circle cx='578' cy='520' r='9' fill='#d32f2f'/>
+<path d='M650.0,536.0 L643.5,515.3 L656.5,515.3 z' fill='#d32f2f'/><circle cx='650' cy='520' r='9' fill='#d32f2f'/>
+<text x='470' y='486' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#d32f2f'>Enemy position</text>
+<path d='M470.0,604.0 L476.5,624.7 L463.5,624.7 z' fill='#2e7d32'/><circle cx='470' cy='620' r='9' fill='#2e7d32'/>
+<path d='M470,602 L470,542' fill='none' stroke='#2e7d32' stroke-width='2' stroke-dasharray='6 5' marker-end='url(#ahg)'/>
+<text x='470' y='648' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Frontal: the burst hits one man</text>
+<path d='M156.0,520.0 L135.3,526.5 L135.3,513.5 z' fill='#2e7d32'/><circle cx='140' cy='520' r='9' fill='#2e7d32'/>
+<ellipse cx='470' cy='520' rx='225' ry='22' fill='none' stroke='#2e7d32' stroke-width='2' stroke-dasharray='6 4'/>
+<path d='M158,520 L238,520' fill='none' stroke='#2e7d32' stroke-width='2.5' marker-end='url(#ahg)'/>
+<text x='140' y='560' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>Enfilade: the beaten</text><text x='140' y='578' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>zone lies along the line</text>
+</svg>

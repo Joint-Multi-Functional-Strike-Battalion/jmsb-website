@@ -1,0 +1,31 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 580' width='640' height='580' role='img' aria-label='Listening sites: eight lung sites in pairs on both sides of the chest, four heart sites along the breastbone'>
+<title>Listening sites: eight lung sites in pairs on both sides of the chest, four heart sites along the breastbone</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='640' height='580' fill='#ffffff'/>
+<text x='320.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>WHERE TO LISTEN</text><text x='320.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Casualty facing you: his left is on your right</text>
+<circle cx='320' cy='118' r='40' fill='#e9e4d8' stroke='#20261c' stroke-width='2'/>
+<path d='M302,150 L302,184 L338,184 L338,150' fill='#e9e4d8' stroke='#20261c' stroke-width='2'/>
+<path d='M302,180 C270,188 225,190 200,205 C178,218 172,250 176,300 L190,300 C196,380 205,440 212,560 L428,560 C435,440 444,380 450,300 L464,300 C468,250 462,218 440,205 C415,190 370,188 338,180 z' fill='#e9e4d8' stroke='#20261c' stroke-width='2'/>
+<path d='M318,202 C290,207 255,203 222,214 M322,202 C350,207 385,203 418,214' fill='none' stroke='#6b7260' stroke-width='1.5'/>
+<line x1='320' y1='207' x2='320' y2='360' stroke='#6b7260' stroke-width='1.5'/>
+<circle cx='270' cy='216' r='10' fill='#1565c0' stroke='#fff' stroke-width='2.5'/>
+<circle cx='372' cy='216' r='10' fill='#1565c0' stroke='#fff' stroke-width='2.5'/>
+<circle cx='268' cy='294' r='10' fill='#1565c0' stroke='#fff' stroke-width='2.5'/>
+<circle cx='372' cy='294' r='10' fill='#1565c0' stroke='#fff' stroke-width='2.5'/>
+<circle cx='240' cy='372' r='10' fill='#1565c0' stroke='#fff' stroke-width='2.5'/>
+<circle cx='407' cy='372' r='10' fill='#1565c0' stroke='#fff' stroke-width='2.5'/>
+<circle cx='230' cy='455' r='10' fill='#1565c0' stroke='#fff' stroke-width='2.5'/>
+<circle cx='419' cy='455' r='10' fill='#1565c0' stroke='#fff' stroke-width='2.5'/>
+<circle cx='295' cy='294' r='10' fill='#d32f2f' stroke='#fff' stroke-width='2.5'/>
+<circle cx='348' cy='294' r='10' fill='#d32f2f' stroke='#fff' stroke-width='2.5'/>
+<circle cx='348' cy='323' r='10' fill='#d32f2f' stroke='#fff' stroke-width='2.5'/>
+<circle cx='348' cy='352' r='10' fill='#d32f2f' stroke='#fff' stroke-width='2.5'/>
+<line x1='110' y1='150' x2='233.0' y2='365.20000000000005' stroke='#1565c0' stroke-width='3'/>
+<text x='30' y='118' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#1565c0'>Lungs</text>
+<text x='30' y='138' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>both sides, compare</text>
+<line x1='355.0' y1='359.25' x2='520' y2='500' stroke='#d32f2f' stroke-width='3'/>
+<text x='610' y='522' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='15' font-weight='bold' fill='#d32f2f'>Heart</text>
+<text x='610' y='542' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>along the breastbone</text>
+<text x='120' y='260' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#6b7260'>his right</text>
+<text x='520' y='260' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#6b7260'>his left</text>
+</svg>

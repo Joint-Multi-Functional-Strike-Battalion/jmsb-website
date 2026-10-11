@@ -1,0 +1,69 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 620' width='900' height='620' role='img' aria-label='Crossing a danger area: near-side security, the far-side team clears, the unit crosses, security collected'>
+<title>Crossing a danger area: near-side security, the far-side team clears, the unit crosses, security collected</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='900' height='620' fill='#ffffff'/>
+<text x='450.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>CROSSING A DANGER AREA</text>
+<text x='150.0' y='70' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>1. Halt, post near-side security</text>
+<text x='150.0' y='92' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Flank security out on the near side.</text><text x='150.0' y='110' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>The far-side team crosses and clears.</text>
+<rect x='6' y='300' width='288' height='70' fill='#c8b98f' opacity='.6'/>
+<line x1='6' y1='300' x2='294' y2='300' stroke='#20261c' stroke-width='1.5' stroke-dasharray='7 5'/>
+<line x1='6' y1='370' x2='294' y2='370' stroke='#20261c' stroke-width='1.5' stroke-dasharray='7 5'/>
+<text x='60' y='340.0' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#3a4433'>DANGER AREA</text>
+<line x1='300' y1='50' x2='300' y2='610' stroke='#d7dbd0' stroke-width='2'/>
+<text x='450.0' y='70' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>2. Far side clear - cross</text>
+<text x='450.0' y='92' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Far-side team watches the flanks.</text><text x='450.0' y='110' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>The unit crosses fast and quiet.</text>
+<rect x='306' y='300' width='288' height='70' fill='#c8b98f' opacity='.6'/>
+<line x1='306' y1='300' x2='594' y2='300' stroke='#20261c' stroke-width='1.5' stroke-dasharray='7 5'/>
+<line x1='306' y1='370' x2='594' y2='370' stroke='#20261c' stroke-width='1.5' stroke-dasharray='7 5'/>
+<text x='360' y='340.0' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#3a4433'>DANGER AREA</text>
+<line x1='600' y1='50' x2='600' y2='610' stroke='#d7dbd0' stroke-width='2'/>
+<text x='750.0' y='70' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>3. Collect security, move on</text>
+<text x='750.0' y='92' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Near-side security crosses last.</text><text x='750.0' y='110' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Head count, then on the azimuth.</text>
+<rect x='606' y='300' width='288' height='70' fill='#c8b98f' opacity='.6'/>
+<line x1='606' y1='300' x2='894' y2='300' stroke='#20261c' stroke-width='1.5' stroke-dasharray='7 5'/>
+<line x1='606' y1='370' x2='894' y2='370' stroke='#20261c' stroke-width='1.5' stroke-dasharray='7 5'/>
+<text x='660' y='340.0' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#3a4433'>DANGER AREA</text>
+<path d='M150.0,454.0 L156.5,474.7 L143.5,474.7 z' fill='#2e7d32'/><circle cx='150' cy='470' r='9' fill='#2e7d32'/>
+<path d='M150.0,484.0 L156.5,504.7 L143.5,504.7 z' fill='#2e7d32'/><circle cx='150' cy='500' r='9' fill='#2e7d32'/>
+<path d='M150.0,514.0 L156.5,534.7 L143.5,534.7 z' fill='#2e7d32'/><circle cx='150' cy='530' r='9' fill='#2e7d32'/>
+<path d='M150.0,544.0 L156.5,564.7 L143.5,564.7 z' fill='#2e7d32'/><circle cx='150' cy='560' r='9' fill='#2e7d32'/>
+<path d='M150.0,574.0 L156.5,594.7 L143.5,594.7 z' fill='#2e7d32'/><circle cx='150' cy='590' r='9' fill='#2e7d32'/>
+<path d='M34.0,400.0 L54.7,393.5 L54.7,406.5 z' fill='#1565c0'/><circle cx='50' cy='400' r='9' fill='#1565c0'/>
+<path d='M60.0,420.0 L80.7,413.5 L80.7,426.5 z' fill='#1565c0'/><circle cx='76' cy='420' r='9' fill='#1565c0'/>
+<path d='M266.0,400.0 L245.3,406.5 L245.3,393.5 z' fill='#1565c0'/><circle cx='250' cy='400' r='9' fill='#1565c0'/>
+<path d='M240.0,420.0 L219.3,426.5 L219.3,413.5 z' fill='#1565c0'/><circle cx='224' cy='420' r='9' fill='#1565c0'/>
+<text x='62' y='452' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#1565c0'>near-side</text>
+<text x='238' y='452' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#1565c0'>near-side</text>
+<path d='M180,440 L180,272' fill='none' stroke='#d32f2f' stroke-width='2.2' marker-end='url(#ahr)'/>
+<path d='M160.0,246.0 L166.5,266.7 L153.5,266.7 z' fill='#d32f2f'/><circle cx='160' cy='262' r='9' fill='#d32f2f'/>
+<path d='M200.0,232.0 L206.5,252.7 L193.5,252.7 z' fill='#d32f2f'/><circle cx='200' cy='248' r='9' fill='#d32f2f'/>
+<text x='180' y='218' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#d32f2f'>far-side team</text>
+<path d='M344.0,250.0 L364.7,243.5 L364.7,256.5 z' fill='#d32f2f'/><circle cx='360' cy='250' r='9' fill='#d32f2f'/>
+<path d='M374.0,270.0 L394.7,263.5 L394.7,276.5 z' fill='#d32f2f'/><circle cx='390' cy='270' r='9' fill='#d32f2f'/>
+<path d='M556.0,250.0 L535.3,256.5 L535.3,243.5 z' fill='#d32f2f'/><circle cx='540' cy='250' r='9' fill='#d32f2f'/>
+<path d='M526.0,270.0 L505.3,276.5 L505.3,263.5 z' fill='#d32f2f'/><circle cx='510' cy='270' r='9' fill='#d32f2f'/>
+<text x='450' y='230' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#d32f2f'>far side clear</text>
+<path d='M334.0,400.0 L354.7,393.5 L354.7,406.5 z' fill='#1565c0'/><circle cx='350' cy='400' r='9' fill='#1565c0'/>
+<path d='M360.0,420.0 L380.7,413.5 L380.7,426.5 z' fill='#1565c0'/><circle cx='376' cy='420' r='9' fill='#1565c0'/>
+<path d='M566.0,400.0 L545.3,406.5 L545.3,393.5 z' fill='#1565c0'/><circle cx='550' cy='400' r='9' fill='#1565c0'/>
+<path d='M540.0,420.0 L519.3,426.5 L519.3,413.5 z' fill='#1565c0'/><circle cx='524' cy='420' r='9' fill='#1565c0'/>
+<path d='M450.0,464.0 L456.5,484.7 L443.5,484.7 z' fill='#2e7d32'/><circle cx='450' cy='480' r='9' fill='#2e7d32'/>
+<path d='M450.0,494.0 L456.5,514.7 L443.5,514.7 z' fill='#2e7d32'/><circle cx='450' cy='510' r='9' fill='#2e7d32'/>
+<path d='M450.0,524.0 L456.5,544.7 L443.5,544.7 z' fill='#2e7d32'/><circle cx='450' cy='540' r='9' fill='#2e7d32'/>
+<path d='M450.0,554.0 L456.5,574.7 L443.5,574.7 z' fill='#2e7d32'/><circle cx='450' cy='570' r='9' fill='#2e7d32'/>
+<path d='M450,462 L450,282' fill='none' stroke='#2e7d32' stroke-width='2.5' marker-end='url(#ahg)'/>
+<text x='450' y='600' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#2e7d32'>shortest way across</text>
+<path d='M735.0,134.0 L741.5,154.7 L728.5,154.7 z' fill='#d32f2f'/><circle cx='735' cy='150' r='9' fill='#d32f2f'/>
+<path d='M765.0,134.0 L771.5,154.7 L758.5,154.7 z' fill='#d32f2f'/><circle cx='765' cy='150' r='9' fill='#d32f2f'/>
+<path d='M750.0,169.0 L756.5,189.7 L743.5,189.7 z' fill='#2e7d32'/><circle cx='750' cy='185' r='9' fill='#2e7d32'/>
+<path d='M750.0,197.0 L756.5,217.7 L743.5,217.7 z' fill='#2e7d32'/><circle cx='750' cy='213' r='9' fill='#2e7d32'/>
+<path d='M750.0,225.0 L756.5,245.7 L743.5,245.7 z' fill='#2e7d32'/><circle cx='750' cy='241' r='9' fill='#2e7d32'/>
+<path d='M750.0,253.0 L756.5,273.7 L743.5,273.7 z' fill='#2e7d32'/><circle cx='750' cy='269' r='9' fill='#2e7d32'/>
+<path d='M850,260 L850,160' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<text x='850' y='280' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>on</text>
+<path d='M670,398 C670,340 710,320 728,290' fill='none' stroke='#1565c0' stroke-width='2' marker-end='url(#ahb)'/>
+<path d='M830,398 C830,340 790,320 772,290' fill='none' stroke='#1565c0' stroke-width='2' marker-end='url(#ahb)'/>
+<path d='M670.0,399.0 L676.5,419.7 L663.5,419.7 z' fill='#1565c0'/><circle cx='670' cy='415' r='9' fill='#1565c0'/>
+<path d='M830.0,399.0 L836.5,419.7 L823.5,419.7 z' fill='#1565c0'/><circle cx='830' cy='415' r='9' fill='#1565c0'/>
+<text x='750' y='470' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#1565c0'>near-side security</text><text x='750' y='486' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#1565c0'>falls in behind</text>
+</svg>

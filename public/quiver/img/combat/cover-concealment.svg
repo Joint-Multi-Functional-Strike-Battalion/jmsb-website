@@ -1,0 +1,24 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 380' width='760' height='380' role='img' aria-label='Cover stops rounds, concealment only hides you'>
+<title>Cover stops rounds, concealment only hides you</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='760' height='380' fill='#ffffff'/>
+<text x='380' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>COVER stops the round.  CONCEALMENT only hides you.</text>
+<path d='M684.0,120.0 L704.7,113.5 L704.7,126.5 z' fill='#d32f2f'/><circle cx='700' cy='120' r='9' fill='#d32f2f'/>
+<path d='M684.0,300.0 L704.7,293.5 L704.7,306.5 z' fill='#d32f2f'/><circle cx='700' cy='300' r='9' fill='#d32f2f'/>
+<text x='700' y='80' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#d32f2f'>Enemy</text>
+<rect x='300' y='80' width='26' height='90' fill='#8d8d8d' stroke='#20261c'/>
+<text x='313' y='192' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>Wall, rubble, berm</text>
+<path d='M266.0,125.0 L245.3,131.5 L245.3,118.5 z' fill='#2e7d32'/><circle cx='250' cy='125' r='9' fill='#2e7d32'/>
+<text x='250' y='160' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>Covered</text>
+<path d='M685,122 L332,124' fill='none' stroke='#d32f2f' stroke-width='2' stroke-dasharray='6 5' marker-end='url(#ahr)'/>
+<text x='510' y='112' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#d32f2f'>round stops at the wall</text>
+<circle cx='333' cy='300' r='34' fill='#7cb342' opacity='.85'/>
+<circle cx='313' cy='285' r='22' fill='#7cb342' opacity='.85'/>
+<circle cx='353' cy='285' r='24' fill='#7cb342' opacity='.85'/>
+<circle cx='333' cy='278' r='22' fill='#7cb342' opacity='.85'/>
+<text x='333' y='358' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>Bush, tall grass, smoke</text>
+<path d='M266.0,300.0 L245.3,306.5 L245.3,293.5 z' fill='#2e7d32'/><circle cx='250' cy='300' r='9' fill='#2e7d32'/>
+<text x='190' y='340' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#d32f2f'>Hidden, NOT covered</text>
+<path d='M685,302 L265,302' fill='none' stroke='#d32f2f' stroke-width='2' stroke-dasharray='6 5' marker-end='url(#ahr)'/>
+<text x='510' y='292' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#d32f2f'>round goes straight through</text>
+</svg>

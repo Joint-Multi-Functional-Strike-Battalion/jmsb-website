@@ -5,9 +5,10 @@
 // printed PDF and PNG come out of the same data). Three kinds of page from
 // one route: /smartcards/ (every deck and its cards), /smartcards/<deck>/
 // (one deck) and /smartcards/<deck>/<card>/ (the card itself).
-// On the card: a jump rail of its sections, arrows and a swipe to the next
+// On the card: arrows and a swipe to the next
 // or previous card, tables scaled to fit the width and pinch-zoomed from
-// there (user, 2026-10-09). Print links appear once the PDFs are uploaded
+// there; no section menu, the card itself has to fit the phone (user,
+// 2026-10-09). Print links appear once the PDFs are uploaded
 // and src/data/smartcards-links.json names them.
 import Base from '../../layouts/Base.astro';
 import Banner from '../../components/Banner.astro';
@@ -46,10 +47,36 @@ const assetUrl = (key) => {
 	const path = deck.assets[key] || '';
 	return `/smartcards/${deck.slug}/${key}${path.slice(path.lastIndexOf('.'))}`;
 };
-const sections = card ? card.print_layout.areas.flatMap((a) => a.sections).filter((s) => s.heading) : [];
 const secId = (s) => slugOf(s.heading);
+
+// The print layout's areas, placed as on the printed card: a spanned area
+// ("1-2") takes those columns, an area with no span takes the next free
+// column, and once every column is taken the rest stack in the last one.
+// "full" starts a new band. Consecutive areas in the same columns merge, so
+// the right column fills from the top beside a tall picture (user, 2026-10-09).
+const place = (layout) => {
+	const n = layout.columns || 3;
+	const bands = [[]];
+	let used = new Set();
+	for (const a of layout.areas) {
+		if (a.span === 'full') { bands.push([{ col: 'full', sections: [...a.sections] }]); bands.push([]); used = new Set(); continue; }
+		const band = bands[bands.length - 1];
+		let col = a.span;
+		if (!col) {
+			let c = 1; while (c <= n && used.has(c)) c++;
+			col = c <= n ? String(c) : (band[band.length - 1]?.col || '1');
+		}
+		const m = /^(\d+)-(\d+)$/.exec(col);
+		for (let c = m ? +m[1] : +col; c <= (m ? +m[2] : +col); c++) used.add(c);
+		const last = band[band.length - 1];
+		if (last && last.col === col) last.sections.push(...a.sections); else band.push({ col, sections: [...a.sections] });
+	}
+	return bands.filter((b) => b.length);
+};
+const bands = card ? place(card.print_layout) : [];
 const dl = card ? (links[deck.slug]?.[card.id] || {}) : {};
 const downloads = [['pdf', 'Print PDF'], ['pdf_dark', 'Print PDF, dark']].filter(([k]) => dl[k]);
+const folderOf = (d) => links[d.slug]?.folder || '';
 
 const title = card ? card.role.replace(/\s*·\s*/g, ' / ') : deck ? deck.short : 'SmartCards';
 const crumbs = [{ href: '/smartcards/', label: 'SmartCards' }];
@@ -65,7 +92,7 @@ if (card) crumbs.push({ label: card.role });
 
 			{!deck && decks.map((d) => (
 				<div class="sc-deck">
-					<div class="section-head"><h2><a href={d.href}>{d.short}</a></h2><p class="mono muted">{d.cards.length} cards · {d.version}</p></div>
+					<div class="section-head"><h2><a href={d.href}>{d.short}</a></h2><p class="mono muted">{d.cards.length} cards · {d.version}{folderOf(d) && <> · <a href={folderOf(d)} target="_blank" rel="noopener">Print PDFs</a></>}</p></div>
 					<div class="sc-grid">{d.cards.map((c) => (
 						<a class="card sc-tile" href={c.href}><span class="sc-level">Level {c.level}</span><h3>{c.role}</h3><p>{c.subtitle}</p><p class="sc-tile-banner">{c.banner}</p></a>
 					))}</div>
@@ -74,6 +101,7 @@ if (card) crumbs.push({ label: card.role });
 
 			{deck && !card && (<>
 				<p class="eyebrow">{deck.name}</p><h1 class="sc-h1">{deck.short}</h1>
+				{folderOf(deck) && <p class="sc-folder"><a class="btn ghost small" href={folderOf(deck)} target="_blank" rel="noopener">Print PDFs, the whole deck</a></p>}
 				<div class="sc-grid">{deck.cards.map((c) => (
 					<a class="card sc-tile" href={c.href}><span class="sc-level">Level {c.level}</span><h3>{c.role}</h3><p>{c.subtitle}</p><p class="sc-tile-banner">{c.banner}</p></a>
 				))}</div>
@@ -94,11 +122,9 @@ if (card) crumbs.push({ label: card.role });
 					</header>
 					{card.banner && <p class="sc-banner">{card.banner}</p>}
 
-					{sections.length > 1 && <nav class="sc-rail" aria-label="On this card"><ol>{sections.map((s) => <li><a href={`#${secId(s)}`}>{s.letter && <b>{s.letter}</b>}{s.heading}</a></li>)}</ol></nav>}
-
 					<div class="sc-areas" style={`--cols: ${card.print_layout.columns}`}>
-						{card.print_layout.areas.map((a) => (
-							<div class="sc-area" data-span={a.span || undefined}>
+						{bands.flatMap((band) => band.map((a) => (
+							<div class="sc-area" data-col={a.col}>
 								{a.sections.map((s) => (
 									<section class="sc-sec" id={s.heading ? secId(s) : undefined}>
 										{s.heading && <h2 class="sc-sh">{s.letter && <b>{s.letter}</b>}{s.heading}</h2>}
@@ -113,7 +139,7 @@ if (card) crumbs.push({ label: card.role });
 									</section>
 								))}
 							</div>
-						))}
+						)))}
 					</div>
 
 					<footer class="sc-foot">

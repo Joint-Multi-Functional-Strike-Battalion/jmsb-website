@@ -1,0 +1,31 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 820 300' width='820' height='300' role='img' aria-label='Traveling overwatch: the lead Group 50 to 100 metres ahead, the rest about 20 metres apart behind it'>
+<title>Traveling overwatch: the lead Group 50 to 100 metres ahead, the rest about 20 metres apart behind it</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='820' height='300' fill='#ffffff'/>
+<text x='410.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>TRAVELING OVERWATCH</text><text x='410.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Contact possible - the basic technique</text>
+<rect x='48.0' y='135.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='48.0' y1='135.0' x2='92.0' y2='165.0' stroke='#20261c' stroke-width='2'/><line x1='48.0' y1='165.0' x2='92.0' y2='135.0' stroke='#20261c' stroke-width='2'/>
+<text x='70' y='194' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Trail Group</text>
+<rect x='186.0' y='140.0' width='28' height='20' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='186.0' y1='140.0' x2='214.0' y2='160.0' stroke='#20261c' stroke-width='2'/><line x1='186.0' y1='160.0' x2='214.0' y2='140.0' stroke='#20261c' stroke-width='2'/>
+<text x='200' y='194' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Medic, weapons</text><text x='200' y='212' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>(optional)</text>
+<rect x='308.0' y='135.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='308.0' y1='135.0' x2='352.0' y2='165.0' stroke='#20261c' stroke-width='2'/><line x1='308.0' y1='165.0' x2='352.0' y2='135.0' stroke='#20261c' stroke-width='2'/>
+<text x='330' y='194' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Group</text>
+<rect x='446.0' y='140.0' width='28' height='20' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='446.0' y1='140.0' x2='474.0' y2='160.0' stroke='#20261c' stroke-width='2'/><line x1='446.0' y1='160.0' x2='474.0' y2='140.0' stroke='#20261c' stroke-width='2'/>
+<text x='460' y='194' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Detachment</text><text x='460' y='212' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>leader</text>
+<rect x='698.0' y='135.0' width='44' height='30' rx='0' fill='#fff' stroke='#20261c' stroke-width='2'/><line x1='698.0' y1='135.0' x2='742.0' y2='165.0' stroke='#20261c' stroke-width='2'/><line x1='698.0' y1='165.0' x2='742.0' y2='135.0' stroke='#20261c' stroke-width='2'/>
+<text x='720' y='194' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Lead Group</text>
+<path d='M135.0,110 L100,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<path d='M135.0,110 L170,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='135.0' y='100' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>~20 m</text>
+<path d='M265.0,110 L230,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<path d='M265.0,110 L300,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='265.0' y='100' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>~20 m</text>
+<path d='M395.0,110 L360,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<path d='M395.0,110 L430,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='395.0' y='100' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>~20 m</text>
+<path d='M580.0,110 L490,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<path d='M600.0,110 L690,110' fill='none' stroke='#20261c' stroke-width='1.5' marker-end='url(#ah)'/>
+<path d='M580.0,110 L586.0,102 L594.0,118 L600.0,110' fill='none' stroke='#20261c' stroke-width='1.5'/>
+<text x='590.0' y='100' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>50 - 100 m</text>
+<path d='M760,150 L800,150' fill='none' stroke='#20261c' stroke-width='4' marker-end='url(#ah)'/>
+<text x='410.0' y='250' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>The lead Group is far enough out to find the enemy before he sees the main body,</text><text x='410.0' y='268' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>and close enough that the rest can still support it with fire.</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 500' width='760' height='500' role='img' aria-label='Center peel: the outside men peel in and fall back through the middle of the line'>
+<title>Center peel: the outside men peel in and fall back through the middle of the line</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='760' height='500' fill='#ffffff'/>
+<text x='380' y='28' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>CENTER PEEL  -  the line falls back through its own middle</text>
+<text x='380' y='62' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#d32f2f'>ENEMY</text>
+<line x1='120' y1='72' x2='640' y2='72' stroke='#d32f2f' stroke-width='2' stroke-dasharray='8 6'/>
+<path d='M200.0,154.0 L206.5,174.7 L193.5,174.7 z' fill='#2e7d32'/><circle cx='200' cy='170' r='9' fill='#2e7d32'/><text x='200' y='174' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='11' font-weight='bold' fill='#fff'>1</text>
+<path d='M300.0,154.0 L306.5,174.7 L293.5,174.7 z' fill='#2e7d32'/><circle cx='300' cy='170' r='9' fill='#2e7d32'/><text x='300' y='174' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='11' font-weight='bold' fill='#fff'>2</text>
+<path d='M460.0,154.0 L466.5,174.7 L453.5,174.7 z' fill='#2e7d32'/><circle cx='460' cy='170' r='9' fill='#2e7d32'/><text x='460' y='174' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='11' font-weight='bold' fill='#fff'>3</text>
+<path d='M560.0,154.0 L566.5,174.7 L553.5,174.7 z' fill='#2e7d32'/><circle cx='560' cy='170' r='9' fill='#2e7d32'/><text x='560' y='174' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='11' font-weight='bold' fill='#fff'>4</text>
+<text x='380' y='205' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>1. The line fires to the front</text>
+<path d='M200,182 C220,260 340,250 370,300 L370,372' fill='none' stroke='#2e7d32' stroke-width='2.5' marker-end='url(#ahg)'/>
+<path d='M560,182 C540,260 420,250 390,300 L390,372' fill='none' stroke='#2e7d32' stroke-width='2.5' marker-end='url(#ahg)'/>
+<path d='M370.0,374.0 L376.5,394.7 L363.5,394.7 z' fill='#2e7d32'/><circle cx='370' cy='390' r='9' fill='#2e7d32'/><text x='370' y='394' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='11' font-weight='bold' fill='#fff'>1</text>
+<path d='M390.0,404.0 L396.5,424.7 L383.5,424.7 z' fill='#2e7d32'/><circle cx='390' cy='420' r='9' fill='#2e7d32'/><text x='390' y='424' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='11' font-weight='bold' fill='#fff'>4</text>
+<text x='380' y='462' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>2. Outside men peel in, run behind the line and set up at the rear</text>
+<text x='380' y='484' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>3. The next outside men follow. Repeat until the order to stop</text>
+</svg>

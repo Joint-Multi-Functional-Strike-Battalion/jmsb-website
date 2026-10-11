@@ -1,0 +1,48 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 860' width='900' height='860' role='img' aria-label='Cardiac arrest flow: check pulse, shock if shockable, fix reversible causes, CPR for two minutes, repeat'>
+<title>Cardiac arrest flow: check pulse, shock if shockable, fix reversible causes, CPR for two minutes, repeat</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='900' height='860' fill='#ffffff'/>
+<text x='450.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>CARDIAC ARREST  -  the loop</text><text x='450.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Run it until the pulse comes back</text>
+<rect x='380.0' y='75.0' width='140' height='40' rx='8' fill='#dce7f3' stroke='#20261c' stroke-width='1.5'/><text x='450' y='100' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>START</text>
+<path d='M450,115 L450,145' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<rect x='325.0' y='148.0' width='250' height='40' rx='8' fill='#dce7f3' stroke='#20261c' stroke-width='1.5'/><text x='450' y='173' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='normal' fill='#20261c'>Check rhythm and pulse</text>
+<line x1='450' y1='188' x2='450' y2='212' stroke='#20261c' stroke-width='2'/>
+<line x1='300' y1='212' x2='620' y2='212' stroke='#20261c' stroke-width='2'/>
+<path d='M300,212 L300,250' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<path d='M620,212 L620,250' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<text x='370' y='232' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#d32f2f'>no pulse</text>
+<text x='540' y='232' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>pulse</text>
+<rect x='215.0' y='255.0' width='170' height='40' rx='8' fill='#dce7f3' stroke='#20261c' stroke-width='1.5'/><text x='300' y='280' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='normal' fill='#20261c'>Shockable rhythm?</text>
+<rect x='505.0' y='255.0' width='230' height='40' rx='8' fill='#dcefdc' stroke='#20261c' stroke-width='1.5'/><text x='620' y='280' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>Pulse back (ROSC): stop</text>
+<line x1='300' y1='295' x2='300' y2='322' stroke='#20261c' stroke-width='2'/>
+<line x1='170' y1='322' x2='450' y2='322' stroke='#20261c' stroke-width='2'/>
+<path d='M170,322 L170,400' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<path d='M450,322 L450,360' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<text x='160' y='345' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#d32f2f'>VT / VF</text>
+<text x='385' y='314' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>asystole / PEA</text>
+<rect x='345.0' y='363.0' width='210' height='40' rx='8' fill='#dce7f3' stroke='#20261c' stroke-width='1.5'/><text x='450' y='388' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='normal' fill='#20261c'>Reversible cause?</text>
+<rect x='95.0' y='403.0' width='150' height='40' rx='8' fill='#f6d6d6' stroke='#20261c' stroke-width='1.5'/><text x='170' y='428' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>SHOCK</text>
+<line x1='450' y1='403' x2='450' y2='430' stroke='#20261c' stroke-width='2'/>
+<line x1='390' y1='430' x2='620' y2='430' stroke='#20261c' stroke-width='2'/>
+<path d='M620,430 L620,480' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<text x='640' y='458' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>yes</text>
+<text x='372' y='455' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>no</text>
+<rect x='520.0' y='483.0' width='200' height='40' rx='8' fill='#dce7f3' stroke='#20261c' stroke-width='1.5'/><text x='620' y='508' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='normal' fill='#20261c'>Fix the cause</text>
+<path d='M390,430 L390,575' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<path d='M170,443 L170,598 L300,598' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<text x='160' y='525' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>then</text>
+<path d='M620,523 L620,598 L480,598' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<text x='630' y='565' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>then</text>
+<rect x='300.0' y='578.0' width='180' height='40' rx='8' fill='#f6d6d6' stroke='#20261c' stroke-width='1.5'/><text x='390' y='603' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>CPR</text>
+<path d='M390,618 L390,700' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<text x='400' y='665' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>after 2 minutes of CPR</text>
+<rect x='280.0' y='703.0' width='220' height='40' rx='8' fill='#dce7f3' stroke='#20261c' stroke-width='1.5'/><text x='390' y='728' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>Back to START</text>
+<path d='M280,723 L40,723 L40,95 L375,95' fill='none' stroke='#6b7260' stroke-width='1.5' stroke-dasharray='6 5' marker-end='url(#ah)'/>
+<rect x='690' y='300' width='190' height='120' rx='6' fill='#f6ecd9' stroke='#20261c' stroke-width='1.2'/>
+<text x='785' y='324' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>Drugs (Medic, IV)</text>
+<text x='704' y='350' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>Epinephrine</text><text x='704' y='372' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>Amiodarone - VT/VF only</text><text x='704' y='394' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>Lidocaine - VT/VF only</text>
+<rect x='690' y='600' width='190' height='170' rx='6' fill='#f6ecd9' stroke='#20261c' stroke-width='1.2'/>
+<text x='785' y='624' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>Reversible causes</text>
+<text x='704' y='650' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>Hypovolaemia</text><text x='704' y='672' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>Hypoxia</text><text x='704' y='694' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>Tension pneumothorax</text><text x='704' y='716' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>Haemothorax</text><text x='704' y='738' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>Opioids on board</text>
+<text x='450' y='820' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Medic: one of amiodarone or lidocaine, never both inside 5 to 10 minutes.</text>
+</svg>

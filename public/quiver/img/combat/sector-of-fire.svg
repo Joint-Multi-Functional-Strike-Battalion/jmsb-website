@@ -1,0 +1,14 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 440' width='760' height='440' role='img' aria-label='Sectors of fire: each man covers a slice between a left and right limit, and the slices overlap'>
+<title>Sectors of fire: each man covers a slice between a left and right limit, and the slices overlap</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='760' height='440' fill='#ffffff'/>
+<text x='380' y='28' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>SECTORS OF FIRE  -  each man owns a slice, and the slices overlap</text>
+<path d='M230,380 L241,60 A320,320 0 0 1 489,192 z' fill='#2e7d32' opacity='.16' stroke='#2e7d32' stroke-width='1.5'/>
+<path d='M380,390 L240,102 A320,320 0 0 1 520,102 z' fill='#d32f2f' opacity='.16' stroke='#d32f2f' stroke-width='1.5'/>
+<path d='M530,380 L271,192 A320,320 0 0 1 519,60 z' fill='#1565c0' opacity='.16' stroke='#1565c0' stroke-width='1.5'/>
+<path d='M237.5,365.9 L233.5,387.2 L222.1,381.1 z' fill='#2e7d32'/><circle cx='230' cy='380' r='9' fill='#2e7d32'/>
+<path d='M380.0,374.0 L386.5,394.7 L373.5,394.7 z' fill='#d32f2f'/><circle cx='380' cy='390' r='9' fill='#d32f2f'/>
+<path d='M522.5,365.9 L537.9,381.1 L526.5,387.2 z' fill='#1565c0'/><circle cx='530' cy='380' r='9' fill='#1565c0'/>
+<text x='380' y='64' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>The sectors cross in front of the team: no gap for the enemy to use</text>
+<text x='380' y='420' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Give each man a left and right limit on something he can see. Overlap them so there is no gap.</text>
+</svg>

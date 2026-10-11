@@ -1,0 +1,29 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 820 420' width='820' height='420' role='img' aria-label='Angle of sight, angle of projection, line of fire, vertex and angle of descent of a trajectory'>
+<title>Angle of sight, angle of projection, line of fire, vertex and angle of descent of a trajectory</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='820' height='420' fill='#ffffff'/>
+<text x='410.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>ANGLES OF THE TRAJECTORY</text><text x='410.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Measured from the gun to a target that sits higher than the gun</text>
+<path d='M50,360 L790,360' fill='none' stroke='#2e7d32' stroke-width='2.5' marker-end='url(#ahg)'/>
+<path d='M110,360 L50,360' fill='none' stroke='#2e7d32' stroke-width='2.5' marker-end='url(#ahg)'/>
+<text x='720' y='384' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>Horizontal plane</text>
+<line x1='110' y1='360' x2='650' y2='300' stroke='#20261c' stroke-width='2'/>
+<text x='420' y='350' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Line of sight</text>
+<path d='M110.0,360.0 L119.0,351.0 L127.9,342.2 L136.8,333.5 L145.6,325.1 L154.4,316.8 L163.1,308.7 L171.8,300.8 L180.4,293.1 L188.9,285.6 L197.5,278.3 L205.9,271.1 L214.3,264.2 L222.7,257.4 L231.0,250.8 L239.2,244.4 L247.4,238.2 L255.5,232.2 L263.6,226.4 L271.6,220.8 L279.6,215.3 L287.5,210.0 L295.4,205.0 L303.1,200.1 L310.9,195.4 L318.6,190.9 L326.2,186.5 L333.7,182.4 L341.2,178.4 L348.7,174.7 L356.1,171.1 L363.4,167.7 L370.6,164.5 L377.8,161.5 L385.0,158.7 L392.0,156.0 L399.0,153.6 L406.0,151.3 L412.8,149.3 L419.7,147.4 L426.4,145.7 L433.1,144.2 L439.7,142.8 L446.2,141.7 L452.7,140.8 L459.1,140.0 L465.4,139.4 L471.7,139.0 L477.9,138.8 L484.0,138.8 L490.0,139.0 L496.0,139.4 L501.8,139.9 L507.7,140.7 L513.4,141.6 L519.0,142.7 L524.6,144.0 L530.1,145.5 L535.5,147.2 L540.8,149.1 L546.1,151.1 L551.2,153.4 L556.3,155.8 L561.3,158.4 L566.2,161.2 L570.9,164.2 L575.6,167.4 L580.2,170.7 L584.7,174.3 L589.1,178.0 L593.4,182.0 L597.6,186.1 L601.7,190.4 L605.7,194.9 L609.5,199.6 L613.3,204.4 L616.9,209.5 L620.4,214.7 L623.7,220.2 L626.9,225.8 L630.0,231.6 L632.9,237.6 L635.7,243.8 L638.3,250.2 L640.7,256.7 L642.9,263.5 L644.9,270.4 L646.7,277.5 L648.2,284.8 L649.4,292.3 L650.0,300.0' fill='none' stroke='#d32f2f' stroke-width='3'/>
+<path d='M483.962654803204,98.83456790123455 L483.962654803204,132.83456790123455' fill='none' stroke='#20261c' stroke-width='2' marker-end='url(#ah)'/>
+<text x='483.962654803204' y='92.83456790123455' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>Vertex (summit)</text>
+<text x='250' y='150' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#d32f2f'>Trajectory</text>
+<line x1='110' y1='360' x2='258.7112337761331' y2='211.72670857912308' stroke='#1565c0' stroke-width='2' stroke-dasharray='8 5'/>
+<text x='250.7112337761331' y='203.72670857912308' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#1565c0'>Line of fire (bore)</text>
+<path d='M249.1,344.5 A140,140 0 0 1 250.0,358.8' fill='none' stroke='#2e7d32' stroke-width='2'/>
+<text x='260' y='355' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>Angle of sight</text>
+<path d='M166.7,303.5 A80,80 0 0 1 189.5,351.2' fill='none' stroke='#1565c0' stroke-width='2'/>
+<text x='202' y='308' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#1565c0'>Angle of</text><text x='202' y='326' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#1565c0'>projection</text>
+<path d='M595.3,306.1 A55,55 0 0 1 636.4,246.7' fill='none' stroke='#d32f2f' stroke-width='2'/>
+<text x='560' y='220' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#d32f2f'>Angle of</text><text x='560' y='238' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#d32f2f'>descent</text>
+<line x1='564' y1='222' x2='604.7760055680887' y2='268.6983973633544' stroke='#6b7260' stroke-width='1'/>
+<circle cx='110' cy='360' r='6' fill='#20261c'/>
+<text x='110' y='386' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>Gun</text>
+<rect x='646' y='300' width='70' height='60' rx='0' fill='#c8b98f' stroke='#20261c' stroke-width='1'/>
+<polygon points='650.0,280.0 652.4,288.2 659.9,284.1 655.8,291.6 664.0,294.0 655.8,296.4 659.9,303.9 652.4,299.8 650.0,308.0 647.6,299.8 640.1,303.9 644.2,296.4 636.0,294.0 644.2,291.6 640.1,284.1 647.6,288.2' fill='#f2a33a' stroke='#20261c' stroke-width='1.5'/>
+<text x='690' y='280' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>Target</text>
+</svg>

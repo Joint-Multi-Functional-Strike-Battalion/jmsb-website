@@ -1,0 +1,16 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 350' width='760' height='350' role='img' aria-label='Grazing fire: the centre of the cone stays under one metre above the ground'>
+<title>Grazing fire: the centre of the cone stays under one metre above the ground</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='760' height='350' fill='#ffffff'/>
+<text x='380' y='28' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>GRAZING FIRE  -  the cone stays below 1 m over the ground</text>
+<path d='M40,250 L720,250' stroke='#20261c' stroke-width='3'/>
+<rect x='40' y='250' width='680' height='30' fill='#c8b98f'/>
+<path d='M86.0,238.0 L65.3,244.5 L65.3,231.5 z' fill='#2e7d32'/><circle cx='70' cy='238' r='9' fill='#2e7d32'/>
+<path d='M86,236 C300,205 520,205 700,246' fill='none' stroke='#d32f2f' stroke-width='3'/>
+<line x1='40' y1='190' x2='720' y2='190' stroke='#6b7260' stroke-dasharray='4 4'/>
+<text x='690' y='184' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>1 m</text>
+<rect x='86' y='190' width='610' height='60' fill='#d32f2f' opacity='.10'/>
+<text x='380' y='238' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#d32f2f'>danger space - anyone standing here is hit</text>
+<text x='380' y='310' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Best on flat or evenly sloping ground, with a machine gun low and on a bipod.</text>
+<text x='380' y='332' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>A dip or a fold in the ground is dead space - the rounds pass over it.</text>
+</svg>

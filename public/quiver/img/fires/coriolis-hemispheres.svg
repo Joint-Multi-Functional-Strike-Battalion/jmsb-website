@@ -1,0 +1,25 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 820 520' width='820' height='520' role='img' aria-label='Coriolis effect: shells drift right in the northern hemisphere and left in the southern'>
+<title>Coriolis effect: shells drift right in the northern hemisphere and left in the southern</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='820' height='520' fill='#ffffff'/>
+<text x='410.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>CORIOLIS: THE EARTH TURNS UNDER THE SHELL</text><text x='410.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Anything moving north or south is pushed off its line by the spin</text>
+<path d='M170,104 Q300,68 430,104' fill='none' stroke='#20261c' stroke-width='2.2' marker-end='url(#ah)'/>
+<text x='450' y='100' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>Earth spins west to east</text>
+<circle cx='300' cy='300' r='180' fill='#e8f1f8' stroke='#20261c' stroke-width='2.5'/>
+<path d='M120,300 A180,38 0 0 0 480,300' fill='none' stroke='#20261c' stroke-width='2'/>
+<path d='M120,300 A180,38 0 0 1 480,300' fill='none' stroke='#6b7260' stroke-width='1.2' stroke-dasharray='5 4'/>
+<text x='300' y='362' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>Equator</text>
+<text x='300' y='160' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#6b7260'>NORTHERN HEMISPHERE</text>
+<text x='300' y='462' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#6b7260'>SOUTHERN HEMISPHERE</text>
+<path d='M200,180 L200,245' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/><path d='M200,180 Q200,232.0 160,245' fill='none' stroke='#d32f2f' stroke-width='2.5' stroke-dasharray='6 4' marker-end='url(#ahr)'/>
+<path d='M400,270 L400,205' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/><path d='M400,270 Q400,218.0 440,205' fill='none' stroke='#d32f2f' stroke-width='2.5' stroke-dasharray='6 4' marker-end='url(#ahr)'/>
+<path d='M200,355 L200,420' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/><path d='M200,355 Q200,407.0 240,420' fill='none' stroke='#d32f2f' stroke-width='2.5' stroke-dasharray='6 4' marker-end='url(#ahr)'/>
+<path d='M400,440 L400,375' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/><path d='M400,440 Q400,388.0 360,375' fill='none' stroke='#d32f2f' stroke-width='2.5' stroke-dasharray='6 4' marker-end='url(#ahr)'/>
+<rect x='540' y='150' width='260' height='210' rx='4' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<text x='556' y='178' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>Key</text>
+<path d='M556,208 L600,208' fill='none' stroke='#20261c' stroke-width='2.5' marker-end='url(#ah)'/>
+<text x='612' y='213' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>where the shell is aimed</text>
+<path d='M556,242 L600,242' fill='none' stroke='#d32f2f' stroke-width='2.5' stroke-dasharray='6 4' marker-end='url(#ahr)'/>
+<text x='612' y='247' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#20261c'>where it actually goes</text>
+<text x='556' y='282' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>North of the equator:</text><text x='556' y='300' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>drifts to the RIGHT</text><text x='556' y='318' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>South of the equator:</text><text x='556' y='336' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#20261c'>drifts to the LEFT</text>
+</svg>

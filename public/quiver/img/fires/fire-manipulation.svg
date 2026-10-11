@@ -1,0 +1,70 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 640' width='900' height='640' role='img' aria-label='Fixed, traversing, searching, traverse-and-search, swinging traverse and free gun fire'>
+<title>Fixed, traversing, searching, traverse-and-search, swinging traverse and free gun fire</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='900' height='640' fill='#ffffff'/>
+<text x='450.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>FIRE AND THE GUN  -  how the gunner moves his fire</text><text x='450.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Dot: the gun.  Grey: where each burst lands.  Hollow ring: a burst with no beaten zone</text>
+<circle cx='150' cy='260' r='6' fill='#20261c'/>
+<line x1='150' y1='260' x2='150' y2='156' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='150' cy='130' rx='12' ry='26' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<text x='150' y='294' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>FIXED</text>
+<text x='150' y='314' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>one aim point,</text><text x='150' y='330' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>a point target</text>
+<circle cx='450' cy='260' r='6' fill='#20261c'/>
+<line x1='450' y1='260' x2='384' y2='156' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='384' cy='130' rx='12' ry='26' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='450' y1='260' x2='406' y2='156' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='406' cy='130' rx='12' ry='26' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='450' y1='260' x2='428' y2='156' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='428' cy='130' rx='12' ry='26' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='450' y1='260' x2='450' y2='156' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='450' cy='130' rx='12' ry='26' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='450' y1='260' x2='472' y2='156' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='472' cy='130' rx='12' ry='26' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='450' y1='260' x2='494' y2='156' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='494' cy='130' rx='12' ry='26' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='450' y1='260' x2='516' y2='156' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='516' cy='130' rx='12' ry='26' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<text x='450' y='294' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>TRAVERSE</text>
+<text x='450' y='314' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>change direction only:</text><text x='450' y='330' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>wide, shallow target</text>
+<circle cx='750' cy='260' r='6' fill='#20261c'/>
+<line x1='750' y1='260' x2='750' y2='138' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='750' cy='116' rx='12' ry='22' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='750' y1='260' x2='750' y2='182' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='750' cy='160' rx='12' ry='22' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='750' y1='260' x2='750' y2='226' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='750' cy='204' rx='12' ry='22' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<text x='750' y='294' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>SEARCH</text>
+<text x='750' y='314' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>change elevation only:</text><text x='750' y='330' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>deep, narrow target</text>
+<circle cx='150' cy='540' r='6' fill='#20261c'/>
+<line x1='150' y1='540' x2='90' y2='478' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='90' cy='456' rx='11' ry='22' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='150' y1='540' x2='110' y2='466' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='110' cy='444' rx='11' ry='22' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='150' y1='540' x2='130' y2='454' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='130' cy='432' rx='11' ry='22' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='150' y1='540' x2='150' y2='442' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='150' cy='420' rx='11' ry='22' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='150' y1='540' x2='170' y2='430' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='170' cy='408' rx='11' ry='22' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='150' y1='540' x2='190' y2='418' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='190' cy='396' rx='11' ry='22' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<line x1='150' y1='540' x2='210' y2='406' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/><ellipse cx='210' cy='384' rx='11' ry='22' fill='#cfcfcf' stroke='#20261c' stroke-width='1.5' opacity='1'/>
+<text x='150' y='574' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>TRAVERSE AND SEARCH</text>
+<text x='150' y='594' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>direction and elevation:</text><text x='150' y='610' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>target at an angle</text>
+<circle cx='450' cy='540' r='6' fill='#20261c'/>
+<line x1='450' y1='540' x2='335.0' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='335' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='450' y1='540' x2='367.85714285714283' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='368' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='450' y1='540' x2='400.7142857142857' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='401' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='450' y1='540' x2='433.57142857142856' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='434' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='450' y1='540' x2='466.42857142857144' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='466' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='450' y1='540' x2='499.2857142857143' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='499' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='450' y1='540' x2='532.1428571428571' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='532' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='450' y1='540' x2='565.0' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='565' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<text x='450' y='574' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>SWINGING TRAVERSE</text>
+<text x='450' y='594' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>big swings, cyclic rate,</text><text x='450' y='610' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>crossing targets</text>
+<circle cx='750' cy='540' r='6' fill='#20261c'/>
+<line x1='750' y1='540' x2='650.0' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='650' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='750' y1='540' x2='690.0' y2='451' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='690' cy='440' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='750' y1='540' x2='730.0' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='730' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='750' y1='540' x2='770.0' y2='451' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='770' cy='440' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='750' y1='540' x2='810.0' y2='411' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='810' cy='400' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<line x1='750' y1='540' x2='850.0' y2='451' stroke='#6b7260' stroke-width='2' stroke-dasharray='6 5'/>
+<circle cx='850' cy='440' r='11' fill='#fff' stroke='#20261c' stroke-width='1.5'/>
+<text x='750' y='574' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='14' font-weight='bold' fill='#20261c'>FREE GUN</text>
+<text x='750' y='594' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>fast changes both ways,</text><text x='750' y='610' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>cyclic rate, fast movers</text>
+</svg>

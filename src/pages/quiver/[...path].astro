@@ -53,13 +53,16 @@ const href = (c, s) => `/quiver/${c}/${s ? `${s}/` : ''}`;
 // is the page's code plus its place, QV/03.04/G2.1, so no two cards in the
 // handbook share one (user, 2026-10-09: "g1 g2 g3 needs to be more unique").
 const text = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+// a block with a picture and no words is still a block (2026-10-09: Street
+// Patterns and the two-man clearing pictures were dropped for having no text)
+const has = (s) => text(s) !== '' || /<img[\s>]/i.test(s);
 const groups = [];
 if (page) {
 	const parts = page.html.split(/(?=<h2>)/);
 	let g = 0;
 	for (const part of parts) {
 		const m = part.match(/^<h2>([\s\S]*?)<\/h2>/);
-		if (!m) { if (text(part)) groups.push({ n: 0, id: `${page.slug}-intro`, title: '', blocks: [{ id: `${page.slug}-intro-1`, code: '', title: '', body: part }] }); continue; }
+		if (!m) { if (has(part)) groups.push({ n: 0, id: `${page.slug}-intro`, title: '', blocks: [{ id: `${page.slug}-intro-1`, code: '', title: '', body: part }] }); continue; }
 		g += 1;
 		const group = { n: g, id: `${page.slug}-${g}`, title: text(m[1]), blocks: [] };
 		const rest = part.slice(m[0].length);
@@ -67,7 +70,7 @@ if (page) {
 		let b = 0;
 		for (const sub of subs) {
 			const h = sub.match(/^<h3>([\s\S]*?)<\/h3>/);
-			if (!h) { if (text(sub)) group.blocks.push({ id: `${group.id}-0`, code: `${page.code}/G${g}.0`, title: subs.length > 1 ? 'Overview' : group.title, body: sub, lead: subs.length > 1 }); continue; }
+			if (!h) { if (has(sub)) group.blocks.push({ id: `${group.id}-0`, code: `${page.code}/G${g}.0`, title: subs.length > 1 ? 'Overview' : group.title, body: sub, lead: subs.length > 1 }); continue; }
 			b += 1;
 			group.blocks.push({ id: `${group.id}-${b}`, code: `${page.code}/G${g}.${b}`, title: text(h[1]), body: sub.slice(h[0].length), lead: false });
 		}

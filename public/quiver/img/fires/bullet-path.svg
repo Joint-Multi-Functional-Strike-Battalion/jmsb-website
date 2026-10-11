@@ -1,0 +1,40 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 880 440' width='880' height='440' role='img' aria-label='Bullet path: line of sight, line of departure, the bullet&#39;s path crossing the line of sight twice, zero range and bullet drop'>
+<title>Bullet path: line of sight, line of departure, the bullet&#39;s path crossing the line of sight twice, zero range and bullet drop</title>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#20261c'/></marker><marker id='ahr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#d32f2f'/></marker><marker id='ahg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#2e7d32'/></marker><marker id='ahb' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#1565c0'/></marker></defs>
+<rect width='880' height='440' fill='#ffffff'/>
+<text x='440.0' y='30' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='16' font-weight='bold' fill='#20261c'>BULLET PATH  -  zeroed at 300 m</text><text x='440.0' y='52' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>Side view, heights exaggerated</text>
+<path d='M40,266 L60,238 L110,230 L150,228 L150,236 L112,242 L74,276 z' fill='#20261c'/>
+<rect x='70' y='193' width='80' height='12' rx='5' fill='#20261c'/>
+<line x1='96' y1='205' x2='96' y2='230' stroke='#20261c' stroke-width='4'/><line x1='126' y1='205' x2='126' y2='229' stroke='#20261c' stroke-width='4'/>
+<line x1='150' y1='200' x2='840' y2='200' stroke='#c99a00' stroke-width='2.5' stroke-dasharray='7 5'/>
+<line x1='265.0' y1='194' x2='265.0' y2='206' stroke='#20261c' stroke-width='2'/>
+<text x='265.0' y='188' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>100 m</text>
+<line x1='380.0' y1='194' x2='380.0' y2='206' stroke='#20261c' stroke-width='2'/>
+<text x='380.0' y='188' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>200 m</text>
+<line x1='495.0' y1='194' x2='495.0' y2='206' stroke='#20261c' stroke-width='2'/>
+<text x='495.0' y='188' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>300 m</text>
+<line x1='610.0' y1='194' x2='610.0' y2='206' stroke='#20261c' stroke-width='2'/>
+<text x='610.0' y='188' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>400 m</text>
+<line x1='725.0' y1='194' x2='725.0' y2='206' stroke='#20261c' stroke-width='2'/>
+<text x='725.0' y='188' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>500 m</text>
+<text x='842' y='188' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#a07800'>Line of sight</text>
+<path d='M150,232 L350,84' fill='none' stroke='#1565c0' stroke-width='2.5' marker-end='url(#ahb)'/>
+<text x='346.28765690376565' y='74.0' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#1565c0'>Line of departure (where the barrel points)</text>
+<path d='M150.0,232.0 L155.8,227.8 L161.5,223.8 L167.2,220.0 L173.0,216.3 L178.8,212.7 L184.5,209.3 L190.2,206.1 L196.0,203.0 L201.8,200.0 L207.5,197.2 L213.2,194.5 L219.0,192.0 L224.8,189.6 L230.5,187.3 L236.2,185.2 L242.0,183.2 L247.8,181.3 L253.5,179.6 L259.2,178.0 L265.0,176.5 L270.8,175.2 L276.5,173.9 L282.2,172.8 L288.0,171.8 L293.8,171.0 L299.5,170.2 L305.2,169.6 L311.0,169.0 L316.8,168.6 L322.5,168.3 L328.2,168.1 L334.0,167.9 L339.8,167.9 L345.5,168.0 L351.2,168.2 L357.0,168.5 L362.8,168.9 L368.5,169.4 L374.2,169.9 L380.0,170.6 L385.8,171.4 L391.5,172.2 L397.2,173.1 L403.0,174.1 L408.8,175.2 L414.5,176.4 L420.2,177.6 L426.0,178.9 L431.8,180.3 L437.5,181.8 L443.2,183.3 L449.0,184.9 L454.8,186.6 L460.5,188.3 L466.2,190.1 L472.0,192.0 L477.8,193.9 L483.5,195.9 L489.2,197.9 L495.0,200.0 L500.8,202.1 L506.5,204.3 L512.2,206.6 L518.0,208.9 L523.8,211.2 L529.5,213.6 L535.2,216.0 L541.0,218.5 L546.8,221.0 L552.5,223.5 L558.2,226.1 L564.0,228.7 L569.8,231.3 L575.5,234.0 L581.2,236.7 L587.0,239.4 L592.8,242.1 L598.5,244.9 L604.2,247.7 L610.0,250.5 L615.8,253.3 L621.5,256.2 L627.2,259.0 L633.0,261.9 L638.8,264.7 L644.5,267.6 L650.2,270.5 L656.0,273.4 L661.8,276.3 L667.5,279.2 L673.2,282.1 L679.0,285.0 L684.8,287.9 L690.5,290.8 L696.2,293.6 L702.0,296.5 L707.8,299.4 L713.5,302.2 L719.2,305.0 L725.0,307.9 L730.8,310.6 L736.5,313.4 L742.2,316.2 L748.0,318.9 L753.8,321.6 L759.5,324.3 L765.2,326.9 L771.0,329.5 L776.8,332.1 L782.5,334.7 L788.2,337.2 L794.0,339.7' fill='none' stroke='#2e7d32' stroke-width='3' marker-end='url(#ahg)'/>
+<text x='774.0' y='363.6527407407407' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#2e7d32'>Bullet path</text>
+<path d='M120,208 L120,232' stroke='#d32f2f' stroke-width='1.5' marker-start='url(#ahr)' marker-end='url(#ahr)'/>
+<text x='120' y='296' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#d32f2f'>sight height</text>
+<line x1='120' y1='236' x2='120' y2='282' stroke='#d32f2f' stroke-width='1' stroke-dasharray='3 3'/>
+<circle cx='202' cy='200' r='5' fill='#2e7d32'/>
+<line x1='201.75' y1='206' x2='231.75' y2='300' stroke='#6b7260' stroke-width='1.2'/>
+<text x='235.75' y='314' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#20261c'>First crossing: the round</text><text x='235.75' y='330' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#20261c'>rises through the line of sight</text>
+<circle cx='495' cy='200' r='6' fill='#d32f2f'/>
+<line x1='495.0' y1='206' x2='485.0' y2='300' stroke='#6b7260' stroke-width='1.2'/>
+<text x='481.0' y='314' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>ZERO RANGE: the round comes</text><text x='481.0' y='330' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>back down onto the line of sight.</text><text x='481.0' y='346' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>Aim dead on.</text>
+<path d='M322,109 L322,164' stroke='#d32f2f' stroke-width='2' marker-start='url(#ahr)' marker-end='url(#ahr)'/>
+<text x='330.5' y='140.39999999999998' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='bold' fill='#d32f2f'>Bullet drop</text>
+<text x='330.5' y='156.39999999999998' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='normal' fill='#6b7260'>(gravity pulls it off the barrel line)</text>
+<path d='M702,206 L702,291' stroke='#20261c' stroke-width='1.5' marker-start='url(#ah)' marker-end='url(#ah)'/>
+<text x='710.0' y='252.256' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>Past zero:</text><text x='710.0' y='268.256' text-anchor='start' font-family='Arial, Helvetica, sans-serif' font-size='12' font-weight='bold' fill='#20261c'>hold over</text>
+<text x='440.0' y='420' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='13' font-weight='normal' fill='#6b7260'>The round never rises above the barrel line: it crosses the sight line twice because the barrel points up.</text>
+</svg>
