@@ -39,3 +39,8 @@ npm run build      # dist/
 
 The site is static. Copy `dist/` to `/var/www/jmsb.info` on the Lightsail box
 (nginx, `jmsb-info.conf`).
+
+`public/steam/` holds the images in the mod's Steam Workshop description. Steam
+draws them with `crossorigin="anonymous"`, so `jmsb-info.conf` has a
+`location /steam/` block that sends `Access-Control-Allow-Origin: *` - without
+it the images do not show on Steam (added 2026-10-17).
