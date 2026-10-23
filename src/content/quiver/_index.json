@@ -478,5 +478,35 @@
   "order": 96,
   "public": false,
   "updated": "2026-10-09"
+ },
+ {
+  "slug": "radios",
+  "title": "The radios",
+  "chapter": "Communications",
+  "kind": "guide",
+  "summary": "The MPU5 and the TW-950, game voice on Arma's own VON, your nets, the keys, and how the signal finds its way.",
+  "order": 10,
+  "public": true,
+  "updated": "2026-10-23"
+ },
+ {
+  "slug": "devices",
+  "title": "The phone and side devices",
+  "chapter": "Communications",
+  "kind": "guide",
+  "summary": "The walking view in your GPS slot: the status row, the net chips, TX, the keys, with the drawing numbered.",
+  "order": 20,
+  "public": true,
+  "updated": "2026-10-23"
+ },
+ {
+  "slug": "tablet",
+  "title": "The tablet",
+  "chapter": "Communications",
+  "kind": "guide",
+  "summary": "Num 5 opens it: the bar, the RADIO tile, the net row and GLOBAL, the RADIO app's tabs, and the RTO's nets on MANAGE.",
+  "order": 30,
+  "public": true,
+  "updated": "2026-10-23"
  }
 ]
