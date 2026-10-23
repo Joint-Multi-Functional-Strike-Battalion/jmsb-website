@@ -37,8 +37,34 @@ npm run dev        # http://localhost:4321
 npm run build      # dist/
 ```
 
-The site is static. Copy `dist/` to `/var/www/jmsb.info` on the Lightsail box
-(nginx, `jmsb-info.conf`).
+The site is static, served by nginx (`jmsb-info.conf`) on the Lightsail box
+from a **git checkout** at `/var/www/jmsb.info`, built there - the way the
+PAC sites are checkouts that pull (user, 2026-10-23: "fix that so it pulls
+from git"). Astro 7 needs node 22, so the box has `nodejs22` beside its node 18.
+
+Update, once `main` is pushed:
+
+```
+cd /var/www/jmsb.info && sudo ./scripts/update-server.sh
+```
+
+That pulls (`--ff-only`), runs `npm ci`, builds `dist/` and makes it readable;
+nginx's root is `/var/www/jmsb.info/dist`. The one-time setup is in the
+script's header. The old hand-copied root is kept as
+`/var/www/jmsb.info.copied_20261023`.
+
+## Server status
+
+The home page shows each server live - online or not, players, the mission
+and map - and opens a detail panel (state, version, locked, who is on and
+for how long) when a server is clicked (user, 2026-10-23). A browser cannot
+speak UDP, so the box does the asking: `scripts/arma-status.mjs` queries every
+server in `site.json` over Steam's A2S protocol (query port = game port + 1)
+and writes `/var/lib/jmsb-status/arma.json`, which nginx serves as
+`/status/arma.json`; a systemd timer runs it every minute. One-time setup:
+`cd /var/www/jmsb.info && sudo ./scripts/status-server-setup.sh`. Locally,
+`node scripts/arma-status.mjs` prints the same JSON; the dev server has no
+`/status/`, so the page shows "no status" there.
 
 `public/steam/` holds the images in the mod's Steam Workshop description. Steam
 draws them with `crossorigin="anonymous"`, so `jmsb-info.conf` has a

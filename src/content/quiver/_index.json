@@ -274,9 +274,9 @@
   "title": "ACRE communications",
   "chapter": "Communications",
   "kind": "guide",
-  "summary": "Installing ACRE2, radio configuration before and in the mission, the personal radio, keys and the headset.",
-  "order": 30,
-  "public": true,
+  "summary": "Installing ACRE2, radio configuration before and in the mission, the personal radio, keys and the headset. Not the unit's radio - we run game voice; kept for ACRE nights.",
+  "order": 90,
+  "public": false,
   "updated": "2026-10-09"
  },
  {
@@ -444,7 +444,7 @@
   "title": "TFAR communications",
   "chapter": "Communications",
   "kind": "guide",
-  "summary": "Task Force Radio: configuration, the personal radio and the interface. Not the unit's radio - we run ACRE2.",
+  "summary": "Task Force Radio: configuration, the personal radio and the interface. Not the unit's radio - we run game voice; kept for TFAR nights.",
   "order": 90,
   "public": false,
   "updated": "2026-10-09"
@@ -454,7 +454,7 @@
   "title": "TFAR setup",
   "chapter": "Communications",
   "kind": "guide",
-  "summary": "Installing the TFAR TeamSpeak plugin, step by step. Not the unit's radio - we run ACRE2.",
+  "summary": "Installing the TFAR TeamSpeak plugin, step by step. Not the unit's radio - we run game voice; kept for TFAR nights.",
   "order": 91,
   "public": false,
   "updated": "2026-10-09"

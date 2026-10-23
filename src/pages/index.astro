@@ -7,8 +7,14 @@ const join = site.discord !== '' ? site.discord : `${site.pac}/?page=apply`;
 const joinLabel = site.discord !== '' ? 'Join Discord' : 'Apply to join';
 
 // The server list drawn like radio presets: one dial per server, the needle a
-// notch further round each time.
-const all = [...site.servers.map((s) => ({ name: s.name, addr: `${s.host}:${s.port}` })), { name: 'TeamSpeak', addr: site.teamspeak }];
+// notch further round each time. The Arma servers carry a live status line and
+// open a detail panel when pressed (user, 2026-10-23: "on front page a status
+// and if you click on a server more details"); the status comes from
+// /status/arma.json, written on the box every minute by scripts/arma-status.mjs.
+const all = [
+	...site.servers.map((s) => ({ name: s.name, addr: `${s.host}:${s.port}`, kind: 'arma' })),
+	{ name: 'TeamSpeak', addr: site.teamspeak, kind: 'ts' },
+];
 const rows = all.map((s, i) => {
 	const a = (-90 + i * 60) * Math.PI / 180;
 	return { ...s, nx: (23 + Math.sin(a) * 13).toFixed(1), ny: (23 - Math.cos(a) * 13).toFixed(1) };
@@ -52,16 +58,34 @@ for (let a = -120; a <= 120; a += 20) {
 			</div>
 			<ul class="servers" aria-label="Servers">
 				{rows.map((s) => (
-					<li>
-						<svg class="dial" viewBox="0 0 46 46" aria-hidden="true">
-							<circle cx="23" cy="23" r="15" fill="#3a4433" stroke="#c2a878" stroke-width="1.5" />
-							{ticks.map((k) => <line x1={k.x1} y1={k.y1} x2={k.x2} y2={k.y2} stroke="#a9ae95" stroke-width="1.2" />)}
-							<line x1="23" y1="23" x2={s.nx} y2={s.ny} stroke="#c2a878" stroke-width="2.5" stroke-linecap="round" />
-						</svg>
-						<b>{s.name}</b><code>{s.addr}</code>
+					<li class="srv" data-addr={s.addr} data-kind={s.kind}>
+						{s.kind === 'arma' ? (
+							<button type="button" class="srv-btn" aria-expanded="false" aria-controls="srv-detail">
+								<svg class="dial" viewBox="0 0 46 46" aria-hidden="true">
+									<circle cx="23" cy="23" r="15" fill="#3a4433" stroke="#c2a878" stroke-width="1.5" />
+									{ticks.map((k) => <line x1={k.x1} y1={k.y1} x2={k.x2} y2={k.y2} stroke="#a9ae95" stroke-width="1.2" />)}
+									<line x1="23" y1="23" x2={s.nx} y2={s.ny} stroke="#c2a878" stroke-width="2.5" stroke-linecap="round" />
+								</svg>
+								<b>{s.name}</b>
+								<span class="st" data-state="unknown"><i class="dot" aria-hidden="true"></i><span class="st-text">checking</span></span>
+								<code>{s.addr}</code>
+							</button>
+						) : (
+							<span class="srv-btn plain">
+								<svg class="dial" viewBox="0 0 46 46" aria-hidden="true">
+									<circle cx="23" cy="23" r="15" fill="#3a4433" stroke="#c2a878" stroke-width="1.5" />
+									{ticks.map((k) => <line x1={k.x1} y1={k.y1} x2={k.x2} y2={k.y2} stroke="#a9ae95" stroke-width="1.2" />)}
+									<line x1="23" y1="23" x2={s.nx} y2={s.ny} stroke="#c2a878" stroke-width="2.5" stroke-linecap="round" />
+								</svg>
+								<b>{s.name}</b>
+								<span class="st" data-state="voice"><span class="st-text">TFAR / ACRE nights</span></span>
+								<code>{s.addr}</code>
+							</span>
+						)}
 					</li>
 				))}
 			</ul>
+			<div class="srv-detail" id="srv-detail" hidden aria-live="polite"></div>
 		</div>
 		<div class="p-class p-foot">ARMA 3 // JMSB.INFO</div>
 	</section>
@@ -94,5 +118,124 @@ for (let a = -120; a <= 120; a += 20) {
 		/* ---- the contour map behind the hero (src/scripts/pac.js) ---- */
 		const canvas = document.getElementById('topo');
 		contours(canvas, canvas.parentElement, 0);
+
+		/* ---- the servers' status: /status/arma.json, written on the box every
+		 * minute (scripts/arma-status.mjs). Each Arma server shows a dot and a
+		 * line; pressing one opens the detail panel under the list. ---- */
+		const STATUS_URL = '/status/arma.json';
+		const POLL_MS = 60000;
+		const detail = document.getElementById('srv-detail');
+		const items = [...document.querySelectorAll('li.srv[data-kind="arma"]')];
+		let rowsByAddr = new Map();
+		let generated = '';
+		let picked = null;
+
+		const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+		const mission = (r) => (r.mission || '').replace(/_/g, ' ');
+		const age = (iso) => {
+			const s = Math.round((Date.now() - new Date(iso).getTime()) / 1000);
+			if (!Number.isFinite(s)) return '';
+			return s < 90 ? `${s} s ago` : `${Math.round(s / 60)} min ago`;
+		};
+		const played = (sec) => {
+			const m = Math.round(sec / 60);
+			return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`;
+		};
+
+		function paintList() {
+			for (const li of items) {
+				const r = rowsByAddr.get(li.dataset.addr);
+				const st = li.querySelector('.st');
+				const text = li.querySelector('.st-text');
+				if (!r) { st.dataset.state = 'unknown'; text.textContent = 'no status'; continue; }
+				if (!r.online) { st.dataset.state = 'offline'; text.textContent = 'offline'; continue; }
+				st.dataset.state = 'online';
+				text.textContent = `${r.players} / ${r.max}` + (r.mission ? ` · ${mission(r)}` : '') + (r.locked ? ' · locked' : '');
+			}
+		}
+
+		function paintDetail() {
+			const r = picked ? rowsByAddr.get(picked) : null;
+			for (const li of items) li.querySelector('.srv-btn').setAttribute('aria-expanded', String(li.dataset.addr === picked));
+			if (!picked) { detail.hidden = true; detail.innerHTML = ''; return; }
+			const li = items.find((x) => x.dataset.addr === picked);
+			const name = li ? li.querySelector('b').textContent : picked;
+			let body;
+			if (!r) {
+				body = `<p class="sd-note">No status for this server yet.</p>`;
+			} else if (!r.online) {
+				body = `<p class="sd-note">Offline - no answer to a query in 2.5 s${generated ? `, checked ${age(generated)}` : ''}.</p>`;
+			} else {
+				const rowsHtml = [
+					['Mission', mission(r) || '-'],
+					['Map', r.map || '-'],
+					['Players', `${r.players} / ${r.max}`],
+					['State', r.state || '-'],
+					['Access', [r.password ? 'password' : 'open', r.locked ? 'locked by the admin' : null].filter(Boolean).join(', ')],
+					['Version', r.version || '-'],
+					['Server name', r.serverName || '-'],
+					['Ping from the box', r.ping != null ? `${r.ping} ms` : '-'],
+					['Checked', generated ? age(generated) : '-'],
+				].map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('');
+				const people = Array.isArray(r.playerList) && r.playerList.length
+					? `<ul class="plist">${r.playerList.map((p) => `<li><span>${esc(p.name)}</span><i>${esc(played(p.seconds))}</i></li>`).join('')}</ul>`
+					: (r.players > 0 ? `<p class="sd-note">${r.players} on, names not reported.</p>` : `<p class="sd-note">Nobody on.</p>`);
+				body = `<table class="sd-table">${rowsHtml}</table><p class="eyebrow">On the server</p>${people}`;
+			}
+			detail.innerHTML = `<div class="sd-head"><span class="st" data-state="${r ? (r.online ? 'online' : 'offline') : 'unknown'}"><i class="dot"></i></span><b>${esc(name)}</b><code>${esc(picked)}</code><button type="button" class="sd-close" aria-label="Close">×</button></div>${body}`;
+			detail.hidden = false;
+			detail.querySelector('.sd-close').addEventListener('click', () => { picked = null; paintDetail(); });
+		}
+
+		async function refresh() {
+			try {
+				const r = await fetch(STATUS_URL, { cache: 'no-cache' });
+				if (!r.ok) throw new Error(String(r.status));
+				const data = await r.json();
+				rowsByAddr = new Map((data.servers || []).map((s) => [`${s.host}:${s.port}`, s]));
+				generated = data.generated || '';
+			} catch (e) {
+				rowsByAddr = new Map();
+				generated = '';
+			}
+			paintList();
+			paintDetail();
+		}
+
+		for (const li of items) {
+			li.querySelector('.srv-btn').addEventListener('click', () => {
+				picked = picked === li.dataset.addr ? null : li.dataset.addr;
+				paintDetail();
+			});
+		}
+		refresh();
+		setInterval(refresh, POLL_MS);
 	</script>
+
+	<style>
+		/* the status line and the detail panel (user, 2026-10-23) */
+		.srv-btn { all: unset; display: flex; align-items: center; gap: 8px 12px; width: 100%; box-sizing: border-box; cursor: pointer; flex-wrap: wrap; }
+		.srv-btn.plain { cursor: default; }
+		.srv-btn:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 3px; }
+		.srv-btn[aria-expanded="true"] b { color: var(--brass); }
+		.srv .st { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--muted); min-width: 0; }
+		.srv .st-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 28ch; }
+		.st .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); flex: none; }
+		.st[data-state="online"] .dot { background: #6cbf66; box-shadow: 0 0 6px #6cbf66; }
+		.st[data-state="online"] .st-text { color: var(--ink); }
+		.st[data-state="offline"] .dot { background: #e5534b; }
+		.srv-detail { grid-column: 1 / -1; border: 1px solid var(--line); border-left: 3px solid var(--brass); background: var(--panel); opacity: .97; border-radius: var(--r); padding: 14px 18px; }
+		.sd-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+		.sd-head b { font-family: var(--display); font-weight: 600; font-size: 20px; letter-spacing: .06em; text-transform: uppercase; }
+		.sd-head code { color: var(--brass); }
+		.sd-close { all: unset; margin-left: auto; cursor: pointer; font-size: 22px; line-height: 1; color: var(--muted); padding: 0 6px; }
+		.sd-close:hover, .sd-close:focus-visible { color: var(--ink); }
+		.sd-table { border-collapse: collapse; font-size: 14px; margin-bottom: 10px; }
+		.sd-table th { text-align: left; font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 3px 18px 3px 0; white-space: nowrap; }
+		.sd-table td { padding: 3px 0; }
+		.sd-note { color: var(--dim); font-size: 14px; margin: 0; }
+		.plist { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+		.plist li { font-family: var(--mono); font-size: 12px; padding: 2px 8px; border-radius: 3px; border: 1px solid var(--line); background: var(--ground-2); display: flex; gap: 8px; }
+		.plist i { font-style: normal; color: var(--muted); }
+	</style>
 </Base>
