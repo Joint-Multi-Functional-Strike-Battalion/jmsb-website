@@ -11,10 +11,8 @@ const joinLabel = site.discord !== '' ? 'Join Discord' : 'Apply to join';
 // open a detail panel when pressed (user, 2026-10-23: "on front page a status
 // and if you click on a server more details"); the status comes from
 // /status/arma.json, written on the box every minute by scripts/arma-status.mjs.
-const all = [
-	...site.servers.map((s) => ({ name: s.name, addr: `${s.host}:${s.port}`, kind: 'arma' })),
-	{ name: 'TeamSpeak', addr: site.teamspeak, kind: 'ts' },
-];
+// The Arma servers only - no TeamSpeak row (user, 2026-10-23: "remove teamspeak").
+const all = site.servers.map((s) => ({ name: s.name, addr: `${s.host}:${s.port}` }));
 const rows = all.map((s, i) => {
 	const a = (-90 + i * 60) * Math.PI / 180;
 	return { ...s, nx: (23 + Math.sin(a) * 13).toFixed(1), ny: (23 - Math.cos(a) * 13).toFixed(1) };
@@ -58,30 +56,19 @@ for (let a = -120; a <= 120; a += 20) {
 			</div>
 			<ul class="servers" aria-label="Servers">
 				{rows.map((s) => (
-					<li class="srv" data-addr={s.addr} data-kind={s.kind}>
-						{s.kind === 'arma' ? (
-							<button type="button" class="srv-btn" aria-expanded="false" aria-controls="srv-detail">
-								<svg class="dial" viewBox="0 0 46 46" aria-hidden="true">
-									<circle cx="23" cy="23" r="15" fill="#3a4433" stroke="#c2a878" stroke-width="1.5" />
-									{ticks.map((k) => <line x1={k.x1} y1={k.y1} x2={k.x2} y2={k.y2} stroke="#a9ae95" stroke-width="1.2" />)}
-									<line x1="23" y1="23" x2={s.nx} y2={s.ny} stroke="#c2a878" stroke-width="2.5" stroke-linecap="round" />
-								</svg>
+					<li class="srv" data-addr={s.addr}>
+						<button type="button" class="srv-btn" aria-expanded="false" aria-controls="srv-detail">
+							<svg class="dial" viewBox="0 0 46 46" aria-hidden="true">
+								<circle cx="23" cy="23" r="15" fill="#3a4433" stroke="#c2a878" stroke-width="1.5" />
+								{ticks.map((k) => <line x1={k.x1} y1={k.y1} x2={k.x2} y2={k.y2} stroke="#a9ae95" stroke-width="1.2" />)}
+								<line x1="23" y1="23" x2={s.nx} y2={s.ny} stroke="#c2a878" stroke-width="2.5" stroke-linecap="round" />
+							</svg>
+							<span class="srv-text">
 								<b>{s.name}</b>
 								<span class="st" data-state="unknown"><i class="dot" aria-hidden="true"></i><span class="st-text">checking</span></span>
 								<code>{s.addr}</code>
-							</button>
-						) : (
-							<span class="srv-btn plain">
-								<svg class="dial" viewBox="0 0 46 46" aria-hidden="true">
-									<circle cx="23" cy="23" r="15" fill="#3a4433" stroke="#c2a878" stroke-width="1.5" />
-									{ticks.map((k) => <line x1={k.x1} y1={k.y1} x2={k.x2} y2={k.y2} stroke="#a9ae95" stroke-width="1.2" />)}
-									<line x1="23" y1="23" x2={s.nx} y2={s.ny} stroke="#c2a878" stroke-width="2.5" stroke-linecap="round" />
-								</svg>
-								<b>{s.name}</b>
-								<span class="st" data-state="voice"><span class="st-text">TFAR / ACRE nights</span></span>
-								<code>{s.addr}</code>
 							</span>
-						)}
+						</button>
 					</li>
 				))}
 			</ul>
@@ -125,7 +112,7 @@ for (let a = -120; a <= 120; a += 20) {
 		const STATUS_URL = '/status/arma.json';
 		const POLL_MS = 60000;
 		const detail = document.getElementById('srv-detail');
-		const items = [...document.querySelectorAll('li.srv[data-kind="arma"]')];
+		const items = [...document.querySelectorAll('li.srv')];
 		let rowsByAddr = new Map();
 		let generated = '';
 		let picked = null;
@@ -214,8 +201,10 @@ for (let a = -120; a <= 120; a += 20) {
 
 	<style>
 		/* the status line and the detail panel (user, 2026-10-23) */
-		.srv-btn { all: unset; display: flex; align-items: center; gap: 8px 12px; width: 100%; box-sizing: border-box; cursor: pointer; flex-wrap: wrap; }
-		.srv-btn.plain { cursor: default; }
+		/* the dial, then one text column: a status or address line that wraps
+		 * starts under the name, not under the dial (user, 2026-10-23: "indent please") */
+		.srv-btn { all: unset; display: flex; align-items: center; width: 100%; box-sizing: border-box; cursor: pointer; }
+		.srv-text { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
 		.srv-btn:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 3px; }
 		.srv-btn[aria-expanded="true"] b { color: var(--brass); }
 		.srv .st { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--muted); min-width: 0; }
