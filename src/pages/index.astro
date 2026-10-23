@@ -66,7 +66,8 @@ for (let a = -120; a <= 120; a += 20) {
 							<span class="srv-text">
 								<b>{s.name}</b>
 								<span class="st" data-state="unknown"><i class="dot" aria-hidden="true"></i><span class="st-text">checking</span></span>
-								<code>{s.addr}</code>
+								<span class="line mission" hidden><span class="lbl">Mission</span><span class="mission-name"></span></span>
+								<span class="line"><span class="lbl">Server</span><code>{s.addr}</code></span>
 							</span>
 						</button>
 					</li>
@@ -134,10 +135,14 @@ for (let a = -120; a <= 120; a += 20) {
 				const r = rowsByAddr.get(li.dataset.addr);
 				const st = li.querySelector('.st');
 				const text = li.querySelector('.st-text');
+				// The mission on its own line under a title (user, 2026-10-23).
+				const mis = li.querySelector('.mission');
+				mis.hidden = !(r && r.online && r.mission);
+				mis.querySelector('.mission-name').textContent = mis.hidden ? '' : mission(r);
 				if (!r) { st.dataset.state = 'unknown'; text.textContent = 'no status'; continue; }
 				if (!r.online) { st.dataset.state = 'offline'; text.textContent = 'offline'; continue; }
 				st.dataset.state = 'online';
-				text.textContent = `${r.players} / ${r.max}` + (r.mission ? ` · ${mission(r)}` : '') + (r.locked ? ' · locked' : '');
+				text.textContent = `${r.players} / ${r.max}` + (r.locked ? ' · locked' : '');
 			}
 		}
 
@@ -213,6 +218,13 @@ for (let a = -120; a <= 120; a += 20) {
 		.st[data-state="online"] .dot { background: #6cbf66; box-shadow: 0 0 6px #6cbf66; }
 		.st[data-state="online"] .st-text { color: var(--ink); }
 		.st[data-state="offline"] .dot { background: #e5534b; }
+		/* the mission and the server, each a full-width line of its own under a
+		 * title (user, 2026-10-23: "the mission need to be on a new line with a
+		 * title", "and the server"); the titles share a width so the values line up */
+		.srv .line { flex-basis: 100%; display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+		.srv .line[hidden] { display: none; }
+		.srv .lbl { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); flex: none; min-width: 8ch; }
+		.srv .mission-name { font-size: 14px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 		.srv-detail { grid-column: 1 / -1; border: 1px solid var(--line); border-left: 3px solid var(--brass); background: var(--panel); opacity: .97; border-radius: var(--r); padding: 14px 18px; }
 		.sd-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 		.sd-head b { font-family: var(--display); font-weight: 600; font-size: 20px; letter-spacing: .06em; text-transform: uppercase; }
