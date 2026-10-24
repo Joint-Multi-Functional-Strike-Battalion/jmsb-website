@@ -18,9 +18,9 @@ The 1st Joint Multi-Functional Strike Battalion's public site. A plain
 
 - **TAC//PAC's public feed** (`https://pac.jmsb.info/?page=feed&what=...`) -
   the order of battle, the roster and the events are read in the visitor's
-  browser (`src/scripts/pac.js`), so the site is always current. The SOP is a
-  public page in PAC's wiki, read when the site is built; `src/data/sop-fallback.html`
-  stands in when PAC cannot be reached at build time.
+  browser (`src/scripts/pac.js`), so the site is always current. The SOP is not
+  from PAC: its text is `src/data/sop.html` in this repository, edited here and
+  dressed by `src/pages/sop.astro` at build time.
 - **`src/data/site.json`** - the unit's name, tagline, the PAC address, the
   Discord invite, the Workshop link and the servers. Empty Discord or Workshop
   links are shown as placeholders.

@@ -1,34 +1,16 @@
 ---
-// The SOP. The text lives in TAC//PAC's wiki as the public page "sop", so the
-// unit edits it there; this page is built from the feed each time the site is
-// built, and keeps a copy in src/data/ for a build that cannot reach PAC.
+// The SOP. The text lives in this repository, src/data/sop.html, and is edited
+// there (user, 2026-10-24: "sop is on the web site not pac"). Plain headings,
+// paragraphs and lists only.
 //
-// THE DRESSING IS DONE HERE, NOT IN THE TEXT: PAC hands over plain headings,
-// paragraphs and lists, and this page numbers the sections, builds the
-// contents, boxes the sections that deserve a box and lays map-edge rules
-// between the parts - so an edit in PAC never has to know any of it.
+// THE DRESSING IS DONE HERE, NOT IN THE TEXT: this page numbers the sections,
+// builds the contents, boxes the sections that deserve a box and lays map-edge
+// rules between the parts - so an edit to the text never has to know any of it.
 import Base from '../layouts/Base.astro';
 import Banner from '../components/Banner.astro';
 import Contents from '../components/Contents.astro';
 import site from '../data/site.json';
-import fallback from '../data/sop-fallback.html?raw';
-
-let html = fallback;
-let updated = '';
-let live = false;
-try {
-	const r = await fetch(`${site.pac}/?page=feed&what=page&slug=sop`);
-	if (r.ok) {
-		const j = await r.json();
-		if (typeof j.html === 'string' && j.html.trim() !== '') {
-			html = j.html;
-			updated = String(j.updatedAt || '').slice(0, 10);
-			live = true;
-		}
-	}
-} catch {
-	// the fallback stands
-}
+import html from '../data/sop.html?raw';
 
 // Sections boxed as standing reminders, and the parts a map-edge rule goes before.
 const CALLOUTS = ['Real Life Comes First', 'Open Door'];
@@ -66,12 +48,6 @@ const sections = parts.map((part) => {
 		<div class="wrap sop-layout">
 			<Contents items={toc} />
 			<article class="prose sop" set:html={sections}></article>
-		</div>
-		<div class="wrap">
-			<div class="prose-foot">
-				{updated !== '' && <span>Updated {updated}</span>}
-				<span>Kept in <a href={`${site.pac}/`} target="_blank" rel="noopener">TAC//PAC</a>{live ? '' : " (this copy was built from the site's own file)"}</span>
-			</div>
 		</div>
 	</section>
 

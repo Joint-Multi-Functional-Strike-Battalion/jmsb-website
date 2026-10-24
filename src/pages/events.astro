@@ -40,7 +40,7 @@ import site from '../data/site.json';
 			out += '<h2 style="margin-bottom:14px">Coming up</h2>';
 			out += ev.upcoming.length
 				? `<ul class="evlist">${ev.upcoming.map((e) => row(e, false)).join('')}</ul>`
-				: '<p class="dim" style="margin-bottom:32px">Nothing on the calendar yet. Operation nights are announced on Discord.</p>';
+				: '<p class="dim" style="margin-bottom:32px">Nothing on the calendar yet. The regular operation night and start time are still being set; they will be announced on Discord.</p>';
 			if (ev.recent.length) {
 				out += `<h2 style="margin-bottom:14px">Played</h2><ul class="evlist">${ev.recent.map((e) => row(e, true)).join('')}</ul>`;
 			}
